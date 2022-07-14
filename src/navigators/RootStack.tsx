@@ -7,6 +7,7 @@ import Dashboard from '../screens/dashboard/Dashboard';
 import CategoryPage from '../screens/categoryPage/CategoryPage';
 import Welcome from '../screens/sign/Welcome';
 import Signin from '../screens/sign/Signin';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 export type RootStackParamList = {
     Dashboard: undefined;
@@ -15,44 +16,44 @@ export type RootStackParamList = {
     Welcome: undefined;
     Signup: undefined;
 };
-
+const Drawer = createDrawerNavigator<RootStackParamList>();
 const Stack = createStackNavigator<RootStackParamList>();
 
 const RootStack: FunctionComponent = () =>{
     return (
         <NavigationContainer>
-           <Stack.Navigator 
+           <Drawer.Navigator 
            initialRouteName="Welcome"
            screenOptions={{
             headerShown: false,
             // swipeEnabled: false,
-            gestureEnabled: false
+            // gestureEnabled: false
           }}
            
            >
-                <Stack.Screen 
+                <Drawer.Screen 
                     name='Dashboard'
                     component={Dashboard}
                     
                 />
 
-                <Stack.Screen 
+                <Drawer.Screen 
                     name='Category'
                     component={CategoryPage}
                 />
-                 <Stack.Screen 
+                 <Drawer.Screen 
                     name='Welcome'
                     component={Welcome}
                 />
-                  <Stack.Screen 
+                  <Drawer.Screen 
                     name='Signin'
                     component={Signin}
                 />
-                  <Stack.Screen 
+                  <Drawer.Screen 
                     name='Signup'
                     component={Welcome}
                 />
-            </Stack.Navigator> 
+            </Drawer.Navigator> 
         </NavigationContainer>
     )
 }
