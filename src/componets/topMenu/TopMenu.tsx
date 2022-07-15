@@ -1,17 +1,26 @@
 import { StyleSheet, Text, View, Image, ImageBackground, SafeAreaView, TouchableOpacity, TextInput } from 'react-native'
-import React from 'react'
+import React, { FunctionComponent }  from 'react'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
+import { RootStackParamList } from '../../navigators/RootStack';
+import { RouteProp } from '@react-navigation/native';
+import { DrawerActions } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
-const TopMenu = () => {
+const TopMenu:FunctionComponent = () => {
+    const navigation = useNavigation(); 
+
   return (
     <SafeAreaView>
         <View style={styles.container}>
             <View style={styles.wrapper}>
                 <View style={styles.headerContainer}>
                     <View activeOpacity={.7} style={styles.rightside}>
-                    <TouchableOpacity activeOpacity={.7}>
+                    <TouchableOpacity activeOpacity={.7}
+                        onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
+                    >
                         <Entypo name="menu" type="ionicon" color="#262626" style={styles.iconLogin}/>
                      </TouchableOpacity>   
                         <Text style={styles.textWelcome}>Welcome, </Text>

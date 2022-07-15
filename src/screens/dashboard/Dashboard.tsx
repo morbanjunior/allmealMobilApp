@@ -9,12 +9,15 @@ import DashInfo from '../../componets/dashInfo/DashInfo';
 import Search from '../../componets/search/Search';
 import Categories from '../../componets/categories/Categories';
 import FeaturedMeals from '../../componets/featuredMeals/FeaturedMeals';
+import { StackScreenProps } from '@react-navigation/stack';
+import { RootStackParamList } from '../../navigators/RootStack';
 
+type props = StackScreenProps<RootStackParamList, 'Dashboard'>
 
-const Dashboard :FunctionComponent = () => {
+const Dashboard : FunctionComponent<props>= ({navigation}) => {
   return (
     <>
-     <TopMenu/>
+     <TopMenu />
       <DashInfo/>
       <Search/>
       <Categories/>

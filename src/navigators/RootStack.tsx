@@ -8,6 +8,9 @@ import CategoryPage from '../screens/categoryPage/CategoryPage';
 import Welcome from '../screens/sign/Welcome';
 import Signin from '../screens/sign/Signin';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import DrawerContent from '../componets/DrawerContent.old';
+import { CustomDrawerContent } from '../componets/CustomDrawerContent';
+
 
 export type RootStackParamList = {
     Dashboard: undefined;
@@ -29,8 +32,10 @@ const RootStack: FunctionComponent = () =>{
             // swipeEnabled: false,
             // gestureEnabled: false
           }}
+        //   drawerContent={props => <DrawerContent {...props}/>}
+        drawerContent={(props) => <CustomDrawerContent {...props} />}
+          >
            
-           >
                 <Drawer.Screen 
                     name='Dashboard'
                     component={Dashboard}
