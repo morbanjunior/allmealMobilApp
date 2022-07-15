@@ -1,6 +1,11 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
-import React, {useState} from 'react'
+import React, {FunctionComponent, useState} from 'react'
 import CategoriesItems from './CategoriesItems'
+import { StackScreenProps } from '@react-navigation/stack'
+import { RootStackParamList } from '../../navigators/RootStack'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+
+type props = StackScreenProps<RootStackParamList, 'Dashboard'>
 
 const itemsCategories = [
     {
@@ -30,8 +35,9 @@ const itemsCategories = [
     },
 ];
 
-const Categories = () => {
+const Categories: FunctionComponent<props>= ({navigation}) => {
     const [selected, Setselected] = useState(0);
+   
 
   return (
     <View style={styles.container}>
@@ -42,7 +48,9 @@ const Categories = () => {
                 
                 {
                         itemsCategories.map((item, index)=>(
-                           <View style={styles.categoryItemsContainer}>
+                           <TouchableOpacity 
+                           onPress={()=>navigation.navigate('Category')}
+                           style={styles.categoryItemsContainer}>
                                 <CategoriesItems 
                                 item={item} 
                                 key={index} 
@@ -50,7 +58,7 @@ const Categories = () => {
                                 Setselected={Setselected}
                                 index={index}
                                 />
-                           </View>
+                           </TouchableOpacity>
                              
                         
                         ))

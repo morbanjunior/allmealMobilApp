@@ -20,7 +20,7 @@ const Dashboard : FunctionComponent<props>= ({navigation}) => {
      <TopMenu />
       <DashInfo/>
       <Search/>
-      <Categories/>
+      <Categories navigation={navigation}/>
       <FeaturedMeals/>
      <BottomMenu/>
     </>

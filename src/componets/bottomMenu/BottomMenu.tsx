@@ -3,14 +3,22 @@ import React, {useState} from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { useNavigation } from '@react-navigation/native';
+
 
 // style={[selected ? styles.menuContainerItem : '']}
 const BottomMenu = () => {
     const [selected, setSeleted]= useState('My Profile');
+    const navigation = useNavigation(); 
   return (
     <View style={styles.container}>
        <View style={styles.wrapper}>
-            <TouchableOpacity activeOpacity={.7} onPress={()=>setSeleted('Home')} style={styles.menuContainerItem }>
+            <TouchableOpacity activeOpacity={.7} onPress={()=>{
+                setSeleted('Home')
+                navigation.navigate('Dashboard');
+            }} style={styles.menuContainerItem
+            
+            }>
                     <Ionicons name="home-outline" type="ionicon"  style={[selected==='Home' ? styles.iconLoginActive : styles.iconLogin]}/>
                     <Text style={[selected==='Home' ? styles.menuTextActive : styles.menuText]}>Home</Text>
             </TouchableOpacity>

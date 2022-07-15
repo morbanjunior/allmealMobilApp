@@ -29,7 +29,7 @@ const RootStack: FunctionComponent = () =>{
            initialRouteName="Welcome"
            screenOptions={{
             headerShown: false,
-            // swipeEnabled: false,
+            swipeEnabled: false,
             // gestureEnabled: false
           }}
         //   drawerContent={props => <DrawerContent {...props}/>}
