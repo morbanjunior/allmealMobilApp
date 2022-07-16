@@ -43,8 +43,8 @@ const Categories: FunctionComponent<props>= ({navigation}) => {
     <View style={styles.container}>
        <View style={styles.wrapper}>
          <Text style={styles.categoryText}>Categories</Text>
-         <ScrollView showsHorizontalScrollIndicator={false}>
-            <View style={styles.categoryItems}>
+         <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
+            {/* <View style={styles.categoryItems}> */}
                 
                 {
                         itemsCategories.map((item, index)=>(
@@ -63,7 +63,7 @@ const Categories: FunctionComponent<props>= ({navigation}) => {
                         
                         ))
                     }
-            </View>
+            {/* </View> */}
          </ScrollView>
        </View>
        

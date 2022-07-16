@@ -28,11 +28,11 @@ const itemsCategories = [
       text: '$8 Meal Prep Menu',
      
   },
-  {
-      id: 5,
-      text: 'Keto Meals',
+  // {
+  //     id: 5,
+  //     text: 'Keto Meals',
       
-  },
+  // },
 ];
 
 
@@ -46,7 +46,7 @@ const CategoryPage: FunctionComponent<props>= ({navigation}) => {
       <TopMenuCategory />
         <View style={styles.container}>
             <View style={styles.wrapper}>
-                    <ScrollView showsHorizontalScrollIndicator={false}>
+                    <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
                       <View style={styles.categoryItems}>
                           
                           {

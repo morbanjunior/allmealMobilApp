@@ -37,7 +37,7 @@ const FeaturedMeals = () => {
     <View style={styles.container}>
        <View style={styles.wrapper}>
          <Text style={styles.categoryText}>Featured Meals</Text>
-         <ScrollView showsHorizontalScrollIndicator={false}>
+         <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
             <View style={styles.categoryItems}>
                 
                 {
