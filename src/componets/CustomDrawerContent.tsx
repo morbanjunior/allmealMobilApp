@@ -259,7 +259,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
         marginLeft: 8,
       },
       textName:{
-        fontFamily: 'Poppins',
+        // fontFamily: 'Poppins',
         color: '#262626',
         // fontStyle: 'normal',
         fontWeight: '300',
@@ -268,7 +268,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
         letterSpacing: 0.15,
       },
       textEmail:{
-        fontFamily: 'Poppins',
+        // fontFamily: 'Poppins',
         color: '#262626',
         // fontStyle: 'normal',
         fontWeight: '300',

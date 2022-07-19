@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         
     },
     text:{
-        fontFamily: 'Poppins',
+        // fontFamily: 'Poppins',
         // fontStyle: 'normal',
         fontWeight: '600',
         fontSize: 10,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         color: '#000',
     },
     textActive:{
-        fontFamily: 'Poppins',
+        // fontFamily: 'Poppins',
         // fontStyle: 'normal',
         fontWeight: '600',
         fontSize: 10,

@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         shadowRadius: 20, 
         shadowOffset: { height: 3, width: 3 },
         backgroundColor: '#fff',
-        width: 115,
+        width: 106,
         height: 85,
     },
     ItemInfoActive:{
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         shadowRadius: 20, 
         shadowOffset: { height: 3, width: 3 },
         backgroundColor: '#FF6F00',
-        width: 115,
+        width: 106,
         height: 85,
     },
     infoItem:{

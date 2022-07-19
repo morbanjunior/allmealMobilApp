@@ -9,7 +9,7 @@ import { RouteProp } from '@react-navigation/native';
 import { DrawerActions } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 
-const TopMenuCategory:FunctionComponent = () => {
+const TopMenuCategoryItem:FunctionComponent = () => {
     const navigation = useNavigation(); 
 
   return (
@@ -18,7 +18,7 @@ const TopMenuCategory:FunctionComponent = () => {
             <View style={styles.wrapper}>
                 <TouchableOpacity activeOpacity={.7}
                     onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
-                    <Entypo name="menu" type="ionicon" color="#262626" style={styles.iconLogin}/>
+                    <AntDesign name="arrowleft" type="ionicon" color="#262626" style={styles.iconLogin}/>
                 </TouchableOpacity>
                 <Text style={styles.nameCategory}>Meal Prep </Text>
                 <View style={styles.leftside}>
@@ -42,7 +42,7 @@ const TopMenuCategory:FunctionComponent = () => {
   )
 }
 
-export default TopMenuCategory
+export default TopMenuCategoryItem
 
 const styles = StyleSheet.create({
     container: {

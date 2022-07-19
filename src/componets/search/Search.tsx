@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row', 
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom:5,
+        // marginBottom:5,
 
         
     },
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         position: 'relative',
     },
     input:{
-        width: 370,
+        width: 343,
         height: 56,
         borderColor: '#DADADA',
         borderWidth: 1.5,

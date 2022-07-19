@@ -45,11 +45,11 @@ const styles = StyleSheet.create({
         marginTop: 10,
         fontStyle: 'normal',
         fontWeight: '600',
-        fontSize: 16,
+        fontSize: 12,
         lineHeight: 15,
         letterSpacing: 0.15,
         color: '#262626',
-        width: 150,
+        width: 128,
         height: 60,
         textAlign: 'center',
     },buttom:{
@@ -62,8 +62,11 @@ const styles = StyleSheet.create({
         shadowRadius: 20, 
         shadowOffset: { height: 3, width: 3 },
         backgroundColor: '#fff',
+        width: 136,
+        height: 178,
+
     },imgContainer:{
-        width: 135,
+        width: 128,
         height: 109,
         marginTop: 5,
         borderRadius:8,

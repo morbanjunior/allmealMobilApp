@@ -10,19 +10,21 @@ import Search from '../../componets/search/Search';
 import Categories from '../../componets/categories/Categories';
 import FeaturedMeals from '../../componets/featuredMeals/FeaturedMeals';
 import { StackScreenProps } from '@react-navigation/stack';
-import { RootStackParamList } from '../../navigators/RootStack';
+import { RootStackParamList } from '../../navigators/RootDrawer';
 
-type props = StackScreenProps<RootStackParamList, 'Dashboard'>
+type props = StackScreenProps<RootStackParamList, 'Home'>
 
 const Dashboard : FunctionComponent<props>= ({navigation}) => {
   return (
     <>
-     <TopMenu />
+    
+     {/* <TopMenu /> */}
       <DashInfo/>
       <Search/>
       <Categories navigation={navigation}/>
       <FeaturedMeals/>
-     <BottomMenu/>
+      
+     {/* <BottomMenu/> */}
     </>
    
   )

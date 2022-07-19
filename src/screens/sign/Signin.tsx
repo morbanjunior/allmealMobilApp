@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View, Image, ImageBackground, SafeAreaView, TouchableOpacity, TextInput } from 'react-native'
 import React, { FunctionComponent } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { RootStackParamList } from '../../navigators/RootStack';
+import { RootStackParamList } from '../../navigators/RootDrawer';
 import { StackScreenProps } from '@react-navigation/stack';
+import { Screenheight, ScreenWidth } from '../../componets/shared';
 
 type props = StackScreenProps<RootStackParamList, 'Signin'>
 
@@ -16,12 +17,14 @@ const Signin: FunctionComponent<props>= ({navigation}) => {
         >
     <SafeAreaView>
         <View style={styles.wrapper}>
-            <Image 
-            source={require('../../../assets/img/logoAMP.png')}
-            />
-            <View style={styles.containerTitle}>
-                <Text style={styles.title}>Meal Prep</Text>
-                <Text style={styles.title}>Chicago</Text>
+            <View style={styles.header}>
+                <Image 
+                source={require('../../../assets/img/logoAMP.png')}
+                />
+                <View style={styles.containerTitle}>
+                    <Text style={styles.title}>Meal Prep</Text>
+                    <Text style={styles.title}>Chicago</Text>
+                </View>
             </View>
             <View style={styles.containerBottom}>
                 <View style={styles.wrapperButton}>
@@ -39,7 +42,7 @@ const Signin: FunctionComponent<props>= ({navigation}) => {
                 </View>
                 <TouchableOpacity activeOpacity={.7} 
                 style={styles.buttomSignin}
-                onPress={()=>navigation.navigate('Dashboard')}
+                onPress={()=>navigation.navigate('Home')}
                 >
                         <Icon name="user-check" type="ionicon" color="#fff" style={styles.iconLogin}/>
                         <Text style={styles.textButtomLogin}>Log In</Text>
@@ -65,22 +68,26 @@ const styles = StyleSheet.create({
         // backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        
+       
     },
     img:{
-        width: 420,
+        width: ScreenWidth,
         height: 912,
     },
     wrapper:{
         display:'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop:30, 
+        // paddingTop:30, 
+        height:Screenheight +50
+        
     },
 
     title:{
         color: '#FFFFFF',
         // fontFamily: 'Poppins',
-        fontsStyle: 'normal',
+        // fontsStyle: 'normal',
         fontWeight: '700',
         fontSize: 36,
         lineheight: 54,
@@ -88,13 +95,13 @@ const styles = StyleSheet.create({
     containerTitle:{
         display: 'flex',
         flexDirection: 'column',
-        marginTop: 80,
+        marginTop: 30,
         alignItems: 'center',
         justifyContent:'center',
     },
     containerBottom:{
-      marginTop:120,
-      width: 420,
+      
+      width: ScreenWidth,
       height:487,
       backgroundColor: '#fff',
       borderTopEndRadius:25,
@@ -163,7 +170,7 @@ const styles = StyleSheet.create({
   },
   containertextBottom:{
       display:'flex',
-      flexDirection: 'colomn', 
+      flexDirection: 'column', 
       alignItems: 'center',
       justifyContent: 'center',
   },
@@ -185,5 +192,13 @@ const styles = StyleSheet.create({
       letterSpacing: 1.25,
       textTransform: 'capitalize',
       marginTop:20,
+  },
+  header:{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop:50, 
+    marginBottom:80,
   }
 })

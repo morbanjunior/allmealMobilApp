@@ -2,8 +2,9 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React, {FunctionComponent, useState} from 'react'
 import CategoriesItems from './CategoriesItems'
 import { StackScreenProps } from '@react-navigation/stack'
-import { RootStackParamList } from '../../navigators/RootStack'
+import { RootStackParamList } from '../../navigators/RootDrawer'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import { ScreenWidth } from '../shared'
 
 type props = StackScreenProps<RootStackParamList, 'Dashboard'>
 
@@ -44,7 +45,7 @@ const Categories: FunctionComponent<props>= ({navigation}) => {
        <View style={styles.wrapper}>
          <Text style={styles.categoryText}>Categories</Text>
          <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
-            {/* <View style={styles.categoryItems}> */}
+            <View style={styles.categoryItems}>
                 
                 {
                         itemsCategories.map((item, index)=>(
@@ -63,7 +64,7 @@ const Categories: FunctionComponent<props>= ({navigation}) => {
                         
                         ))
                     }
-            {/* </View> */}
+            </View>
          </ScrollView>
        </View>
        
@@ -80,6 +81,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         justifyContent: 'center',
         marginBottom: -20,
+        marginTop: -10,
         
     },wrapper:{
         display:'flex',
@@ -87,7 +89,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         justifyContent: 'center',
         padding: 20,
-        width: '100%',
+        width: ScreenWidth,
 
     },categoryText:{
         fontStyle: 'normal',
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
         letterSpacing: 0.15,
         color: '#262626',
     },categoryItems:{
-        marginTop: 20,
+        marginTop: 10,
         display: 'flex',
         flexDirection: 'row'
         

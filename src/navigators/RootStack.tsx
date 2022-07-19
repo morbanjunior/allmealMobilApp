@@ -1,66 +1,196 @@
 import React, {FunctionComponent} from 'react'
-
-// react Navigation
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Dashboard from '../screens/dashboard/Dashboard';
 import CategoryPage from '../screens/categoryPage/CategoryPage';
 import Welcome from '../screens/sign/Welcome';
 import Signin from '../screens/sign/Signin';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import DrawerContent from '../componets/DrawerContent.old';
-import { CustomDrawerContent } from '../componets/CustomDrawerContent';
+import MyOrders from '../screens/myOrders/MyOrders';
+import Wellness from '../screens/wellness/Wellness';
+import MyProfile from '../screens/myProfile/MyProfile';
+import Icon from 'react-native-vector-icons/Ionicons'
+import { DrawerActions } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import MealItemPage from '../screens/categoryPage/mealItem/MealItemPage';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { View, Text, StyleSheet } from 'react-native';
 
 
 export type RootStackParamList = {
-    Dashboard: undefined;
-    Category:undefined;
-    Signin: undefined;
-    Welcome: undefined;
-    Signup: undefined;
+  Home: undefined;
+  Category:undefined;
+  Signin: undefined;
+  Welcome: undefined;
+  Signup: undefined;
+  MyOrders: undefined;
+  Wellness:undefined;
+  MyProfile:undefined;
+  MealItemPage:undefined;
 };
-const Drawer = createDrawerNavigator<RootStackParamList>();
+
+
 const Stack = createStackNavigator<RootStackParamList>();
 
-const RootStack: FunctionComponent = () =>{
+export const SigninStackNavigator: FunctionComponent = () =>{
+    const navigation = useNavigation(); 
     return (
-        <NavigationContainer>
-           <Drawer.Navigator 
-           initialRouteName="Welcome"
-           screenOptions={{
-            headerShown: false,
-            swipeEnabled: false,
-            // gestureEnabled: false
-          }}
-        //   drawerContent={props => <DrawerContent {...props}/>}
-        drawerContent={(props) => <CustomDrawerContent {...props} />}
-          >
-           
-                <Drawer.Screen 
-                    name='Dashboard'
-                    component={Dashboard}
-                    
-                />
-
-                <Drawer.Screen 
-                    name='Category'
-                    component={CategoryPage}
-                />
-                 <Drawer.Screen 
-                    name='Welcome'
-                    component={Welcome}
-                />
-                  <Drawer.Screen 
-                    name='Signin'
-                    component={Signin}
-                />
-                  <Drawer.Screen 
-                    name='Signup'
-                    component={Welcome}
-                />
-            </Drawer.Navigator> 
-        </NavigationContainer>
+    <Stack.Navigator 
+    screenOptions={{
+        headerShown: false,
+        // gestureEnabled: false
+      }}>
+        <Stack.Screen name="Signin" component={Signin} />
+      </Stack.Navigator>
     )
 }
 
-export default RootStack;
+
+export const WelcomeStackNavigator: FunctionComponent = () =>{
+    return (
+    <Stack.Navigator screenOptions={{
+        headerShown: false,
+        // gestureEnabled: false
+      }}>
+        <Stack.Screen name="Welcome" component={Welcome} />
+      </Stack.Navigator>
+    )
+}
+
+
+export const DashboardStackNavigator: FunctionComponent = () =>{
+    const navigation = useNavigation(); 
+    return (
+    <Stack.Navigator>
+        <Stack.Screen 
+            options ={{
+                        headerLeft: () =>(
+                          <Icon name='ios-menu' size={25} color="#3C3C3C" style={{marginLeft: 10}}
+                          backgroundColor='white'
+                          onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
+                        )
+                      }}
+        name="Home" component={Dashboard} />
+      </Stack.Navigator>
+    )
+}
+
+export const CategoryStackNavigator: FunctionComponent = () =>{
+    const navigation = useNavigation(); 
+    return (
+    <Stack.Navigator>
+        <Stack.Screen 
+        
+         options ={{
+            headerLeft: () =>(
+              <Icon name='ios-menu' size={25} color="#3C3C3C" style={{marginLeft: 10}}
+              backgroundColor='white'
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
+            )
+          }}
+        name="Category" component={CategoryPage} />
+        <Stack.Screen 
+         options ={{
+            headerLeft: () =>(
+              <AntDesign name='arrowleft' size={25} color="#fff" style={{marginLeft: 10}}
+              backgroundColor='white'
+              // onPress={() => navigation.goBack()}
+              />
+            ),
+            headerRight: () =>(
+              <View style={{
+                flexDirection: 'row', 
+                justifyContent: 'center', 
+                alignItems: 'center', marginTop:20,}}>
+                  <View style={{position: 'relative'}} >
+                      <View style={styles.bellContainer}>
+                        <Text style={styles.textbel}>2</Text>
+                      </View>
+                    <AntDesign name="shoppingcart" type="ionicon"  size={25} color="#fff" style={{marginRight: 20}}
+                    // onPress={() => navigation.goBack()}
+                    />
+                  </View >
+                  <View style={{position: 'relative'}} >
+                      <View style={styles.bellContainer}>
+                        <Text style={styles.textbel}>2</Text>
+                      </View>
+                      <MaterialCommunityIcons name="bell-outline" type="ionicon" size={25} color="#fff" style={{marginRight: 20}}
+                      // onPress={() => navigation.goBack()}
+                      />
+                  </View>
+              </View>
+             
+            ),
+            headerTransparent:true,
+            title: "",
+            
+          }}
+        name="MealItemPage" component={MealItemPage} />
+      </Stack.Navigator>
+    )
+}
+
+export const MyOrderstackNavigator: FunctionComponent = () =>{
+    const navigation = useNavigation(); 
+    return (
+    <Stack.Navigator>
+        <Stack.Screen 
+         options ={{
+            headerLeft: () =>(
+              <Icon name='ios-menu' size={25} color="#3C3C3C" style={{marginLeft: 10}}
+              backgroundColor='white'
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
+            )
+          }}
+        name="MyOrders" component={MyOrders} />
+      </Stack.Navigator>
+    )
+}
+
+export const WellnessstackNavigator: FunctionComponent = () =>{
+    const navigation = useNavigation(); 
+    return (
+    <Stack.Navigator
+    screenOptions={{
+        headerShown: true,
+        // gestureEnabled: false
+      }}>
+        <Stack.Screen name="Wellness" component={Wellness} />
+      </Stack.Navigator>
+    )
+}
+
+
+export const MyProfilestackNavigator: FunctionComponent = () =>{
+    const navigation = useNavigation(); 
+    return (
+    <Stack.Navigator
+    screenOptions={{
+        headerShown: true,
+        // gestureEnabled: false
+      }}>
+        <Stack.Screen name="MyProfile" component={MyProfile} />
+      </Stack.Navigator>
+    )
+}
+
+const styles = StyleSheet.create({
+  bellContainer:{
+    display:'flex',
+    flexDirection: 'row', 
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding:5,
+    backgroundColor: '#F26E21',
+    borderRadius: 30,
+    width: 30,
+    height: 30,
+    position: 'absolute',
+    top: -22,
+    left: 10,
+  },
+  textbel:{
+    color: '#fff',
+    fontStyle: 'normal',
+    fontWeight: '700',
+  }
+})

@@ -10,12 +10,14 @@ import { useNavigation } from '@react-navigation/native';
 const BottomMenu = () => {
     const [selected, setSeleted]= useState('My Profile');
     const navigation = useNavigation(); 
+
+    
   return (
     <View style={styles.container}>
        <View style={styles.wrapper}>
             <TouchableOpacity activeOpacity={.7} onPress={()=>{
                 setSeleted('Home')
-                navigation.navigate('Dashboard');
+                navigation.navigate('home');
             }} style={styles.menuContainerItem
             
             }>

@@ -1,11 +1,9 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { FunctionComponent, useState } from 'react'
-import { RootStackParamList } from '../../navigators/RootStack';
+import React, { FunctionComponent, useState } from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
-import BottomMenu from '../../componets/bottomMenu/BottomMenu';
-import TopMenuCategory from '../../componets/topMenu/TopMenuCategory';
 import CategoryPageItem from './CategoryPageItem';
 import MealItem from './mealItem/MealItem';
+
 
 const itemsCategories = [
   {
@@ -28,11 +26,41 @@ const itemsCategories = [
       text: '$8 Meal Prep Menu',
      
   },
-  // {
-  //     id: 5,
-  //     text: 'Keto Meals',
+  {
+      id: 5,
+      text: 'Keto Meals',
       
-  // },
+  },
+  {
+    id: 6,
+    text: '$8 Meal Prep Menu',
+   
+},
+{
+    id: 7,
+    text: 'Keto Meals',
+    
+},
+{
+  id: 8,
+  text: '$8 Meal Prep Menu',
+ 
+},
+{
+  id: 9,
+  text: 'Keto Meals',
+  
+},
+{
+id: 10,
+text: '$8 Meal Prep Menu',
+
+},
+{
+id: 11,
+text: 'Keto Meals',
+
+},
 ];
 
 
@@ -43,7 +71,7 @@ const CategoryPage: FunctionComponent<props>= ({navigation}) => {
 
   return (
     <View>
-      <TopMenuCategory />
+      {/* <TopMenuCategory /> */}
         <View style={styles.container}>
             <View style={styles.wrapper}>
                     <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
@@ -68,14 +96,15 @@ const CategoryPage: FunctionComponent<props>= ({navigation}) => {
                               }
                       </View>
                     </ScrollView>
-                    <ScrollView showsVerticalScrollIndicator={false}>
+                    <ScrollView showsVerticalScrollIndicator={false}  
+                                showsHorizontalScrollIndicator={false} 
+                                horizontal={false} alwaysBounceVertical={true}>
                       <View style={styles.mealItems}>
                           
                           {
                                   itemsCategories.map((item, index)=>(
                                     <TouchableOpacity 
-                                    onPress={()=>navigation.navigate('Category')}
-                                    style={styles.categoryItemsContainer}>
+                                    onPress={()=>navigation.navigate('Category')}>
                                           <MealItem 
                                           // item={item} 
                                           // key={index} 
@@ -94,7 +123,7 @@ const CategoryPage: FunctionComponent<props>= ({navigation}) => {
             </View>
           
         </View>
-      <BottomMenu/>
+      {/* <BottomMenu/> */}
     </View>
   )
 }
@@ -105,22 +134,22 @@ const styles = StyleSheet.create({
   container: {
     display:'flex',
     flexDirection: 'row', 
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 65,
 },
 wrapper:{
   display:'flex',
   flexDirection: 'column', 
-  alignItems: 'flex-start',
+  alignItems: 'center',
   justifyContent: 'center',
-  padding: 20,
+  // padding: 20,
 },
 categoryItems:{
   marginTop: 10,
   display: 'flex',
   flexDirection: 'row',
-  paddingBottom: 20,
-  paddingTop: 20,
+  padding: 10,
 },
 
 mealItems:{

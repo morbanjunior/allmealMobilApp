@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View, Image, ImageBackground, SafeAreaView, TouchableOpacity } from 'react-native'
 import React, { FunctionComponent } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { RootStackParamList } from '../../navigators/RootStack';
 import { StackScreenProps } from '@react-navigation/stack';
+import { RootStackParamList } from '../../navigators/RootStack';
+import { ScreenWidth } from 'react-native-elements/dist/helpers';
+import { Screenheight } from '../../componets/shared';
 
 type props = StackScreenProps<RootStackParamList, 'Welcome'>
 
@@ -17,7 +19,9 @@ const Welcome: FunctionComponent<props>= ({navigation}) => {
             >
         <SafeAreaView>
             <View style={styles.wrapper}>
-                <Image 
+                <Image style={{
+                    marginTop: 70,
+                }}
                 source={require('../../../assets/img/logoAMP.png')}
                 />
                 <View style={styles.containerTitle}>
@@ -56,22 +60,25 @@ const styles = StyleSheet.create({
         // backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        
+       
     },
     img:{
-        width: 420,
-        height: 912,
+        width: ScreenWidth,
+        height: Screenheight + 40,
     },
     wrapper:{
         display:'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop:30, 
+        // paddingTop:30, 
+       
     },
 
     title:{
         color: '#FFFFFF',
         // fontFamily: 'Poppins',
-        fontsStyle: 'normal',
+        // fontsStyle: 'normal',
         fontWeight: '700',
         fontSize: 36,
         lineheight: 54,
@@ -79,7 +86,7 @@ const styles = StyleSheet.create({
     containerTitle:{
         display: 'flex',
         flexDirection: 'column',
-        marginTop: 250,
+        marginTop: 150,
         alignItems: 'center',
         justifyContent:'center',
     },
@@ -149,7 +156,7 @@ const styles = StyleSheet.create({
     },
     titleBottom:{
         display:'flex',
-        flexDirection: 'colum', 
+        flexDirection:'column', 
         alignItems: 'center',
         justifyContent: 'center',
         margin: 40,
