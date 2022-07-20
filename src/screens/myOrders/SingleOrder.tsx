@@ -1,13 +1,21 @@
-import { StyleSheet, Text, View, TouchableOpacity,Image } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity,Image, ScrollView } from 'react-native'
 import React,{useState} from 'react'
-import { mainColor, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared'
+import { mainColor, Screenheight, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Octicons from 'react-native-vector-icons/Octicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import mealPhote from '../../../assets/img/mealPhote.png';
+
+const itemList =[1,2,3,4]
 
 const SingleOrder = () => {
   const [selected, Setselected] = useState('1');
+  const [hideAddress, SetHideAddress] = useState(false);
+  const [hideItems, SetHideItems] = useState(true);
   return (
     <View style={styles.container}>
         <View style={styles.wrapper}>
@@ -19,70 +27,159 @@ const SingleOrder = () => {
                 <Text style={[selected=== '2' ? styles.headertextActive : styles.headertext]}>Renewal Orders</Text>
              </TouchableOpacity>
           </View>
-          <View style={styles.orderDetails}>
-            <View style={styles.orderDetailsItems}>
-               <View style={styles.detailsItems}>
-               <Ionicons name="ios-receipt-outline" color={mainColor} style={styles.icon}/>
-                 <View style={{marginLeft: 7}}>
-                    <Text style={styles.headerItemsText}>Order Number</Text>
-                    <Text style={styles.headerItemsTextsub}>4100F5</Text>
-                 </View>
-               </View>
-               <View style={styles.detailsItems}>
-               <MaterialCommunityIcons name="calendar-blank" color={mainColor} style={styles.icon}/>
-                 <View style={{marginLeft: 7}}>
-                    <Text style={styles.headerItemsText}>Order Placed</Text>
-                    <Text style={styles.headerItemsTextsub}>07-Aug-2021</Text>
-                 </View>
-               </View>
-            </View>
-            <View style={styles.orderDetailsItems}>
-               <View style={styles.detailsItems}>
-               <MaterialCommunityIcons name="shopping-outline" color={mainColor} style={styles.icon}/>
-                 <View style={{marginLeft: 7}}>
-                    <Text style={styles.headerItemsText}>Quantity</Text>
-                    <View style={{flexDirection: 'row'}}>
-                      <Text style={styles.headerItemsTextsubSpace}>Food: 6</Text>
-                      <Text style={styles.headerItemsTextsub}>Combo: 6</Text>
-                    </View>
-                 </View>
-               </View>
-               <View style={styles.detailsItems}>
-                <View style={styles.iconDot}>
-                   <Entypo name="dots-three-horizontal" color={mainColor} style={styles.iconDotsub}/>
-                </View>
-                
-                 <View style={{marginLeft: 7}}>
-                    <Text style={styles.headerItemsText}>Status</Text>
-                    <Text style={styles.headerItemsTextsub}>Delivered</Text>
-                 </View>
-               </View>
-            </View>
-          </View>
-          <View style={styles.orderDetailsTotal}>
-              <View style={{flexDirection: 'row'}}>
-                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                    <MaterialIcons name="local-offer" color={secundaryColor} style={styles.icon}/>
-                    <View>
-                      <Text style={styles.totalText}>Total</Text>
-                      <Text style={styles.totalText}>Amount</Text>
+          <ScrollView showsVerticalScrollIndicator={false} style={{width:ScreenWidth, marginBottom:5,}}>
+            <View style={styles.viewScroll} >
+              <View style={styles.orderDetails}>
+                <View style={styles.orderDetailsItems}>
+                  <View style={styles.detailsItems}>
+                  <Ionicons name="ios-receipt-outline" color={mainColor} style={styles.icon}/>
+                    <View style={{marginLeft: 7}}>
+                        <Text style={styles.headerItemsText}>Order Number</Text>
+                        <Text style={styles.headerItemsTextsub}>4100F5</Text>
                     </View>
                   </View>
-              </View>
-              <View>
-                <Text style={styles.totalTextNumber}>$126.33</Text>
-                <Text style={styles.totalTextNumbersub}>Paid by Manually</Text>
-              </View>
-          </View>
-          <View style={styles.addressContainer}>
-            <View style={styles.adressSub}>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                 <MaterialCommunityIcons name="calendar-blank" color={thirdColor} style={styles.iconAdres}/>
-                  <Text>Adresses</Text>
+                  <View style={styles.detailsItems}>
+                  <MaterialCommunityIcons name="calendar-blank" color={mainColor} style={styles.icon}/>
+                    <View style={{marginLeft: 7}}>
+                        <Text style={styles.headerItemsText}>Order Placed</Text>
+                        <Text style={styles.headerItemsTextsub}>07-Aug-2021</Text>
+                    </View>
+                  </View>
                 </View>
-                <View><Text>Rigth</Text></View>
+                <View style={styles.orderDetailsItems}>
+                  <View style={styles.detailsItems}>
+                  <MaterialCommunityIcons name="shopping-outline" color={mainColor} style={styles.icon}/>
+                    <View style={{marginLeft: 7}}>
+                        <Text style={styles.headerItemsText}>Quantity</Text>
+                        <View style={{flexDirection: 'row'}}>
+                          <Text style={styles.headerItemsTextsubSpace}>Food: 6</Text>
+                          <Text style={styles.headerItemsTextsub}>Combo: 6</Text>
+                        </View>
+                    </View>
+                  </View>
+                  <View style={styles.detailsItems}>
+                    <View style={styles.iconDot}>
+                      <Entypo name="dots-three-horizontal" color={mainColor} style={styles.iconDotsub}/>
+                    </View>
+                    
+                    <View style={{marginLeft: 7}}>
+                        <Text style={styles.headerItemsText}>Status</Text>
+                        <Text style={styles.headerItemsTextsub}>Delivered</Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.orderDetailsTotal}>
+                  <View style={{flexDirection: 'row'}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <MaterialIcons name="local-offer" color={secundaryColor} style={styles.icon}/>
+                        <View>
+                          <Text style={styles.totalText}>Total</Text>
+                          <Text style={styles.totalText}>Amount</Text>
+                        </View>
+                      </View>
+                  </View>
+                  <View>
+                    <Text style={styles.totalTextNumber}>$126.33</Text>
+                    <Text style={styles.totalTextNumbersub}>Paid by Manually</Text>
+                  </View>
+              </View>
+              {/* address */}
+              <View style={styles.addressContainer}>
+                <View style={styles.adressSub}>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Octicons name="location" color={thirdColor} style={styles.iconAdres}/>
+                      <Text style={styles.addressText}>Adresses</Text>
+                    </View>
+                    <TouchableOpacity onPress={()=>SetHideAddress(!hideAddress)}style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <Text style={styles.hideText}>Hide</Text>
+                        {
+                          hideAddress ? ( <AntDesign name="caretdown" color={thirdColor} />) : ( <AntDesign name="caretup" color={thirdColor} />)
+                        }
+                        
+                    </TouchableOpacity>
+                </View>
+                {
+                  hideAddress && (
+                          <View style={styles.containerHide}>
+                              <View style={styles.orderDetails} >
+                                <View style={styles.addressShip}>
+                                  <View style={{flexDirection: 'row', alignItems: 'center', marginBottom:10,}}>
+                                  <MaterialIcons name="delivery-dining" color={mainColor} style={{marginRight:9, fontSize:24,}}/>
+                                  <Text style={styles.addressShipText}>Ship to</Text>
+                                  </View>
+                                  <Text style={styles.addressShipTextSub}>Michael Williams</Text>
+                                  <Text style={styles.addressShipTextSub}>833 West Haines Street, 60642 Chicago, IL, USA</Text>
+                                  <Text style={styles.addressShipTextSub}>Phone:+1-312-555-0159</Text>
+                                </View>
+                                
+                              </View>
+                              <View style={styles.orderDetails} >
+                                <View style={styles.addressShip}>
+                                  <View style={{flexDirection: 'row', alignItems: 'center', marginBottom:10,}}>
+                                  <MaterialIcons name="delivery-dining" color={mainColor} style={{marginRight:9, fontSize:24,}}/>
+                                  <Text style={styles.addressShipText}>Billing Address</Text>
+                                  </View>
+                                  <Text style={styles.addressShipTextSub}>Michael Williams</Text>
+                                  <Text style={styles.addressShipTextSub}>833 West Haines Street, 60642 Chicago, IL, USA</Text>
+                                  <Text style={styles.addressShipTextSub}>Phone:+1-312-555-0159</Text>
+                                </View>
+                                
+                              </View>
+                          </View>
+                  )
+                }
+                
+              </View>
+              {/* items */}
+              <View style={styles.addressContainer}>
+                <View style={styles.adressSub}>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <FontAwesome name="list-alt" color={thirdColor} style={styles.iconAdres}/>
+                      <Text style={styles.addressText}>Items</Text>
+                    </View>
+                    <TouchableOpacity onPress={()=>SetHideItems(!hideItems)}style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <Text style={styles.hideText}>Hide</Text>
+                        {
+                          hideItems ? ( <AntDesign name="caretdown" color={thirdColor} />) : ( <AntDesign name="caretup" color={thirdColor} />)
+                        }
+                        
+                    </TouchableOpacity>
+                </View>
+                {
+                  hideItems && (
+                          <View style={styles.containerHide}>
+                          
+                          {
+                            itemList.map((item, index)=>(
+                              <View style={styles.itemsDetails} >
+                              <View style={{flexDirection: 'row', alignItems: 'center', padding:10}}>
+                                  <Image source={mealPhote} style={styles.img}/>
+                                  <View style={{marginLeft:11}}>
+                                    <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 5}}>
+                                      <Text style={styles.itemtext}>1x</Text>
+                                      <View style={styles.containerItemtextPrice}>
+                                          <Text style={styles.itemtextPrice}>$10.99</Text>
+                                      </View>
+                                      
+                                    </View>
+                                    <Text style={styles.itemtext}>Blackened Grilled Chicken</Text>
+                                    <Text style={styles.itemtextTotal}>Sub Total: $10.99</Text>
+                                  </View> 
+                              </View>
+                          </View>
+                            ))
+                          }
+                             
+
+                          </View>
+                  )
+                }
+                
+              </View>
             </View>
-          </View>
+          </ScrollView>
+          
           {/* wrapper end */}
         </View>
     </View>
@@ -95,21 +192,32 @@ const styles = StyleSheet.create({
   container:{
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: secundaryColor,
     
   },
   wrapper:{
     // backgroundColor: '#000',
-    width: ScreenWidth-20,
+    // width: ScreenWidth-20,
     flexDirection: 'column',
     alignItems: 'center'
+  },
+  viewScroll:{
+    // width: ScreenWidth-20,
+    flexDirection: 'column',
+    alignItems: 'center',
+    // padding:1,
+    // marginBottom:320,
+    marginBottom: 'auto'
+    
   },
   headerContainer:{
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '100%',
+    width: ScreenWidth-20,
     marginTop: 15,
+    marginBottom:15,
     
     
   },
@@ -119,10 +227,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems:'center',
     justifyContent: 'center',
-    shadowOpacity: 0.1, 
+    shadowOpacity: 0.3, 
     shadowRadius: 20, 
     shadowOffset: { height: 3, width: 3 },
-    elevation: 0.4,
+    elevation: 1.4,
     backgroundColor: 'rgba(255, 255, 255, 0.7)',
     
   },
@@ -147,13 +255,13 @@ const styles = StyleSheet.create({
     color: secundaryColor
   },
   orderDetails:{
-    width: '100%',
+    width: ScreenWidth-20,
     height: 149,
     backgroundColor: secundaryColor,
     borderRadius: 8,
-    alignItems:'center',
-    justifyContent: 'center',
-    shadowOpacity: 0.1, 
+    alignItems:'flex-start',
+    justifyContent: 'flex-start',
+    shadowOpacity: 0.3, 
     shadowRadius: 20, 
     shadowOffset: { height: 3, width: 3 },
     elevation: 0.4,
@@ -163,7 +271,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     // justifyContent: 'space-between',
-    width: '100%',
+    width: ScreenWidth-20,
     padding:20,
   
   },
@@ -217,13 +325,13 @@ const styles = StyleSheet.create({
   },
   
   orderDetailsTotal:{
-    width: '100%',
+    width: ScreenWidth-20,
     // height: 64,
     backgroundColor: mainColor,
     borderRadius: 8,
     alignItems:'flex-start',
     justifyContent: 'flex-start',
-    shadowOpacity: 0.1, 
+    shadowOpacity: 0.3, 
     shadowRadius: 20, 
     shadowOffset: { height: 3, width: 3 },
     elevation: 0.4,
@@ -265,15 +373,115 @@ const styles = StyleSheet.create({
     marginTop: 41,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    width:'100%',
+    width: ScreenWidth-20,
+    
   },
   adressSub:{
     flexDirection: 'row', 
     alignItems: 'center', 
     justifyContent: 'space-between', 
-    width: '100%'
+    width: ScreenWidth-20,
   },
   iconAdres:{
     fontSize:24,
+    marginRight:10,
   },
+  addressText:{
+    color: thirdColor,
+    fontStyle: 'normal',
+    fontWeight: '600',
+    fontSize: 16,
+    lineHeight: 16,
+    letterSpacing: 1.25,
+    marginRight:15,
+  },
+  hideText:{
+    color: thirdColor,
+    fontStyle: 'normal',
+    fontWeight: '400',
+    fontSize: 12,
+    lineHeight: 16,
+    letterSpacing: 1.25,
+    marginRight:15,
+  },
+  containerHide:{
+    // backgroundColor: '#000',
+    width: ScreenWidth-20,
+    // height: 50,
+    marginTop: 23,
+    marginBottom: 23,
+    
+    
+  },
+  addressShip:{
+    padding:20,
+  },
+  addressShipText:{
+    fontStyle: 'normal',
+    fontWeight: '700',
+    fontSize: 12,
+    lineHeight: 16,
+    letterSpacing: 1.25,
+    marginRight:15,
+    color: thirdColor,
+    marginLeft: 11,
+  },
+  addressShipTextSub:{
+    fontStyle: 'normal',
+    fontWeight: '400',
+    fontSize: 12,
+    lineHeight: 16,
+    letterSpacing: 1.25,
+    marginRight:15,
+    color: thirdColor,
+    marginBottom:10,
+    
+  },
+  itemsDetails:{
+    width: ScreenWidth-20,
+    // height: 111,
+    backgroundColor: secundaryColor,
+    borderRadius: 8,
+    alignItems:'flex-start',
+    justifyContent: 'flex-start',
+    shadowOpacity: 0.3, 
+    shadowRadius: 20, 
+    shadowOffset: { height: 3, width: 3 },
+    elevation: 0.4,
+    marginTop: 22,
+  },
+  itemtext:{
+    color: thirdColor,
+    fontStyle: 'normal',
+    fontWeight: '600',
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.15,
+  },
+  itemtextTotal:{
+    color: mainColor,
+    fontStyle: 'normal',
+    fontWeight: '700',
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.15,
+    marginTop:10
+  },
+  itemtextPrice:{
+    color: mainColor,
+    fontStyle: 'normal',
+    fontWeight: '600',
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.15,
+  },
+  containerItemtextPrice:{
+    backgroundColor: 'rgba(242, 110, 33, 0.15)',
+    width: 58,
+    height: 22,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius:8,
+    marginLeft: 10,
+  }
 })
