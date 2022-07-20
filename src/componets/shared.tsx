@@ -1,5 +1,9 @@
 import { Dimensions } from "react-native";
-import styled from 'styled-components/native';
 
 export const ScreenWidth = Dimensions.get("screen").width;
 export const Screenheight = Dimensions.get("screen").height;
+
+
+export const mainColor = '#FF6F00';
+export const secundaryColor = '#FFf';
+export const thirdColor = '#262626';
