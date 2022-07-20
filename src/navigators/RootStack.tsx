@@ -14,6 +14,7 @@ import MealItemPage from '../screens/categoryPage/mealItem/MealItemPage';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { View, Text, StyleSheet } from 'react-native';
+import SingleOrder from '../screens/myOrders/SingleOrder';
 
 
 export type RootStackParamList = {
@@ -23,6 +24,7 @@ export type RootStackParamList = {
   Welcome: undefined;
   Signup: undefined;
   MyOrders: undefined;
+  SingleOrder:undefined;
   Wellness:undefined;
   MyProfile:undefined;
   MealItemPage:undefined;
@@ -32,7 +34,7 @@ export type RootStackParamList = {
 const Stack = createStackNavigator<RootStackParamList>();
 
 export const SigninStackNavigator: FunctionComponent = () =>{
-    const navigation = useNavigation(); 
+    
     return (
     <Stack.Navigator 
     screenOptions={{
@@ -67,7 +69,32 @@ export const DashboardStackNavigator: FunctionComponent = () =>{
                           <Icon name='ios-menu' size={25} color="#3C3C3C" style={{marginLeft: 10}}
                           backgroundColor='white'
                           onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
-                        )
+                        ),
+                        headerRight: () =>(
+                          <View style={{
+                            flexDirection: 'row', 
+                            justifyContent: 'center', 
+                            alignItems: 'center'}}>
+                              <View style={{position: 'relative'}} >
+                                  <View style={styles.bellContainer}>
+                                    <Text style={styles.textbel}>2</Text>
+                                  </View>
+
+                             <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
+                                // onPress={() => navigation.goBack()}
+                                />
+                              </View >
+                              <View style={{position: 'relative'}} >
+                                  <View style={styles.bellContainer}>
+                                    <Text style={styles.textbel}>12</Text>
+                                  </View>
+                                  <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
+                                  // onPress={() => navigation.goBack()}
+                                  />
+                              </View>
+                          </View>
+                         
+                        ),
                       }}
         name="Home" component={Dashboard} />
       </Stack.Navigator>
@@ -86,34 +113,60 @@ export const CategoryStackNavigator: FunctionComponent = () =>{
               backgroundColor='white'
               onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
             )
+            ,headerRight: () =>(
+                          <View style={{
+                            flexDirection: 'row', 
+                            justifyContent: 'center', 
+                            alignItems: 'center'}}>
+                              <View style={{position: 'relative'}} >
+                                  <View style={styles.bellContainer}>
+                                    <Text style={styles.textbel}>2</Text>
+                                  </View>
+
+                             <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
+                                // onPress={() => navigation.goBack()}
+                                />
+                              </View >
+                              <View style={{position: 'relative'}} >
+                                  <View style={styles.bellContainer}>
+                                    <Text style={styles.textbel}>12</Text>
+                                  </View>
+                                  <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
+                                  // onPress={() => navigation.goBack()}
+                                  />
+                              </View>
+                          </View>
+                         
+                        ),
           }}
         name="Category" component={CategoryPage} />
         <Stack.Screen 
-         options ={{
+         options ={({ navigation, route }) => ({
             headerLeft: () =>(
               <AntDesign name='arrowleft' size={25} color="#fff" style={{marginLeft: 10}}
               backgroundColor='white'
-              // onPress={() => navigation.goBack()}
+              onPress={() => navigation.goBack()}
               />
             ),
             headerRight: () =>(
               <View style={{
                 flexDirection: 'row', 
                 justifyContent: 'center', 
-                alignItems: 'center', marginTop:20,}}>
+                alignItems: 'center'}}>
                   <View style={{position: 'relative'}} >
                       <View style={styles.bellContainer}>
                         <Text style={styles.textbel}>2</Text>
                       </View>
-                    <AntDesign name="shoppingcart" type="ionicon"  size={25} color="#fff" style={{marginRight: 20}}
+
+                 <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#fff" style={{marginRight: 20}}
                     // onPress={() => navigation.goBack()}
                     />
                   </View >
                   <View style={{position: 'relative'}} >
                       <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>2</Text>
+                        <Text style={styles.textbel}>12</Text>
                       </View>
-                      <MaterialCommunityIcons name="bell-outline" type="ionicon" size={25} color="#fff" style={{marginRight: 20}}
+                      <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#fff" style={{marginRight: 20}}
                       // onPress={() => navigation.goBack()}
                       />
                   </View>
@@ -123,7 +176,7 @@ export const CategoryStackNavigator: FunctionComponent = () =>{
             headerTransparent:true,
             title: "",
             
-          }}
+          })}
         name="MealItemPage" component={MealItemPage} />
       </Stack.Navigator>
     )
@@ -139,9 +192,73 @@ export const MyOrderstackNavigator: FunctionComponent = () =>{
               <Icon name='ios-menu' size={25} color="#3C3C3C" style={{marginLeft: 10}}
               backgroundColor='white'
               onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
-            )
+            ),
+            headerRight: () =>(
+              <View style={{
+                flexDirection: 'row', 
+                justifyContent: 'center', 
+                alignItems: 'center'}}>
+                  <View style={{position: 'relative'}} >
+                      <View style={styles.bellContainer}>
+                        <Text style={styles.textbel}>2</Text>
+                      </View>
+
+                 <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
+                    // onPress={() => navigation.goBack()}
+                    />
+                  </View >
+                  <View style={{position: 'relative'}} >
+                      <View style={styles.bellContainer}>
+                        <Text style={styles.textbel}>12</Text>
+                      </View>
+                      <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
+                      // onPress={() => navigation.goBack()}
+                      />
+                  </View>
+              </View>
+             
+            ),
+            title: "My Orders",
           }}
         name="MyOrders" component={MyOrders} />
+         <Stack.Screen 
+          options ={({ navigation, route }) => ({
+            headerLeft: () =>(
+              <AntDesign name='arrowleft' size={25} color="#000" style={{marginLeft: 10}}
+              backgroundColor='white'
+              onPress={() => navigation.goBack()}
+              />
+            ),
+            headerRight: () =>(
+              <View style={{
+                flexDirection: 'row', 
+                justifyContent: 'center', 
+                alignItems: 'center'}}>
+                  <View style={{position: 'relative'}} >
+                      <View style={styles.bellContainer}>
+                        <Text style={styles.textbel}>2</Text>
+                      </View>
+
+                 <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#000" style={{marginRight: 20}}
+                    // onPress={() => navigation.goBack()}
+                    />
+                  </View >
+                  <View style={{position: 'relative'}} >
+                      <View style={styles.bellContainer}>
+                        <Text style={styles.textbel}>12</Text>
+                      </View>
+                      <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#000" style={{marginRight: 20}}
+                      // onPress={() => navigation.goBack()}
+                      />
+                  </View>
+              </View>
+             
+            ),
+            // headerTransparent:true,
+            title: "Order 4100F5",
+            
+          })}
+        name="SingleOrder" component={SingleOrder} />
       </Stack.Navigator>
     )
 }
@@ -179,18 +296,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row', 
     alignItems: 'center',
     justifyContent: 'center',
-    padding:5,
+    // padding:5,
     backgroundColor: '#F26E21',
     borderRadius: 30,
-    width: 30,
-    height: 30,
+    width: 18,
+    height: 18,
     position: 'absolute',
-    top: -22,
+    top: -12,
     left: 10,
   },
   textbel:{
     color: '#fff',
     fontStyle: 'normal',
-    fontWeight: '700',
+    fontWeight: '600',
+    fontSize: 10,
+    LineHeight: 16,
+    Letter:1.25,
+    textAlign: 'center',
   }
 })
