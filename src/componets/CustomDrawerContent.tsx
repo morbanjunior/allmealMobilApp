@@ -69,7 +69,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
                )}
 
             label="Adresses"
-            onPress={() =>{props.navigation.navigate('Dashboard')}}
+            onPress={() =>{props.navigation.navigate('Adresses')}}
             />
           <DrawerItem
           icon={(

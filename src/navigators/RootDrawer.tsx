@@ -8,8 +8,9 @@ import Welcome from '../screens/sign/Welcome';
 import Signin from '../screens/sign/Signin';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { CustomDrawerContent } from '../componets/CustomDrawerContent';
-import { RootStackParamList } from './RootStack';
+import { AdressesStackNavigator, RootStackParamList } from './RootStack';
 import TabNavigator from './TabNavigator';
+import Adresses from '../screens/adresses/Adresses';
 
 
 const Drawer = createDrawerNavigator<RootStackParamList>();
@@ -51,6 +52,10 @@ const RootDrawer: FunctionComponent = () =>{
                     name='Signup'
                     component={Welcome}
                 />
+                  {/* <Drawer.Screen 
+                    name='Adresses'
+                    component={AdressesStackNavigator}
+                /> */}
             </Drawer.Navigator> 
         </NavigationContainer>
     )

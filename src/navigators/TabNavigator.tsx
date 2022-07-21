@@ -1,11 +1,11 @@
 // ./navigation/TabNavigator.js
 import React, { FunctionComponent } from "react";
 import { BottomTabBarButtonProps, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { CategoryStackNavigator, DashboardStackNavigator, MyOrderstackNavigator, MyProfilestackNavigator, WelcomeStackNavigator, WellnessstackNavigator } from "./RootStack";
+import { AdressesStackNavigator, CategoryStackNavigator, DashboardStackNavigator, MyOrderstackNavigator, MyProfilestackNavigator, WelcomeStackNavigator, WellnessstackNavigator } from "./RootStack";
 import { View, Text, Image, TouchableOpacity, GestureResponderEvent } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 type props = {
   children: JSX.Element | undefined ,
@@ -39,6 +39,7 @@ const CustomTabBarButton: FunctionComponent<props> = ({children, onPress}) =>(
 const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
+    
     screenOptions={{
         headerShown: false,
         // gestureEnabled: false
@@ -48,7 +49,6 @@ const BottomTabNavigator = () => {
           
         }
       }}
-
     >
       <Tab.Screen name="Home" component={DashboardStackNavigator} 
         options={{
@@ -178,6 +178,10 @@ const BottomTabNavigator = () => {
           </View>
         )
       }}
+      />
+      <Tab.Screen 
+      name="Adresses" component={AdressesStackNavigator}
+      options={{ tabBarItemStyle: { display: 'none', }, }}
       />
     </Tab.Navigator>
   );
