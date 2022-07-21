@@ -1,25 +1,62 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
 import React, { FunctionComponent } from 'react'
 import mailPhote from '../../../assets/img/mealPhote.png'
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
 import receipt from '../../../assets/img/receipt.png'
 import calendar from '../../../assets/img/calendar.png'
-import { ScreenWidth, thirdColor } from '../../componets/shared';
+import { mainColor, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 
 const AdressesItem = () => {
+    const navigation = useNavigation(); 
   return (
-    <TouchableOpacity  style={styles.container}
-
-     onPress={()=>navigation.navigate('SingleOrder')}
-    >
+    <>
+    <View  style={{marginBottom:20}}></View>
+    <View  style={styles.container} >
         <View style={styles.wrapper}>
-            <View tyle={styles.containerTopButtom}>
-              <View style={styles.TopButtom}></View>
-            </View>
+                <View style={styles.sideLeft}>
+                    <View style={{flexDirection: 'row', alignItems: 'center', marginBottom:17}}>
+                      <FontAwesome5 name="user-alt" color={mainColor} style={styles.icon}/>
+                      <Text style={styles.userAdress}>Michael williams</Text>
+                    </View>
+                    <View style={{flexDirection: 'row', alignItems: 'center', marginBottom:17}}>
+                    <Ionicons name="location" color={mainColor} style={styles.icon}/>
+                      <Text style={styles.userAdress}>833 West Haines Street,
+                          Chicago, Ilinois, United States</Text>
+                    </View>
+                    <View style={{flexDirection: 'row', alignItems: 'center', marginBottom:17}}>
+                       <FontAwesome5 name="phone" color={mainColor} style={styles.icon}/>
+                      <Text style={styles.userAdress}>312-634-6118</Text>
+                    </View>
+                </View>
+                <View style={styles.sideLeft}>
+                    <View style={styles.buttomTop}>
+                        <TouchableOpacity style={styles.containerIconEdit}>
+                          <MaterialIcons 
+                          name="edit" 
+                          color={secundaryColor} 
+                          style={styles.iconAdres}
+                          onPress={()=>navigation.navigate('EditAddress')}
+                          />
+                        </TouchableOpacity>
+                        <View style={{padding:5}}></View>
+                        <TouchableOpacity style={styles.containerIconRemove}>
+                          <MaterialCommunityIcons name="delete" color={secundaryColor} style={styles.iconAdres}/>
+                        </TouchableOpacity>
+                        <View style={{padding:5}}></View>
+                    </View>
+                </View>
+            
         </View>
-    </TouchableOpacity>
-  )
+    </View>
+</>
+)
+   
+    
 }
 
 export default AdressesItem
@@ -30,14 +67,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row', 
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: -10,
+        // marginTop: -10,
         
     },
     wrapper: {
         display:'flex',
         flexDirection: 'row', 
         alignItems: 'flex-start',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         marginLeft:5,
         marginRight:5,
         borderRadius:8,
@@ -52,123 +89,55 @@ const styles = StyleSheet.create({
         marginBottom:25,
         
     },
-    headerButtomContainer:{
-        // marginLeft: 10,
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center', 
-        width: 210,
-
+    sideLeft:{
+        position:'relative',
     },
-    headerButtomTextContainer:{
-        backgroundColor: 'rgba(242, 110, 33, 0.15)',
-        padding:5,
-        borderRadius: 8,
-        width: 'auto',
-        flexDirection: 'row',
-        justifyContent: 'center',
+    buttomTop:{
+        position: 'absolute',
+        left: -50,
+        // backgroundColor: thirdColor,
+        height:50,
+        width:50,
+        top:-30,
+        flexDirection:'row', 
         alignContent: 'center',
-
-        marginRight:10,
-
+        justifyContent: 'center',
     },
-    headerButtomText:{
-        // fontFamily: 'Poppins',
-        // fontStyle: 'normal',
-        fontWeight: '600',
-        fontSize: 12,
-        lineHeight: 20,
-        letterSpacing: 0.15,
-        color: '#FF6F00',
-        
+    containerIconEdit:{
+        width: 32,
+        height: 32,
+        backgroundColor: mainColor,  
+        flexDirection:'row', 
+        alignContent: 'center',
+        justifyContent: 'center',
+        borderRadius: 8,
+        padding:4,
     },
-    headerDeliveryText:{
-        // fontFamily: 'Poppins',
-        // fontStyle: 'normal',
-        fontWeight: '600',
-        fontSize: 12,
-        lineHeight: 20,
-        letterSpacing: 0.15,
-        color: '#000',
-        
-    }
-    
-    ,buttom:{
+    containerIconRemove:{
+        width: 32,
+        height: 32,
+        backgroundColor: thirdColor,  
+        flexDirection:'row', 
         display: 'flex',
-        flexDirection: 'row',
-        
+        alignContent: 'center',
+        justifyContent: 'center',
+        borderRadius: 8,
+        padding:4,
     },
-    buttomItem:{
-        marginLeft:10,
-        marginRight:10,
-    },
-    headerButtomIcon:{
-        color: '#FF6F00',
-        fontSize: 20,
-
-    },
-    number:{
-        marginLeft: 10,
-        marginRight:10,
-        fontWeight: '400',
-        fontSize: 16,
-        lineHeight: 20,
-        letterSpacing: 0.15,
-    },
-    headerText:{
-        // fontFamily: 'Poppins',
-        // fontStyle: 'normal',
-        fontWeight: '600',
-        fontSize: 12,
-        lineHeight: 15,
-        letterSpacing: 0.15,
-        marginTop:5,
-
-    },
-    headerTextp:{
-        // fontFamily: 'Poppins',
-        // fontStyle: 'normal',
-        fontWeight: '300',
-        fontSize: 10,
-        lineHeight: 15,
-        letterSpacing: 0.15,
-        marginTop:5,
-    },
-    ButtomContainer:{
-        marginLeft: 10,
-        width: 220,
+    iconAdres:{
+        fontSize:24,
     },
     icon:{
-        width: 16,
-      height: 16,
-      marginRight:5,
+        fontSize:16,
     },
-    bottomText:{
-        // fontFamily: 'Poppins',
-        // fontStyle: 'normal',
-        fontWeight: '300',
+    userAdress:{
+        fontWeight: '600',
         fontSize: 12,
-        lineHeight: 15,
-        letterSpacing: 0.15,
-        color: '#000',
-        
-    },
-    containerTopButtom:{
-        position: 'relative',
-        // display: 'flex',
-        // flexDirection: 'row',
-        // alignItems: 'center',
-        // justifyContent: 'flex-end',
-        // width: '100%'
-       
-    },
-    TopButtom:{
-        position: 'absolute',
-        backgroundColor: thirdColor,
-        width: 50,
-        height: 50,
-        top:-40
-
+        lineHeight: 21,
+        letterSpacing: 1.25,
+        color: thirdColor,
+        marginLeft:10,
+        width: 300
     }
+    
 })

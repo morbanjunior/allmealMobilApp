@@ -4,6 +4,7 @@ import { mainColor, ScreenWidth, secundaryColor, thirdColor } from '../../compon
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import AdressesItem from './AdressesItem';
 
+const adress =[1,2,3,4]
 
 
 const Adresses = () => {
@@ -24,7 +25,12 @@ const Adresses = () => {
             </View>
             <ScrollView showsVerticalScrollIndicator={false} style={{width:ScreenWidth, marginBottom:5,}}>
                 <View style={styles.adressesContainerItem}>
-                    <AdressesItem/>
+                    {
+                        adress.map((item, index)=>(
+                        <AdressesItem/>
+                        ))
+                    }
+                    
                 </View>
             </ScrollView>
             

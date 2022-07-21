@@ -32,6 +32,8 @@ export type RootStackParamList = {
   MyProfile:undefined;
   MealItemPage:undefined;
   Adresses:undefined;
+  EditAddress:undefined;
+  NewAddress:undefined;
 };
 
 
@@ -366,7 +368,7 @@ export const AdressesStackNavigator: FunctionComponent = () =>{
              
             ),
             // headerTransparent:true,
-            title: "Order 4100F5",
+            title: "Edit Address",
             
           })}
         name="EditAddress" component={EditAddress} />
