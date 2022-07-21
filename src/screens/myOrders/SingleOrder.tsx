@@ -12,6 +12,8 @@ import mealPhote from '../../../assets/img/mealPhote.png';
 import plastic from '../../../assets/img/plastic.png';
 import bag from '../../../assets/img/bag.png';
 import Checkbox from 'expo-checkbox';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+
 
 const itemList =[1,2,3,4]
 
@@ -79,7 +81,7 @@ const SingleOrder = () => {
               <View style={styles.orderDetailsTotal}>
                   <View style={{flexDirection: 'row'}}>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <MaterialIcons name="local-offer" color={secundaryColor} style={styles.icon}/>
+                        <EvilIcons name="tag" color={secundaryColor} style={{fontSize:35}}/>
                         <View>
                           <Text style={styles.totalText}>Total</Text>
                           <Text style={styles.totalText}>Amount</Text>
@@ -284,60 +286,63 @@ const SingleOrder = () => {
                   hideSummary && (
                    <>
                    <View style={styles.summaryContaienr}>
-                     <Text>Total Meal Amount</Text>
-                     <Text>$32.97</Text>
+                     <Text style={styles.summaryText}>Total Meal Amount</Text>
+                     <Text style={styles.summaryTextNumber}>$32.97</Text>
                    </View>
                    <View style={styles.summaryContaienr}>
-                     <Text>Glassware / Plastic Container Amount</Text>
-                     <Text>$7.00</Text>
+                     <Text style={styles.summaryText}>Glassware / Plastic Container Amount</Text>
+                     <Text style={styles.summaryTextNumber}>$7.00</Text>
                    </View>
                    <View style={styles.summaryContaienr}>
-                     <Text>Existing Reusable Glassware Amount (0)</Text>
-                     <Text>$0.00</Text>
+                     <Text style={styles.summaryText}>Existing Reusable Glassware Amount (0)</Text>
+                     <Text style={styles.summaryTextNumberColor}>$0.00</Text>
                    </View>
                    <View style={styles.summaryContaienr}>
-                     <Text>Bag Amount</Text>
-                     <Text>$5.00</Text>
+                     <Text style={styles.summaryText}>Bag Amount</Text>
+                     <Text style={styles.summaryTextNumber}>$5.00</Text>
                    </View>
                    <View style={styles.summaryContaienr}>
-                     <Text>Existing Reusable Bag Amount (0)</Text>
-                     <Text>$0.00</Text>
+                     <Text style={styles.summaryText}>Existing Reusable Bag Amount (0)</Text>
+                     <Text style={styles.summaryTextNumberColor}>$0.00</Text>
+                   </View>
+                   <View style={styles.summaryContaienrColor}>
+                     <Text style={styles.summaryText}>Sub Total Amount</Text>
+                     <Text style={styles.summaryTextNumber}>$44.97</Text>
                    </View>
                    <View style={styles.summaryContaienr}>
-                     <Text>Sub Total Amount</Text>
-                     <Text>$44.97</Text>
+                     <Text style={styles.summaryText}>Tax</Text>
+                     <Text style={styles.summaryTextNumber}>$2.40</Text>
                    </View>
                    <View style={styles.summaryContaienr}>
-                     <Text>Tax</Text>
-                     <Text>$2.40</Text>
+                     <Text style={styles.summaryText}>Delivery Charge</Text>
+                     <Text style={styles.summaryTextNumber}>$9.99</Text>
                    </View>
                    <View style={styles.summaryContaienr}>
-                     <Text>Delivery Charge</Text>
-                     <Text>$9.99</Text>
+                     <Text style={styles.summaryText}>Reward Points Used</Text>
+                     <Text style={styles.summaryTextNumberColor}>-$0.00</Text>
+                   </View>
+                   <View style={styles.summaryContaienrColorTotal}>
+                     <Text style={styles.summaryTextTotal}>Grand Total</Text>
+                     <Text style={styles.summaryTextNumberTotal}>$57.36</Text>
                    </View>
                    <View style={styles.summaryContaienr}>
-                     <Text>Reward Points Used</Text>
-                     <Text>-$0.00</Text>
+                     <Text style={styles.summaryText}>Total Reward Points earned for this order</Text>
+                     <View style={styles.totalReward}>
+                         <Text style={styles.summaryTextNumberColor}>5</Text>
+                     </View>
+                     
+                    
                    </View>
                    <View style={styles.summaryContaienr}>
-                     <Text>Grand Total</Text>
-                     <Text>$57.36</Text>
+                     <Text style={styles.summaryText}>Delivery Frequency</Text>
+                     <Text style={styles.summaryTextNumber}>Weekly</Text>
                    </View>
                    <View style={styles.summaryContaienr}>
-                     <Text>Total Reward Points earned for this order</Text>
-                     <Text>5</Text>
+                     <Text style={styles.summaryText}>Delivery Status</Text>
+                     <Text style={styles.summaryTextNumber}>Delivered</Text>
                    </View>
-                   <View style={styles.summaryContaienr}>
-                     <Text>Delivery Frequency</Text>
-                     <Text>Weekly</Text>
-                   </View>
-                   <View style={styles.summaryContaienr}>
-                     <Text>Delivery Status</Text>
-                     <Text>Delivered</Text>
-                   </View>
-                   </>
-                         
-                          
+                   <View style={{marginBottom:20}}></View>
+                   </>      
                   )
                 }
                 
@@ -665,5 +670,86 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop:20,
 
+  },
+  summaryContaienrColor:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop:20,
+    backgroundColor: 'rgba(255, 111, 0, 0.15)',
+    paddingTop:10,
+    paddingBottom:10,
+    borderRadius: 8,
+  },
+  summaryText:{
+    color: thirdColor,
+    fontStyle: 'normal',
+    fontWeight: '400',
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.15,
+    marginLeft:10,
+  },
+  summaryTextNumber:{
+    color: thirdColor,
+    fontStyle: 'normal',
+    fontWeight: '600',
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.15,
+    marginRight:10,
+  },
+  summaryTextNumberColor:{
+    color:mainColor,
+    fontStyle: 'normal',
+    fontWeight: '600',
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.15,
+    marginRight:10,
+   
+  },
+  summaryContaienrColorTotal:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop:20,
+    backgroundColor: mainColor,
+    paddingTop:20,
+    paddingBottom:20,
+    borderRadius: 8,
+    
+  },
+  summaryTextTotal:{
+    color: secundaryColor,
+    fontStyle: 'normal',
+    fontWeight: '600',
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.15,
+    marginLeft:10,
+  },
+  summaryTextNumberTotal:{
+    color: secundaryColor,
+    fontStyle: 'normal',
+    fontWeight: '600',
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.15,
+    marginRight:10,
+   
+  },
+  totalReward:{
+    backgroundColor: 'rgba(255, 111, 0, 0.15)',
+    borderRadius: 8,
+    // width: 45,
+    height: 22,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems:'center',
+    paddingLeft: 10, 
   }
 })
