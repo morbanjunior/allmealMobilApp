@@ -9,13 +9,20 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import mealPhote from '../../../assets/img/mealPhote.png';
+import plastic from '../../../assets/img/plastic.png';
+import bag from '../../../assets/img/bag.png';
+import Checkbox from 'expo-checkbox';
 
 const itemList =[1,2,3,4]
 
 const SingleOrder = () => {
   const [selected, Setselected] = useState('1');
-  const [hideAddress, SetHideAddress] = useState(false);
+  const [hideAddress, SetHideAddress] = useState(true);
   const [hideItems, SetHideItems] = useState(true);
+  const [hideGlassware, SetHidehideGlassware] = useState(true);
+  const [hideSummary, SetHidehideSummary] = useState(true);
+  const [isSelectedglass, setSelectedglass] = useState(true);
+  const [isSelectedBag, setSelectedBag] = useState(true);
   return (
     <View style={styles.container}>
         <View style={styles.wrapper}>
@@ -173,6 +180,164 @@ const SingleOrder = () => {
                              
 
                           </View>
+                  )
+                }
+                
+              </View>
+              {/* Glassware */}
+              <View style={styles.addressContainer}>
+                <View style={styles.adressSub}>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <MaterialCommunityIcons name="food-takeout-box-outline" color={thirdColor} style={styles.iconAdres}/>
+                      <Text style={styles.addressText}>Glassware & Bag</Text>
+                    </View>
+                    <TouchableOpacity onPress={()=>SetHidehideGlassware(!hideGlassware)}style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <Text style={styles.hideText}>Hide</Text>
+                        {
+                          hideGlassware ? ( <AntDesign name="caretdown" color={thirdColor} />) : ( <AntDesign name="caretup" color={thirdColor} />)
+                        }
+                        
+                    </TouchableOpacity>
+                </View>
+                {
+                  hideGlassware && (
+                    <>
+                    <View style={styles.containerHide}>
+                         
+                         <View style={styles.itemsDetails} >
+                         <View style={{flexDirection: 'row', alignItems: 'center', padding:10}}>
+                             <Image source={plastic} style={styles.img}/>
+                             <View style={{marginLeft:11}}>
+                               <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 5}}>
+                                 <Text style={styles.itemtext}>3 x</Text>
+                                 <View style={styles.containerItemtextPrice}>
+                                     <Text style={styles.itemtextPrice}>$7.99</Text>
+                                 </View>
+                                 
+                               </View>
+                               <Text style={styles.itemtext}>Plastic</Text>
+                               <Text style={styles.itemtextTotal}>Sub Total: $10.99</Text>
+                             </View> 
+                         </View>
+                     </View>
+                     <View style={styles.containerChekbox}>
+                      <Checkbox
+                         value={isSelectedglass}
+                         onValueChange={setSelectedglass}
+                         style={styles.checkbox}
+                         color={isSelectedglass ? mainColor : undefined}
+                       />
+                        <Text style={styles.itemtext}>Used existing glasswares</Text>
+                     </View>
+                     </View>
+                     <View style={styles.containerHide}>
+                         
+                         <View style={styles.itemsDetails} >
+                         <View style={{flexDirection: 'row', alignItems: 'center', padding:10}}>
+                             <Image source={bag} style={styles.img}/>
+                             <View style={{marginLeft:11}}>
+                               <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 5}}>
+                                 <Text style={styles.itemtext}>1 x</Text>
+                                 <View style={styles.containerItemtextPrice}>
+                                     <Text style={styles.itemtextPrice}>$5.00</Text>
+                                 </View>
+                                 
+                               </View>
+                               <Text style={styles.itemtext}>Bag</Text>
+                               <Text style={styles.itemtextTotal}>Sub Total: $10.99</Text>
+                             </View> 
+                         </View>
+                     </View>
+                     <View style={styles.containerChekbox}>
+                      <Checkbox
+                         value={isSelectedBag}
+                         onValueChange={setSelectedBag}
+                         style={styles.checkbox}
+                         color={isSelectedBag ? mainColor : undefined}
+                       />
+                        <Text style={styles.itemtext}>Used existing bag</Text>
+                     </View>
+                     </View>
+                    </>
+                         
+                          
+                  )
+                }
+                
+              </View>
+              {/* Summary */}
+              <View style={styles.addressContainer}>
+                <View style={styles.adressSub}>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <MaterialCommunityIcons name="food-takeout-box-outline" color={thirdColor} style={styles.iconAdres}/>
+                      <Text style={styles.addressText}>Summary</Text>
+                    </View>
+                    <TouchableOpacity onPress={()=>SetHidehideSummary(!hideSummary)}style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <Text style={styles.hideText}>Hide</Text>
+                        {
+                          hideSummary ? ( <AntDesign name="caretdown" color={thirdColor} />) : ( <AntDesign name="caretup" color={thirdColor} />)
+                        }
+                        
+                    </TouchableOpacity>
+                </View>
+                {
+                  hideSummary && (
+                   <>
+                   <View style={styles.summaryContaienr}>
+                     <Text>Total Meal Amount</Text>
+                     <Text>$32.97</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text>Glassware / Plastic Container Amount</Text>
+                     <Text>$7.00</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text>Existing Reusable Glassware Amount (0)</Text>
+                     <Text>$0.00</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text>Bag Amount</Text>
+                     <Text>$5.00</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text>Existing Reusable Bag Amount (0)</Text>
+                     <Text>$0.00</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text>Sub Total Amount</Text>
+                     <Text>$44.97</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text>Tax</Text>
+                     <Text>$2.40</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text>Delivery Charge</Text>
+                     <Text>$9.99</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text>Reward Points Used</Text>
+                     <Text>-$0.00</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text>Grand Total</Text>
+                     <Text>$57.36</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text>Total Reward Points earned for this order</Text>
+                     <Text>5</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text>Delivery Frequency</Text>
+                     <Text>Weekly</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text>Delivery Status</Text>
+                     <Text>Delivered</Text>
+                   </View>
+                   </>
+                         
+                          
                   )
                 }
                 
@@ -408,7 +573,7 @@ const styles = StyleSheet.create({
     // backgroundColor: '#000',
     width: ScreenWidth-20,
     // height: 50,
-    marginTop: 23,
+    // marginTop: 13,
     marginBottom: 23,
     
     
@@ -483,5 +648,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius:8,
     marginLeft: 10,
+  },
+  containerChekbox:{
+    marginTop: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    
+  },
+  checkbox:{
+    marginRight: 10,
+  },
+  summaryContaienr:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop:20,
+
   }
 })
