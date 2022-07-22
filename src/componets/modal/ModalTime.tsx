@@ -3,6 +3,7 @@ import React from 'react'
 import {Picker} from "@react-native-picker/picker"
 import { Screenheight, ScreenWidth, thirdColor } from '../shared'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 type props ={
    selectedTime: string
@@ -13,6 +14,13 @@ type props ={
 }
 
 const ModalTime = ({selectedTime,modalTime, SetselectedTime, setModalTime}: props) => {
+  const onChange = (
+    event, 
+    selectedDate) => {
+    const currentDate = selectedDate;
+    SetselectedDate(currentDate);
+  };
+  
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -36,17 +44,16 @@ const ModalTime = ({selectedTime,modalTime, SetselectedTime, setModalTime}: prop
                 </TouchableOpacity>
             
             </View>
-             <Picker
-                    selectedValue={selectedTime}
-                    onValueChange={(itemValue, itemIndex) =>
-                        SetselectedTime(itemValue)
-                    }
-                    >
-                    <Picker.Item label="Java" value="java" />
-                    <Picker.Item label="JavaScript" value="js" />
-                    <Picker.Item label="React" value="react" />
-                    <Picker.Item label="phatom" value="phatom" />
-             </Picker>
+                <DateTimePicker
+                    testID="dateTimePicker"
+                    value={new Date()}
+                    mode='time'
+                    display="clock" 
+                    is24Hour={true}
+                    onChange={onChange}
+                    style={{flex: 1}}
+                   
+                  />
          </View>
         </View>
       </Modal>

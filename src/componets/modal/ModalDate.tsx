@@ -15,8 +15,8 @@ type props ={
 const ModalDate = ({selectedDate,modalDate, SetselectedDate, setModalDate}: props) => {
   
   const onChange = (
-    event: React.ChangeEvent<HTMLInputElement>, 
-    selectedDate: Date) => {
+    event, 
+    selectedDate) => {
     const currentDate = selectedDate;
     SetselectedDate(currentDate);
   };

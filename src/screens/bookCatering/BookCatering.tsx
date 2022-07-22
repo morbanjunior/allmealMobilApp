@@ -24,7 +24,7 @@ const BookCatering = () => {
      const [modalSecondSide, setModalSecondSide] = useState(false);
 
      // date side
-     const [selectedData, setSelectedData] = useState('Select date');
+     const [selectedData, setSelectedData] = useState(new Date());
      const [modalData, setModalData] = useState(false);
 
       // time side
@@ -99,7 +99,7 @@ const BookCatering = () => {
             <View style={styles.inputContainer}>
               <Text style={styles.headerTextInput}>Select Date</Text>
                 <View style={styles.picker}>
-                   <Text style={styles.textHeaderPicker}>{selectedData}</Text>
+                   <Text style={styles.textHeaderPicker}>{selectedData.toLocaleDateString()}</Text>
                    <TouchableOpacity onPress={()=>setModalData(true)}>
                      <MaterialIcons name="calendar-today" color={thirdColor} style={styles.icon}/>
                    </TouchableOpacity>
@@ -109,7 +109,7 @@ const BookCatering = () => {
             <View style={styles.inputContainer}>
               <Text style={styles.headerTextInput}>Select Time</Text>
                 <View style={styles.picker}>
-                   <Text style={styles.textHeaderPicker}>{selectedTime}</Text>
+                   <Text style={styles.textHeaderPicker}>{selectedTime.toLocaleDateString()}</Text>
                    <TouchableOpacity onPress={()=>setModalTime(true)}>
                      <Fontisto name="clock" color={thirdColor} style={styles.icon}/>
                    </TouchableOpacity>
