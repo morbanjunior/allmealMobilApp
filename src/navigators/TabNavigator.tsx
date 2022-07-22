@@ -6,35 +6,36 @@ import { View, Text, Image, TouchableOpacity, GestureResponderEvent } from "reac
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import CustomButtom from "../componets/customButtom/CustomButtom";
 
-type props = {
-  children: JSX.Element | undefined ,
-  onPress(): void
-};
+// type props = {
+//   children: JSX.Element | undefined ,
+//   onPress(): void
+// };
 
 const Tab = createBottomTabNavigator();
 
-const CustomTabBarButton: FunctionComponent<props> = ({children, onPress}) =>(
-  <TouchableOpacity
-    style={{
-      top:-10,
-      justifyContent: 'center',
-      alignItems: 'center', 
+// const CustomTabBarButton: FunctionComponent<props> = ({children, onPress}) =>(
+//   <TouchableOpacity
+//     style={{
+//       top:-10,
+//       justifyContent: 'center',
+//       alignItems: 'center', 
      
-    }}
-    onPress={onPress}
-  >
-      <View 
-        style={{ 
-        width:67,
-        height:67,
+//     }}
+//     onPress={onPress}
+//   >
+//       <View 
+//         style={{ 
+//         width:67,
+//         height:67,
         
-      }}
-      >
-        {children}
-      </View>
-  </TouchableOpacity>
-)
+//       }}
+//       >
+//         {children}
+//       </View>
+//   </TouchableOpacity>
+// )
 
 const BottomTabNavigator = () => {
   return (
@@ -107,20 +108,26 @@ const BottomTabNavigator = () => {
       }}
       />
       <Tab.Screen name="Category" component={CategoryStackNavigator} 
+        // options={{
+        //   tabBarIcon:({focused})=>(
+        //     <Image source={require('../../assets/img/menuIcom.png')} 
+        //     resizeMode='contain'
+        //     style={{
+        //       width:67,
+        //       height:67,
+        //       tintColor: '#fff'
+        //     }}/>
+        //   ),
+        //   tabBarButton: (props) =>(
+        //     <CustomTabBarButton {...props}/>
+        //   )
+        // }}
         options={{
-          tabBarIcon:({focused})=>(
-            <Image source={require('../../assets/img/menuIcom.png')} 
-            resizeMode='contain'
-            style={{
-              width:67,
-              height:67,
-              tintColor: '#fff'
-            }}/>
-          ),
-          tabBarButton: (props) =>(
-            <CustomTabBarButton {...props}/>
+          tabBarIcon:({size, color})=>(
+            <CustomButtom />
           )
         }}
+
       />
 
       <Tab.Screen name="Wellness" component={WellnessstackNavigator} 
