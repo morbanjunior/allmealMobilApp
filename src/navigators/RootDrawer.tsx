@@ -52,10 +52,7 @@ const RootDrawer: FunctionComponent = () =>{
                     name='Signup'
                     component={Welcome}
                 />
-                  {/* <Drawer.Screen 
-                    name='Adresses'
-                    component={AdressesStackNavigator}
-                /> */}
+                  
             </Drawer.Navigator> 
         </NavigationContainer>
     )

@@ -3,12 +3,14 @@ import React,{useState} from 'react'
 import { mainColor, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import AdressesItem from './AdressesItem';
+import { useNavigation } from '@react-navigation/native';
 
 const adress =[1,2,3,4]
 
 
 const Adresses = () => {
     const [selected, Setselected] = useState('1');
+    const navigation = useNavigation(); 
   return (
     <View style={styles.container}>
         <View style={styles.wrapper}>
@@ -19,7 +21,7 @@ const Adresses = () => {
                 <TouchableOpacity onPress={()=>Setselected('2')} activeOpacity={.7} style={[selected=== '2' ? styles.headerButtomActive : styles.headerButtom]}>
                     <Text style={[selected=== '2' ? styles.headertextActive : styles.headertext]}>Renewal Orders</Text>
                 </TouchableOpacity>
-                <TouchableOpacity activeOpacity={.7} style={styles.addButtomActive }>
+                <TouchableOpacity  onPress={()=>navigation.navigate('NewAddress')} activeOpacity={.7} style={styles.addButtomActive }>
                    <AntDesign name="plus" color={secundaryColor} style={styles.iconAdres}/>
                 </TouchableOpacity>
             </View>

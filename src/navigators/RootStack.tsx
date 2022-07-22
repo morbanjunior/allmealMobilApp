@@ -407,7 +407,7 @@ export const AdressesStackNavigator: FunctionComponent = () =>{
              
             ),
             // headerTransparent:true,
-            title: "Order 4100F5",
+            title: "New adress",
             
           })}
         name="NewAddress" component={NewAddress} />

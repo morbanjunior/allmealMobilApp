@@ -183,6 +183,7 @@ const BottomTabNavigator = () => {
       name="Adresses" component={AdressesStackNavigator}
       options={{ tabBarItemStyle: { display: 'none', }, }}
       />
+      
     </Tab.Navigator>
   );
 };
