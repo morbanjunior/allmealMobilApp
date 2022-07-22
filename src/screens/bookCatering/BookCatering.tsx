@@ -4,12 +4,34 @@ import { mainColor, ScreenWidth, secundaryColor, thirdColor } from '../../compon
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import ModalPicker from '../../componets/modal/ModalPicker';
+import ModalfirstSide from '../../componets/modal/ModalfirstSide';
+import ModalSecondSide from '../../componets/modal/ModalSecondSide';
+import ModalDate from '../../componets/modal/ModalDate';
+import ModalTime from '../../componets/modal/ModalTime';
 
 
 
 const BookCatering = () => {
     const [selectedprotein, setSelectedprotein] = useState('Select your protein');
     const [modalVisible, setModalVisible] = useState(false);
+
+    // First side
+    const [selectedFirstside, setSelectedFirstside] = useState('Select first side');
+    const [modalFirstSide, setModalFirstSide] = useState(false);
+
+     // second side
+     const [selectedSecondside, setSelectedSecondside] = useState('Select second side');
+     const [modalSecondSide, setModalSecondSide] = useState(false);
+
+     // date side
+     const [selectedData, setSelectedData] = useState('Select date');
+     const [modalData, setModalData] = useState(false);
+
+      // time side
+      const [selectedTime, setSelectedTime] = useState(new Date());
+      const [modalTime, setModalTime] = useState(false);
+
+
   return (
     <>
     <View style={styles.container}>
@@ -45,8 +67,8 @@ const BookCatering = () => {
             <View style={styles.inputContainer}>
               <Text style={styles.headerTextInput}>Pick your first side</Text>
                 <View style={styles.picker}>
-                   <Text style={styles.textHeaderPicker}>{selectedprotein}</Text>
-                   <TouchableOpacity onPress={()=>setModalVisible(true)}>
+                   <Text style={styles.textHeaderPicker}>{selectedFirstside}</Text>
+                   <TouchableOpacity onPress={()=>setModalFirstSide(true)}>
                      <MaterialIcons name="arrow-drop-down" color={thirdColor} style={styles.icon}/>
                    </TouchableOpacity>
                   
@@ -55,8 +77,8 @@ const BookCatering = () => {
             <View style={styles.inputContainer}>
               <Text style={styles.headerTextInput}>Pick your second side</Text>
                 <View style={styles.picker}>
-                   <Text style={styles.textHeaderPicker}>{selectedprotein}</Text>
-                   <TouchableOpacity onPress={()=>setModalVisible(true)}>
+                   <Text style={styles.textHeaderPicker}>{selectedSecondside}</Text>
+                   <TouchableOpacity onPress={()=>setModalSecondSide(true)}>
                      <MaterialIcons name="arrow-drop-down" color={thirdColor} style={styles.icon}/>
                    </TouchableOpacity>
                   
@@ -77,8 +99,8 @@ const BookCatering = () => {
             <View style={styles.inputContainer}>
               <Text style={styles.headerTextInput}>Select Date</Text>
                 <View style={styles.picker}>
-                   <Text style={styles.textHeaderPicker}>{selectedprotein}</Text>
-                   <TouchableOpacity onPress={()=>setModalVisible(true)}>
+                   <Text style={styles.textHeaderPicker}>{selectedData}</Text>
+                   <TouchableOpacity onPress={()=>setModalData(true)}>
                      <MaterialIcons name="calendar-today" color={thirdColor} style={styles.icon}/>
                    </TouchableOpacity>
                   
@@ -87,8 +109,8 @@ const BookCatering = () => {
             <View style={styles.inputContainer}>
               <Text style={styles.headerTextInput}>Select Time</Text>
                 <View style={styles.picker}>
-                   <Text style={styles.textHeaderPicker}>{selectedprotein}</Text>
-                   <TouchableOpacity onPress={()=>setModalVisible(true)}>
+                   <Text style={styles.textHeaderPicker}>{selectedTime}</Text>
+                   <TouchableOpacity onPress={()=>setModalTime(true)}>
                      <Fontisto name="clock" color={thirdColor} style={styles.icon}/>
                    </TouchableOpacity>
                   
@@ -131,6 +153,33 @@ const BookCatering = () => {
     setSelectedprotein={setSelectedprotein}
     setModalVisible={setModalVisible}
     />
+    <ModalfirstSide 
+    selectedFirstside={selectedFirstside} 
+    SetselectedFirstside={setSelectedFirstside}
+    modalFirstSide={modalFirstSide}
+    setModalFirstSide={setModalFirstSide}
+    />
+
+    <ModalSecondSide 
+        selectedSecondside={selectedSecondside} 
+        SetselectedSecondside={setSelectedSecondside}
+        modalSecondSide={modalSecondSide}
+        setModalSecondSide={setModalSecondSide}
+    />
+    <ModalDate 
+        selectedDate={selectedData} 
+        SetselectedDate={setSelectedData}
+        modalDate={modalData}
+        setModalDate={setModalData}
+    />
+
+    <ModalTime 
+        selectedTime={selectedTime} 
+        SetselectedTime={setSelectedTime}
+        modalTime={modalTime}
+        setModalTime={setModalTime}
+    />
+
     </>
   )
 }
