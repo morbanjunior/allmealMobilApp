@@ -82,7 +82,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
                )}
 
             label="Book Catering"
-            onPress={() =>{props.navigation.navigate('Dashboard')}}
+            onPress={() =>{props.navigation.navigate('BookCatering')}}
             />
 
           <DrawerItem

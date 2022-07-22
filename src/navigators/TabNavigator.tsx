@@ -1,7 +1,7 @@
 // ./navigation/TabNavigator.js
 import React, { FunctionComponent } from "react";
 import { BottomTabBarButtonProps, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { AdressesStackNavigator, CategoryStackNavigator, DashboardStackNavigator, MyOrderstackNavigator, MyProfilestackNavigator, WelcomeStackNavigator, WellnessstackNavigator } from "./RootStack";
+import { AdressesStackNavigator, BookCateringStackNavigator, CategoryStackNavigator, DashboardStackNavigator, MyOrderstackNavigator, MyProfilestackNavigator, WelcomeStackNavigator, WellnessstackNavigator } from "./RootStack";
 import { View, Text, Image, TouchableOpacity, GestureResponderEvent } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -188,6 +188,11 @@ const BottomTabNavigator = () => {
       />
       <Tab.Screen 
       name="Adresses" component={AdressesStackNavigator}
+      options={{ tabBarItemStyle: { display: 'none', }, }}
+      />
+
+      <Tab.Screen 
+      name="BookCatering" component={BookCateringStackNavigator}
       options={{ tabBarItemStyle: { display: 'none', }, }}
       />
       

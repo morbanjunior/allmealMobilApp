@@ -18,6 +18,7 @@ import SingleOrder from '../screens/myOrders/SingleOrder';
 import Adresses from '../screens/adresses/Adresses';
 import EditAddress from '../screens/adresses/EditAddress';
 import NewAddress from '../screens/adresses/NewAddress';
+import BookCatering from '../screens/bookCatering/BookCatering';
 
 
 export type RootStackParamList = {
@@ -34,6 +35,7 @@ export type RootStackParamList = {
   Adresses:undefined;
   EditAddress:undefined;
   NewAddress:undefined;
+  BookCatering:undefined;
 };
 
 
@@ -415,6 +417,70 @@ export const AdressesStackNavigator: FunctionComponent = () =>{
     </Stack.Navigator>
   )
 }
+
+// export const BookCateringStackNavigator: FunctionComponent = () =>{
+//   const navigation = useNavigation(); 
+//   return (
+//   <Stack.Navigator
+//   screenOptions={{
+//       headerShown: true,
+//       // gestureEnabled: false
+//       title: "Book Catering",
+//     }}
+//     >
+//       <Stack.Screen 
+      
+//       name="BookCatering" component={BookCatering} />
+//     </Stack.Navigator>
+//   )
+// }
+
+export const BookCateringStackNavigator: FunctionComponent = () =>{
+  const navigation = useNavigation(); 
+  return (
+  <Stack.Navigator>
+      <Stack.Screen 
+      
+       options ={{
+        title: "Book Catering",
+          headerLeft: () =>(
+            <Icon name='ios-menu' size={25} color="#3C3C3C" style={{marginLeft: 10}}
+            backgroundColor='white'
+            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
+          )
+          ,headerRight: () =>(
+                        <View style={{
+                          flexDirection: 'row', 
+                          justifyContent: 'center', 
+                          alignItems: 'center'}}>
+                            <View style={{position: 'relative'}} >
+                                <View style={styles.bellContainer}>
+                                  <Text style={styles.textbel}>2</Text>
+                                </View>
+
+                           <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
+                              // onPress={() => navigation.goBack()}
+                              />
+                            </View >
+                            <View style={{position: 'relative'}} >
+                                <View style={styles.bellContainer}>
+                                  <Text style={styles.textbel}>12</Text>
+                                </View>
+                                <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
+                                // onPress={() => navigation.goBack()}
+                                />
+                            </View>
+                        </View>
+                       
+                      ),
+        }}
+      name="BookCatering" component={BookCatering} />
+     
+    </Stack.Navigator>
+  )
+}
+
+
 
 const styles = StyleSheet.create({
   bellContainer:{
