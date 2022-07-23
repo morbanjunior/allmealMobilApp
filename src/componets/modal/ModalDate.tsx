@@ -15,8 +15,8 @@ type props ={
 const ModalDate = ({selectedDate,modalDate, SetselectedDate, setModalDate}: props) => {
   
   const onChange = (
-    event, 
-    selectedDate) => {
+    event: any, 
+    date: any) => {
     const currentDate = selectedDate;
     SetselectedDate(currentDate);
   };
@@ -44,7 +44,7 @@ const ModalDate = ({selectedDate,modalDate, SetselectedDate, setModalDate}: prop
                 </TouchableOpacity>
                 <DateTimePicker
                     testID="dateTimePicker"
-                    value={new Date()}
+                    value={selectedDate}
                     mode='date'
                     display="spinner" 
                     is24Hour={true}

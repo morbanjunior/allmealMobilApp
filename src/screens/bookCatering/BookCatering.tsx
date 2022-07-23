@@ -30,7 +30,7 @@ const BookCatering = () => {
       // time side
       const [selectedTime, setSelectedTime] = useState(new Date());
       const [modalTime, setModalTime] = useState(false);
-
+      const [formatTime, SetFormatTime] = useState('11:51');
 
   return (
     <>
@@ -109,7 +109,7 @@ const BookCatering = () => {
             <View style={styles.inputContainer}>
               <Text style={styles.headerTextInput}>Select Time</Text>
                 <View style={styles.picker}>
-                   <Text style={styles.textHeaderPicker}>{selectedTime.toLocaleDateString()}</Text>
+                   <Text style={styles.textHeaderPicker}>{formatTime}</Text>
                    <TouchableOpacity onPress={()=>setModalTime(true)}>
                      <Fontisto name="clock" color={thirdColor} style={styles.icon}/>
                    </TouchableOpacity>
@@ -178,6 +178,7 @@ const BookCatering = () => {
         SetselectedTime={setSelectedTime}
         modalTime={modalTime}
         setModalTime={setModalTime}
+        SetFormatTime={SetFormatTime}
     />
 
     </>

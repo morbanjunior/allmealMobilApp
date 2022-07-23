@@ -6,20 +6,25 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 type props ={
-   selectedTime: string
+   selectedTime: Date
     modalTime: boolean;
-    SetselectedTime: React.Dispatch<React.SetStateAction<string>>
+    SetselectedTime: React.Dispatch<React.SetStateAction<Date>>
     setModalTime: React.Dispatch<React.SetStateAction<boolean>>
+    SetFormatTime:React.Dispatch<React.SetStateAction<string>>
    
 }
 
-const ModalTime = ({selectedTime,modalTime, SetselectedTime, setModalTime}: props) => {
+const ModalTime = ({selectedTime,modalTime, SetselectedTime, setModalTime, SetFormatTime}: props) => {
   const onChange = (
-    event, 
-    selectedDate) => {
+    event: any, 
+    selectedDate: any) => {
     const currentDate = selectedDate;
-    SetselectedDate(currentDate);
+    SetselectedTime(currentDate);
+    SetFormatTime((selectedDate.getHours() +": "+ selectedDate.getMinutes()).toString())
   };
+  
+  // console.log(selectedTime.getHours() +": "+ selectedTime.getMinutes());
+
   
   return (
     <View style={styles.centeredView}>
@@ -46,12 +51,12 @@ const ModalTime = ({selectedTime,modalTime, SetselectedTime, setModalTime}: prop
             </View>
                 <DateTimePicker
                     testID="dateTimePicker"
-                    value={new Date()}
+                    value={selectedTime}
                     mode='time'
-                    display="clock" 
-                    is24Hour={true}
+                    display="spinner" 
+                    is24Hour={false}
                     onChange={onChange}
-                    style={{flex: 1}}
+                    // style={{flex: 1}}
                    
                   />
          </View>
