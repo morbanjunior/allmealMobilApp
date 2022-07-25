@@ -96,7 +96,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
                )}
 
             label="Containers"
-            onPress={() =>{props.navigation.navigate('Dashboard')}}
+            onPress={() =>{props.navigation.navigate('Containers')}}
             />
             <DrawerItem
           icon={(
@@ -109,7 +109,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
                )}
 
             label="Donate"
-            onPress={() =>{props.navigation.navigate('Dashboard')}}
+            onPress={() =>{props.navigation.navigate('Allergic')}}
             />
             <DrawerItem
           icon={(
@@ -135,7 +135,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
                )}
 
             label="FAQ"
-            onPress={() =>{props.navigation.navigate('Dashboard')}}
+            onPress={() =>{props.navigation.navigate('Faq')}}
             />
             <DrawerItem
           icon={(
@@ -217,7 +217,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
                )}
 
             label="Contact Us"
-            onPress={() =>{props.navigation.navigate('Dashboard')}}
+            onPress={() =>{props.navigation.navigate('ContactUs')}}
             />
         </View>
         <Divider width={1} />

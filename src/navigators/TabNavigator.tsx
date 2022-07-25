@@ -1,7 +1,7 @@
 // ./navigation/TabNavigator.js
 import React, { FunctionComponent } from "react";
 import { BottomTabBarButtonProps, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { AdressesStackNavigator, BookCateringStackNavigator, CategoryStackNavigator, DashboardStackNavigator, MyOrderstackNavigator, MyProfilestackNavigator, WelcomeStackNavigator, WellnessstackNavigator } from "./RootStack";
+import { AdressesStackNavigator, AllergicStackNavigator, BookCateringStackNavigator, CategoryStackNavigator, ContactUsStackNavigator, ContainersStackNavigator, DashboardStackNavigator, FaqStackNavigator, MyOrderstackNavigator, MyProfilestackNavigator, WelcomeStackNavigator, WellnessstackNavigator } from "./RootStack";
 import { View, Text, Image, TouchableOpacity, GestureResponderEvent } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -195,6 +195,25 @@ const BottomTabNavigator = () => {
       name="BookCatering" component={BookCateringStackNavigator}
       options={{ tabBarItemStyle: { display: 'none', }, }}
       />
+
+      <Tab.Screen 
+      name="Containers" component={ContainersStackNavigator}
+      options={{ tabBarItemStyle: { display: 'none', }, }}
+      />   
+
+      <Tab.Screen 
+      name="ContactUs" component={ContactUsStackNavigator}
+      options={{ tabBarItemStyle: { display: 'none', }, }}
+      />  
+      <Tab.Screen 
+      name="Faq" component={FaqStackNavigator}
+      options={{ tabBarItemStyle: { display: 'none', }, }}
+      /> 
+
+      <Tab.Screen 
+      name="Allergic" component={AllergicStackNavigator}
+      options={{ tabBarItemStyle: { display: 'none', }, }}
+      />   
       
     </Tab.Navigator>
   );
