@@ -3,43 +3,43 @@ import React, { FunctionComponent } from 'react'
 import mailPhote from '../../../assets/img/container.png'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { StackScreenProps } from '@react-navigation/stack';
-import { RootStackParamList } from '../../../navigators/RootDrawer';
 import { useNavigation } from '@react-navigation/native';
-import { mainColor } from '../../componets/shared';
+import { mainColor, ScreenWidth, thirdColor } from '../../componets/shared';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 
-const MealItem: FunctionComponent = () => {
+const PickupItem: FunctionComponent = () => {
     const navigation = useNavigation(); 
 
   return (
     <TouchableOpacity  style={styles.container}
 
-    //  onPress={()=>navigation.navigate('MealItemPage')}
+    //  onPress={()=>navigation.navigate('PickupItemPage')}
     >
         <View style={styles.wrapper}>
-            <Image source={mailPhote} />
-           <View style={styles.ButtomContainer}>
-                 <View style={styles.headerButtomContainer}>
-                    <View style={styles.headerButtomTextContainer}>
-                    <Text style={styles.headerButtomText}>$24.99</Text>
-                    </View>
-                    <TouchableOpacity style={styles.buttom}>
-                        <FontAwesome name="shopping-cart" type="ionicon" style={styles.headerButtomIcon}/>
-                        <Text style={styles.number}>Order Now</Text>
-                    
-                    </TouchableOpacity>
-                </View>
-                <Text style={styles.headerText}>5 Glass Meal Prep Containers</Text>
-                <Text style={styles.headerTextp}>5 glass meal prep containers both
-                  oven and mocrowave safe</Text>
-               
+            <View style={styles.textDivide}>
+                <MaterialCommunityIcons name="ticket-confirmation" color={mainColor} style={styles.icon}/>
+                <Text style={styles.textDivideFont}>Request No: 23245</Text>
             </View>
+            <View style={styles.textDivide}>
+                <MaterialIcons name="date-range" color={mainColor} style={styles.icon}/>
+                <Text style={styles.textDivideFontSub}>22/10/2021</Text>
+            </View>
+            <View style={styles.textDivide}>
+                   <View style={styles.iconDot}>
+                      <Entypo name="dots-three-horizontal" color={mainColor} style={styles.iconDotsub}/>
+                    </View>
+                <Text style={styles.textDivideFontSub}>Status: Picked Up</Text>
+            </View>
+            
         </View>
     </TouchableOpacity>
   )
 }
 
-export default MealItem
+export default PickupItem
 
 const styles = StyleSheet.create({
     container: {
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     },
     wrapper: {
         display:'flex',
-        flexDirection: 'row', 
+        flexDirection: 'column', 
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
         marginLeft:5,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
         shadowOffset: { height: 3, width: 3 },
         backgroundColor: '#fff',
         // backgroundColor: 'rgba(255, 255, 255, 0.7)',
-        width: '100%',
+        width: ScreenWidth-20,
         height: 126,
         padding:15,
         marginBottom:25,
@@ -138,5 +138,45 @@ const styles = StyleSheet.create({
     ButtomContainer:{
         marginLeft: 10,
         width: 220,
-    }
+    },
+    textDivide:{
+      flexDirection:'row',
+      width: ScreenWidth-20,
+      marginBottom:10,
+      alignItems: 'center',
+    },
+    icon:{
+      fontSize:24,
+      marginRight: 20,
+    },
+    textDivideFont:{
+      fontWeight: '600',
+      fontSize: 14,
+      lineHeight: 15,
+      letterSpacing: 0.15,
+      color: thirdColor,
+    },
+    textDivideFontSub:{
+      fontWeight: '300',
+      fontSize: 14,
+      lineHeight: 21,
+      letterSpacing: 1.25,
+      color: thirdColor,
+    },
+    iconDotsub:{
+    fontSize:15,
+  },
+  iconDot:{
+    borderWidth: 2,
+    borderRadius: 30,
+    borderColor: mainColor,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 0,
+    paddingBottom: 0,
+    // padding:5
+    width: 24,
+    height: 24, 
+    marginRight: 20,
+  },
 })

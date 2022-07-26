@@ -3,7 +3,6 @@ import React, { FunctionComponent } from 'react'
 import mailPhote from '../../../../assets/img/mealPhote.png'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { StackScreenProps } from '@react-navigation/stack';
-import { RootStackParamList } from '../../../navigators/RootDrawer';
 import { useNavigation } from '@react-navigation/native';
 
 

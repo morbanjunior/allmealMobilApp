@@ -1,45 +1,53 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
 import React, { FunctionComponent } from 'react'
-import mailPhote from '../../../assets/img/container.png'
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { StackScreenProps } from '@react-navigation/stack';
-import { RootStackParamList } from '../../../navigators/RootDrawer';
+import mailPhote from '../../../assets/img/mealPhote.png'
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
-import { mainColor } from '../../componets/shared';
+import { ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared';
 
 
-const MealItem: FunctionComponent = () => {
+const MyItem: FunctionComponent = () => {
     const navigation = useNavigation(); 
 
   return (
-    <TouchableOpacity  style={styles.container}
-
-    //  onPress={()=>navigation.navigate('MealItemPage')}
+    <View  style={styles.container}
     >
         <View style={styles.wrapper}>
             <Image source={mailPhote} />
            <View style={styles.ButtomContainer}>
                  <View style={styles.headerButtomContainer}>
                     <View style={styles.headerButtomTextContainer}>
-                    <Text style={styles.headerButtomText}>$24.99</Text>
+                    <Text style={styles.headerButtomText}>$10.99</Text>
                     </View>
-                    <TouchableOpacity style={styles.buttom}>
-                        <FontAwesome name="shopping-cart" type="ionicon" style={styles.headerButtomIcon}/>
-                        <Text style={styles.number}>Order Now</Text>
+                    <View style={styles.buttom}>
+                        <TouchableOpacity>
+                            <AntDesign name="minuscircle" type="ionicon" style={styles.headerButtomIcon}/>
+                        </TouchableOpacity>
+                        <Text style={styles.number}>1</Text>
+                        <TouchableOpacity>
+                            <AntDesign name="pluscircle" type="ionicon" style={styles.headerButtomIcon}/>
+                        </TouchableOpacity>
                     
-                    </TouchableOpacity>
+                    </View>
                 </View>
-                <Text style={styles.headerText}>5 Glass Meal Prep Containers</Text>
-                <Text style={styles.headerTextp}>5 glass meal prep containers both
-                  oven and mocrowave safe</Text>
+                <Text style={styles.headerText}>Blackened Grilled Chicken</Text>
+                <View style={styles.bottomDelete}>
+                  <Text style={styles.headerButtomText}>Sub Total: $10.99</Text>
+                  <TouchableOpacity >
+                     <MaterialCommunityIcons name="delete" type="ionicon" style={styles.deletButtomIcon}/>
+                  </TouchableOpacity>
+                 
+                </View>
+                
                
             </View>
         </View>
-    </TouchableOpacity>
+    </View>
   )
 }
 
-export default MealItem
+export default MyItem
 
 const styles = StyleSheet.create({
     container: {
@@ -48,7 +56,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: -10,
-        width: '100%',
+        backgroundColor: secundaryColor,
     },
     wrapper: {
         display:'flex',
@@ -63,7 +71,7 @@ const styles = StyleSheet.create({
         shadowOffset: { height: 3, width: 3 },
         backgroundColor: '#fff',
         // backgroundColor: 'rgba(255, 255, 255, 0.7)',
-        width: '100%',
+        width: ScreenWidth-20,
         height: 126,
         padding:15,
         marginBottom:25,
@@ -75,14 +83,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center', 
-        width: 'auto',
+        width: 210,
 
     },
     headerButtomTextContainer:{
         backgroundColor: 'rgba(242, 110, 33, 0.15)',
         padding:5,
         borderRadius: 8,
-        // width: 120,
+        width: 'auto',
     },
     headerButtomText:{
         // fontFamily: 'Poppins',
@@ -107,6 +115,11 @@ const styles = StyleSheet.create({
         fontSize: 20,
 
     },
+    deletButtomIcon:{
+        color: thirdColor,
+        fontSize: 24,
+
+    },
     number:{
         marginLeft: 10,
         marginRight:10,
@@ -114,7 +127,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         lineHeight: 20,
         letterSpacing: 0.15,
-        color: mainColor,
     },
     headerText:{
         // fontFamily: 'Poppins',
@@ -138,5 +150,11 @@ const styles = StyleSheet.create({
     ButtomContainer:{
         marginLeft: 10,
         width: 220,
+    },
+    bottomDelete:{
+        flexDirection: 'row',
+        marginTop:20,
+        justifyContent: 'space-between',
+
     }
 })

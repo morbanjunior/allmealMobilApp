@@ -209,8 +209,6 @@ const styles = StyleSheet.create({
         // marginBottom:320,
         marginBottom: 'auto',
         marginTop:20,
-        
-        
       },
       inputContainer:{
         flexDirection: 'column',

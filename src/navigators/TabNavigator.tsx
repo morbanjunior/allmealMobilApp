@@ -1,7 +1,7 @@
 // ./navigation/TabNavigator.js
 import React, { FunctionComponent } from "react";
 import { BottomTabBarButtonProps, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { AdressesStackNavigator, AllergicStackNavigator, BookCateringStackNavigator, CategoryStackNavigator, ContactUsStackNavigator, ContainersStackNavigator, DashboardStackNavigator, FaqStackNavigator, MyOrderstackNavigator, MyProfilestackNavigator, WelcomeStackNavigator, WellnessstackNavigator } from "./RootStack";
+import { AdressesStackNavigator, AllergicStackNavigator, BookCateringStackNavigator, CategoryStackNavigator, ContactUsStackNavigator, ContainersStackNavigator, DashboardStackNavigator, FaqStackNavigator, MyCartStackNavigator, MyOrderstackNavigator, MyProfilestackNavigator, PickupStackNavigator, ReferStackNavigator, WelcomeStackNavigator, WellnessstackNavigator } from "./RootStack";
 import { View, Text, Image, TouchableOpacity, GestureResponderEvent } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -214,6 +214,20 @@ const BottomTabNavigator = () => {
       name="Allergic" component={AllergicStackNavigator}
       options={{ tabBarItemStyle: { display: 'none', }, }}
       />   
+
+     <Tab.Screen 
+      name="Refer" component={ReferStackNavigator}
+      options={{ tabBarItemStyle: { display: 'none', }, }}
+      /> 
+
+      <Tab.Screen 
+      name="Pickup" component={PickupStackNavigator}
+      options={{ tabBarItemStyle: { display: 'none', }, }}
+      /> 
+      <Tab.Screen 
+      name="MyCart" component={MyCartStackNavigator}
+      options={{ tabBarItemStyle: { display: 'none', }, }}
+      /> 
       
     </Tab.Navigator>
   );

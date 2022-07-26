@@ -174,7 +174,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
                )}
 
             label="Pickup Glasssware"
-            onPress={() =>{props.navigation.navigate('Dashboard')}}
+            onPress={() =>{props.navigation.navigate('Pickup')}}
             />
             <DrawerItem
           icon={(
@@ -187,7 +187,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
                )}
 
             label="Refer & Earn"
-            onPress={() =>{props.navigation.navigate('Dashboard')}}
+            onPress={() =>{props.navigation.navigate('Refer')}}
             />
         <DrawerItem
           icon={(
