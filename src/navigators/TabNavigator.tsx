@@ -1,7 +1,7 @@
 // ./navigation/TabNavigator.js
 import React, { FunctionComponent } from "react";
 import { BottomTabBarButtonProps, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { AdressesStackNavigator, AllergicStackNavigator, BookCateringStackNavigator, CategoryStackNavigator, CheckoutInfoStackNavigator, CheckoutStackNavigator, ContactUsStackNavigator, ContainersStackNavigator, DashboardStackNavigator, FaqStackNavigator, MyCartStackNavigator, MyOrderstackNavigator, MyProfilestackNavigator, NutritionPackagesStackNavigator, PickupStackNavigator, ReferStackNavigator, WelcomeStackNavigator, WellnessstackNavigator } from "./RootStack";
+import { AdressesStackNavigator, AllergicStackNavigator, BookCateringStackNavigator, CategoryStackNavigator, CheckoutInfoStackNavigator, CheckoutStackNavigator, ContactUsStackNavigator, ContainersStackNavigator, DashboardStackNavigator, FaqStackNavigator, GiftCardsStackNavigator, MyCartStackNavigator, MyOrderstackNavigator, MyProfilestackNavigator, NutritionPackagesStackNavigator, PickupStackNavigator, ReferStackNavigator, WelcomeStackNavigator, WellnessstackNavigator } from "./RootStack";
 import { View, Text, Image, TouchableOpacity, GestureResponderEvent } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -231,6 +231,11 @@ const BottomTabNavigator = () => {
 
       <Tab.Screen 
       name="NutritionPackages" component={NutritionPackagesStackNavigator}
+      options={{ tabBarItemStyle: { display: 'none', }, }}
+      />
+
+      <Tab.Screen 
+      name="GiftCards" component={GiftCardsStackNavigator}
       options={{ tabBarItemStyle: { display: 'none', }, }}
       />
       
