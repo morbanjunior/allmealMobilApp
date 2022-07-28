@@ -8,9 +8,10 @@ import Welcome from '../screens/sign/Welcome';
 import Signin from '../screens/sign/Signin';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { CustomDrawerContent } from '../componets/CustomDrawerContent';
-import { AdressesStackNavigator, RootStackParamList } from './RootStack';
+import { AdressesStackNavigator, RootStackParamList, SigninStackNavigator, SignUpStackNavigator } from './RootStack';
 import TabNavigator from './TabNavigator';
 import Adresses from '../screens/adresses/Adresses';
+import CheckoutInfo from '../screens/checkout/CheckoutInfo';
 
 
 const Drawer = createDrawerNavigator<RootStackParamList>();
@@ -46,11 +47,17 @@ const RootDrawer: FunctionComponent = () =>{
                 />
                   <Drawer.Screen 
                     name='Signin'
-                    component={Signin}
+                    component={SigninStackNavigator}
                 />
-                  <Drawer.Screen 
-                    name='Signup'
-                    component={Welcome}
+
+                <Drawer.Screen 
+                    name='SignUp'
+                    component={SignUpStackNavigator}
+                />
+                 
+                <Drawer.Screen 
+                    name='CheckoutInfo'
+                    component={CheckoutInfo}
                 />
                   
             </Drawer.Navigator> 

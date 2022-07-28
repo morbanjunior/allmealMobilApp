@@ -35,7 +35,9 @@ const Welcome: FunctionComponent<props>= ({navigation}) => {
                         <Icon name="user-check" type="ionicon" color="#fff" style={styles.iconLogin}/>
                         <Text style={styles.textButtomLogin}>Log In</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity activeOpacity={.7} style={styles.buttomSignup}>
+                    <TouchableOpacity 
+                    onPress={()=>navigation.navigate('SignUp')}
+                    activeOpacity={.7} style={styles.buttomSignup}>
                         <Icon name="user-check" type="ionicon" color="#fff" style={styles.iconLogup}/>
                         <Text style={styles.textButtomLogup}>Register</Text>
                     </TouchableOpacity>

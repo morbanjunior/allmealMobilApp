@@ -161,7 +161,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
                )}
 
             label="Nutrition Packages"
-            onPress={() =>{props.navigation.navigate('Dashboard')}}
+            onPress={() =>{props.navigation.navigate('NutritionPackages')}}
             />
             <DrawerItem
           icon={(

@@ -11,10 +11,12 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import MyAdresses from './MyAdresses';
+import { useNavigation } from '@react-navigation/native';
 
 const item=[1,2,3,4,5]
 
 const MyCart = () => {
+    const navigation = useNavigation(); 
     const [checked, Setchecked]= useState('glassware');
     const [bag, Setbag]= useState('bag');
     const [isMembership, setMembership] = useState(true);
@@ -22,6 +24,7 @@ const MyCart = () => {
     // date side
     const [selectedData, setSelectedData] = useState(new Date());
     const [modalData, setModalData] = useState(false);
+    
   return (
     <View style={styles.container}>
         <View style={styles.wrapper}>
@@ -320,7 +323,7 @@ const MyCart = () => {
                      <Text style={styles.summaryTextNumber}>Delivered</Text>
                    </View>
                    <View style={{marginBottom:20}}></View>
-                   <TouchableOpacity activeOpacity={.7} style={styles.saveButtom}>
+                   <TouchableOpacity activeOpacity={.7} style={styles.saveButtom} onPress={()=>navigation.navigate('Checkout')} >
                          <Text style={styles.saveButtomText}>Proceed to checkout</Text>
                     </TouchableOpacity>
                    </>  

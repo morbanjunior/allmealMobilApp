@@ -49,7 +49,10 @@ const Signin: FunctionComponent<props>= ({navigation}) => {
                 </TouchableOpacity>
                 <View style={styles.containertextBottom}>
                     <Text style={styles.textAccount}>Don’t have an account?</Text>
-                    <Text style={styles.textRegister}>Register here</Text>
+                    <TouchableOpacity  onPress={()=>navigation.navigate('SignUp')}>
+                        <Text style={styles.textRegister}>Register here</Text>
+                    </TouchableOpacity>
+                   
                 </View>
           </View>
         </View> 

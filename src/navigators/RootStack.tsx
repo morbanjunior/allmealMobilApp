@@ -27,6 +27,10 @@ import Refer from '../screens/refer/Refer';
 import Pickup from '../screens/pickup/Pickup';
 import MyCart from '../screens/myCart/MyCart';
 import { mainColor, secundaryColor } from '../componets/shared';
+import Checkout from '../screens/checkout/Checkout';
+import CheckoutInfo from '../screens/checkout/CheckoutInfo';
+import SignUp from '../screens/sign/SignUp';
+import NutritionPackages from '../screens/nutritionPackages/NutritionPackages';
 
 
 export type RootStackParamList = {
@@ -51,6 +55,11 @@ export type RootStackParamList = {
   Refer:undefined;
   Pickup:undefined;
   MyCart:undefined;
+  Checkout:undefined;
+  CheckoutInfo:undefined;
+  SignUp:undefined;
+  NutritionPackages:undefined;
+  
 };
 
 
@@ -61,14 +70,41 @@ export const SigninStackNavigator: FunctionComponent = () =>{
     return (
     <Stack.Navigator 
     screenOptions={{
-        headerShown: false,
-        // gestureEnabled: false
+        // headerShown: false,
+        gestureEnabled: false
       }}>
-        <Stack.Screen name="Signin" component={Signin} />
+        <Stack.Screen 
+        options = {{
+          headerShown: false,
+        }}
+        name="Signin" component={Signin} />
       </Stack.Navigator>
     )
 }
 
+export const SignUpStackNavigator: FunctionComponent = () =>{
+    
+  return (
+  <Stack.Navigator 
+  screenOptions={{
+      // headerShown: false,
+      gestureEnabled: false
+    }}>
+      <Stack.Screen 
+         options ={({ navigation, route }) => ({
+          headerLeft: () =>(
+            <AntDesign name='arrowleft' size={25} color="#3C3C3C" style={{marginLeft: 10}}
+            backgroundColor='white'
+            onPress={() => navigation.navigate('Signin')}
+            />
+          ),
+          headerTransparent:true,
+          title: "",
+        })}
+      name="SignUp" component={SignUp} />
+    </Stack.Navigator>
+  )
+}
 
 export const WelcomeStackNavigator: FunctionComponent = () =>{
     return (
@@ -766,7 +802,7 @@ export const MyCartStackNavigator: FunctionComponent = () =>{
                           flexDirection: 'row', 
                           justifyContent: 'center', 
                           alignItems: 'center'}}>
-                           <TouchableOpacity activeOpacity={.7} style={styles.button}>
+                           <TouchableOpacity activeOpacity={.7} style={styles.button} onPress={()=>navigation.navigate('Checkout')}>
                               <Text style={styles.buttonText}>Checkout</Text>
                            </TouchableOpacity>
                         </View>
@@ -774,11 +810,140 @@ export const MyCartStackNavigator: FunctionComponent = () =>{
                       ),
         }}
       name="MyCart" component={MyCart} />
+
+<Stack.Screen 
+         options ={({ navigation, route }) => ({
+            headerLeft: () =>(
+              <AntDesign name='arrowleft' size={25} color="#3C3C3C"  style={{marginLeft: 10}}
+              backgroundColor='white'
+              onPress={() => navigation.goBack()}
+              />
+            ),
+            headerRight: () =>(
+              <View style={{
+                flexDirection: 'row', 
+                justifyContent: 'center', 
+                alignItems: 'center'}}>
+                  <View style={{position: 'relative'}} >
+                      <View style={styles.bellContainer}>
+                        <Text style={styles.textbel}>2</Text>
+                      </View>
+
+                 <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C"  style={{marginRight: 20}}
+                    // onPress={() => navigation.goBack()}
+                    />
+                  </View >
+                  <View style={{position: 'relative'}} >
+                      <View style={styles.bellContainer}>
+                        <Text style={styles.textbel}>12</Text>
+                      </View>
+                      <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C"  style={{marginRight: 20}}
+                      onPress={() => navigation.navigate('MyCart')}
+                      />
+                  </View>
+              </View>
+             
+            ),
+            // headerTransparent:true,
+            title: "Checkout",
+            
+          })}
+        name="Checkout" component={Checkout} />
      
     </Stack.Navigator>
   )
 }
 
+export const NutritionPackagesStackNavigator: FunctionComponent = () =>{
+  const navigation = useNavigation(); 
+  return (
+  <Stack.Navigator>
+      <Stack.Screen 
+      
+       options ={{
+        title: "Nutrition Packages",
+          headerLeft: () =>(
+            <Icon name='ios-menu' size={25} color="#3C3C3C" style={{marginLeft: 10}}
+            backgroundColor='white'
+            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
+          )
+          ,headerRight: () =>(
+                        <View style={{
+                          flexDirection: 'row', 
+                          justifyContent: 'center', 
+                          alignItems: 'center'}}>
+                            <View style={{position: 'relative'}} >
+                                <View style={styles.bellContainer}>
+                                  <Text style={styles.textbel}>2</Text>
+                                </View>
+
+                           <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
+                              // onPress={() => navigation.goBack()}
+                              />
+                            </View >
+                            <View style={{position: 'relative'}} >
+                                <View style={styles.bellContainer}>
+                                  <Text style={styles.textbel}>12</Text>
+                                </View>
+                                <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
+                                onPress={() => navigation.navigate('MyCart')}
+                                />
+                            </View>
+                        </View>
+                       
+                      ),
+        }}
+      name="NutritionPackages" component={NutritionPackages} />
+     
+    </Stack.Navigator>
+  )
+}
+
+export const CheckoutInfoStackNavigator: FunctionComponent = () =>{
+  const navigation = useNavigation(); 
+  return (
+  <Stack.Navigator>
+      <Stack.Screen 
+      
+       options ={{
+        title: "",
+        headerShown: false,
+          // headerLeft: () =>(
+          //   <Icon name='ios-menu' size={25} color="#3C3C3C" style={{marginLeft: 10}}
+          //   backgroundColor='white'
+          //   onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
+          // )
+          // ,headerRight: () =>(
+          //               <View style={{
+          //                 flexDirection: 'row', 
+          //                 justifyContent: 'center', 
+          //                 alignItems: 'center'}}>
+          //                   <View style={{position: 'relative'}} >
+          //                       <View style={styles.bellContainer}>
+          //                         <Text style={styles.textbel}>2</Text>
+          //                       </View>
+
+          //                  <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
+          //                     // onPress={() => navigation.goBack()}
+          //                     />
+          //                   </View >
+          //                   <View style={{position: 'relative'}} >
+          //                       <View style={styles.bellContainer}>
+          //                         <Text style={styles.textbel}>12</Text>
+          //                       </View>
+          //                       <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
+          //                       onPress={() => navigation.navigate('MyCart')}
+          //                       />
+          //                   </View>
+          //               </View>
+                       
+          //             ),
+        }}
+      name="CheckoutInfo" component={CheckoutInfo} />
+     
+    </Stack.Navigator>
+  )
+}
 
 const styles = StyleSheet.create({
   bellContainer:{
