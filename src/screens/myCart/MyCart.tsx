@@ -8,6 +8,9 @@ import { RadioButton } from 'react-native-paper';
 import Checkbox from 'expo-checkbox';
 import ModalDate from '../../componets/modal/ModalDate';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import MyAdresses from './MyAdresses';
 
 const item=[1,2,3,4,5]
 
@@ -243,7 +246,84 @@ const MyCart = () => {
                 <TextInput placeholder='Apply Gift Voucher' style={styles.input}/>
                 <View style={{marginBottom:10}}>
                 </View>
-                
+                <MyAdresses/>
+                <View style={styles.headerContainer}>
+                    <View style={styles.textDivide}>
+                      <SimpleLineIcons name="note" color={mainColor} style={styles.icon}/>
+                      <Text style={styles.textDivideFont}>Notes</Text>
+                    </View>
+                </View>
+                <TextInput placeholder='Notes' style={styles.input}/>
+                <View style={{marginBottom:30}}>
+                </View>
+                <View style={styles.headerContainer}>
+                    <View style={styles.textDivide}>
+                    <Ionicons name="ios-receipt-outline"  color={mainColor} style={styles.icon}/>
+                      <Text style={styles.textDivideFont}>Summary</Text>
+                    </View>
+                </View>
+                <>
+                   <View style={styles.summaryContaienr}>
+                     <Text style={styles.summaryText}>Total Meal Amount</Text>
+                     <Text style={styles.summaryTextNumber}>$32.97</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text style={styles.summaryText}>Glassware / Plastic Container Amount</Text>
+                     <Text style={styles.summaryTextNumber}>$7.00</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text style={styles.summaryText}>Existing Reusable Glassware Amount (0)</Text>
+                     <Text style={styles.summaryTextNumberColor}>$0.00</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text style={styles.summaryText}>Bag Amount</Text>
+                     <Text style={styles.summaryTextNumber}>$5.00</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text style={styles.summaryText}>Existing Reusable Bag Amount (0)</Text>
+                     <Text style={styles.summaryTextNumberColor}>$0.00</Text>
+                   </View>
+                   <View style={styles.summaryContaienrColor}>
+                     <Text style={styles.summaryText}>Sub Total Amount</Text>
+                     <Text style={styles.summaryTextNumber}>$44.97</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text style={styles.summaryText}>Tax</Text>
+                     <Text style={styles.summaryTextNumber}>$2.40</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text style={styles.summaryText}>Delivery Charge</Text>
+                     <Text style={styles.summaryTextNumber}>$9.99</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text style={styles.summaryText}>Reward Points Used</Text>
+                     <Text style={styles.summaryTextNumberColor}>-$0.00</Text>
+                   </View>
+                   <View style={styles.summaryContaienrColorTotal}>
+                     <Text style={styles.summaryTextTotal}>Grand Total</Text>
+                     <Text style={styles.summaryTextNumberTotal}>$57.36</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text style={styles.summaryText}>Total Reward Points earned for this order</Text>
+                     <View style={styles.totalReward}>
+                         <Text style={styles.summaryTextNumberColor}>5</Text>
+                     </View>
+                     
+                    
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text style={styles.summaryText}>Delivery Frequency</Text>
+                     <Text style={styles.summaryTextNumber}>Weekly</Text>
+                   </View>
+                   <View style={styles.summaryContaienr}>
+                     <Text style={styles.summaryText}>Delivery Status</Text>
+                     <Text style={styles.summaryTextNumber}>Delivered</Text>
+                   </View>
+                   <View style={{marginBottom:20}}></View>
+                   <TouchableOpacity activeOpacity={.7} style={styles.saveButtom}>
+                         <Text style={styles.saveButtomText}>Proceed to checkout</Text>
+                    </TouchableOpacity>
+                   </>  
                 {/* End scroll */}
             </View>
         </ScrollView>
@@ -460,4 +540,109 @@ const styles = StyleSheet.create({
     borderColor:'rgba(0, 0, 0, 0.12)',
     width: ScreenWidth-20,
   },
+  summaryContaienr:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop:20,
+
+  },
+  summaryContaienrColor:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: ScreenWidth-20,
+    marginTop:20,
+    backgroundColor: 'rgba(255, 111, 0, 0.15)',
+    paddingTop:10,
+    paddingBottom:10,
+    borderRadius: 8,
+  },
+  summaryText:{
+    color: thirdColor,
+    fontStyle: 'normal',
+    fontWeight: '400',
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.15,
+    marginLeft:10,
+  },
+  summaryTextNumber:{
+    color: thirdColor,
+    fontStyle: 'normal',
+    fontWeight: '600',
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.15,
+    marginRight:10,
+  },
+  summaryTextNumberColor:{
+    color:mainColor,
+    fontStyle: 'normal',
+    fontWeight: '600',
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.15,
+    marginRight:10,
+   
+  },
+  summaryContaienrColorTotal:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: ScreenWidth-20,
+    marginTop:20,
+    backgroundColor: mainColor,
+    paddingTop:20,
+    paddingBottom:20,
+    borderRadius: 8,
+    
+  },
+  summaryTextTotal:{
+    color: secundaryColor,
+    fontStyle: 'normal',
+    fontWeight: '600',
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.15,
+    marginLeft:10,
+  },
+  summaryTextNumberTotal:{
+    color: secundaryColor,
+    fontStyle: 'normal',
+    fontWeight: '600',
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.15,
+    marginRight:10,
+   
+  },
+  totalReward:{
+    backgroundColor: 'rgba(255, 111, 0, 0.15)',
+    borderRadius: 8,
+    // width: 45,
+    height: 22,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems:'center',
+    paddingLeft: 10, 
+  },
+  saveButtom:{
+    flexDirection: 'row',
+    justifyContent: 'center',
+    width: ScreenWidth-20,
+    marginBottom:20,
+    backgroundColor: mainColor,
+    padding:20,
+    borderRadius:8,
+  },
+  saveButtomText:{
+    color:secundaryColor,
+    fontWeight: '600',
+    fontSize: 16,
+    letterSpacing: 1.25,
+    lineHeight: 16,
+  }
 })
