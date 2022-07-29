@@ -200,7 +200,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
                )}
 
             label="Password"
-            onPress={() =>{props.navigation.navigate('Dashboard')}}
+            onPress={() =>{props.navigation.navigate('Password')}}
             />
 
         </View>

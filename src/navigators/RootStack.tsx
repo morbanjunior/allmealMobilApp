@@ -34,6 +34,7 @@ import NutritionPackages from '../screens/nutritionPackages/NutritionPackages';
 import GiftCards from '../screens/giftCards/GiftCards';
 import NewGift from '../screens/newGift/NewGift';
 import Donate from '../screens/donate/Donate';
+import Password from '../screens/password/Password';
 
 
 export type RootStackParamList = {
@@ -65,6 +66,7 @@ export type RootStackParamList = {
   GiftCards:undefined;
   NewGift:undefined;
   Donate:undefined;
+  Password:undefined;
   
 };
 
@@ -1094,6 +1096,35 @@ export const DonateStackNavigator: FunctionComponent = () =>{
      
     </Stack.Navigator>
   )
+}
+
+export const PasswordstackNavigator: FunctionComponent = () =>{
+    const navigation = useNavigation(); 
+    return (
+    <Stack.Navigator>
+        <Stack.Screen 
+       options ={{
+        title: "Password",
+          headerLeft: () =>(
+            <Icon name='ios-menu' size={25} color="#3C3C3C" style={{marginLeft: 10}}
+            backgroundColor='white'
+            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
+          )
+          ,headerRight: () =>(
+            <View style={{
+              flexDirection: 'row', 
+              justifyContent: 'center', 
+              alignItems: 'center'}}>
+               <TouchableOpacity activeOpacity={.7} style={styles.button}>
+                  <Text style={styles.buttonText}>Save</Text>
+               </TouchableOpacity>
+            </View>
+           
+          ),
+        }}
+        name="Password" component={Password} />
+      </Stack.Navigator>
+    )
 }
 
 const styles = StyleSheet.create({
