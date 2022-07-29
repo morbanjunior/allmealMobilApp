@@ -32,6 +32,8 @@ import CheckoutInfo from '../screens/checkout/CheckoutInfo';
 import SignUp from '../screens/sign/SignUp';
 import NutritionPackages from '../screens/nutritionPackages/NutritionPackages';
 import GiftCards from '../screens/giftCards/GiftCards';
+import NewGift from '../screens/newGift/NewGift';
+import Donate from '../screens/donate/Donate';
 
 
 export type RootStackParamList = {
@@ -61,6 +63,8 @@ export type RootStackParamList = {
   SignUp:undefined;
   NutritionPackages:undefined;
   GiftCards:undefined;
+  NewGift:undefined;
+  Donate:undefined;
   
 };
 
@@ -341,12 +345,28 @@ export const WellnessstackNavigator: FunctionComponent = () =>{
 export const MyProfilestackNavigator: FunctionComponent = () =>{
     const navigation = useNavigation(); 
     return (
-    <Stack.Navigator
-    screenOptions={{
-        headerShown: true,
-        // gestureEnabled: false
-      }}>
-        <Stack.Screen name="MyProfile" component={MyProfile} />
+    <Stack.Navigator>
+        <Stack.Screen 
+       options ={{
+        title: "Profile",
+          headerLeft: () =>(
+            <Icon name='ios-menu' size={25} color="#3C3C3C" style={{marginLeft: 10}}
+            backgroundColor='white'
+            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
+          )
+          ,headerRight: () =>(
+            <View style={{
+              flexDirection: 'row', 
+              justifyContent: 'center', 
+              alignItems: 'center'}}>
+               <TouchableOpacity activeOpacity={.7} style={styles.button}>
+                  <Text style={styles.buttonText}>Save</Text>
+               </TouchableOpacity>
+            </View>
+           
+          ),
+        }}
+        name="MyProfile" component={MyProfile} />
       </Stack.Navigator>
     )
 }
@@ -987,6 +1007,90 @@ export const GiftCardsStackNavigator: FunctionComponent = () =>{
                       ),
         }}
       name="GiftCards" component={GiftCards} />
+
+<Stack.Screen 
+         options ={({ navigation, route }) => ({
+            headerLeft: () =>(
+              <AntDesign name='arrowleft' size={25} color="#3C3C3C"  style={{marginLeft: 10}}
+              backgroundColor='white'
+              onPress={() => navigation.goBack()}
+              />
+            ),
+            headerRight: () =>(
+              <View style={{
+                flexDirection: 'row', 
+                justifyContent: 'center', 
+                alignItems: 'center'}}>
+                  <View style={{position: 'relative'}} >
+                      <View style={styles.bellContainer}>
+                        <Text style={styles.textbel}>2</Text>
+                      </View>
+
+                 <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C"  style={{marginRight: 20}}
+                    // onPress={() => navigation.goBack()}
+                    />
+                  </View >
+                  <View style={{position: 'relative'}} >
+                      <View style={styles.bellContainer}>
+                        <Text style={styles.textbel}>12</Text>
+                      </View>
+                      <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C"  style={{marginRight: 20}}
+                      onPress={() => navigation.navigate('MyCart')}
+                      />
+                  </View>
+              </View>
+             
+            ),
+            // headerTransparent:true,
+            title: "New Gift card",
+            
+          })}
+        name="NewGift" component={NewGift} />
+     
+    </Stack.Navigator>
+  )
+}
+
+export const DonateStackNavigator: FunctionComponent = () =>{
+  const navigation = useNavigation(); 
+  return (
+  <Stack.Navigator>
+      <Stack.Screen 
+      
+       options ={{
+        title: "Donate",
+          headerLeft: () =>(
+            <Icon name='ios-menu' size={25} color="#3C3C3C" style={{marginLeft: 10}}
+            backgroundColor='white'
+            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
+          )
+          ,headerRight: () =>(
+                        <View style={{
+                          flexDirection: 'row', 
+                          justifyContent: 'center', 
+                          alignItems: 'center'}}>
+                            <View style={{position: 'relative'}} >
+                                <View style={styles.bellContainer}>
+                                  <Text style={styles.textbel}>2</Text>
+                                </View>
+
+                           <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
+                              // onPress={() => navigation.goBack()}
+                              />
+                            </View >
+                            <View style={{position: 'relative'}} >
+                                <View style={styles.bellContainer}>
+                                  <Text style={styles.textbel}>12</Text>
+                                </View>
+                                <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
+                                onPress={() => navigation.navigate('MyCart')}
+                                />
+                            </View>
+                        </View>
+                       
+                      ),
+        }}
+      name="Donate" component={Donate} />
      
     </Stack.Navigator>
   )

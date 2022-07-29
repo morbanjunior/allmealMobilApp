@@ -109,7 +109,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
                )}
 
             label="Donate"
-            onPress={() =>{props.navigation.navigate('Allergic')}}
+            onPress={() =>{props.navigation.navigate('Donate')}}
             />
             <DrawerItem
           icon={(

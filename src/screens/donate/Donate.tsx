@@ -1,9 +1,9 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { mainColor, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared'
-import NutritioItem from './GiftItem'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import DonateItem from './DonateItem';
 
 const listGift=[1,2,3]
 
@@ -16,15 +16,15 @@ const GiftCards = () => {
             <View style={styles.viewScroll}>
                 {
                     listGift.map((item, index)=>(
-                        <NutritioItem/>
+                        <DonateItem/>
                     ))
                 }
-                <TouchableOpacity tyle={styles.containerButtom} onPress={() => navigation.navigate('NewGift')}>
+                {/* <TouchableOpacity tyle={styles.containerButtom} onPress={() => navigation.navigate('NewGift')}>
                     <View style={styles.buttom}>
                         <Ionicons name="add-circle" color={secundaryColor} style={styles.icon}/>
                         <Text style={styles.text}>New Gift Card</Text>
                     </View>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                
             </View>
         </ScrollView>
