@@ -24,7 +24,9 @@ const MyProfile = () => {
             </TouchableOpacity>
             </View>
             <ScrollView showsVerticalScrollIndicator={false} style={{width:ScreenWidth, marginBottom:5,}}>
-            <View style={styles.viewScroll}>
+            {
+              selected ==='1' ? (
+                <View style={styles.viewScroll}>
                 <View style={styles.inputContainer}>
                     <Text style={styles.headerTextInput}>First Name<Text style={{color:mainColor}}>*</Text></Text>
                     <TextInput placeholder='Type first Name...' style={styles.input}/>
@@ -93,6 +95,20 @@ const MyProfile = () => {
                 </View>
                 
              </View>
+              ):(<>
+              <View style={styles.viewScroll}>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.headerTextInput}>Referrer<Text style={{color:mainColor}}>*</Text></Text>
+                    <TextInput placeholder='Type Referrer...' style={styles.input}/>
+                </View>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.headerTextInput}>Referral Email<Text style={{color:mainColor}}>*</Text></Text>
+                    <TextInput placeholder='Type Referral Email*...' style={styles.input}/>
+                </View>
+                </View>
+              </>)
+            }
+            
             </ScrollView>
             
         </View>
