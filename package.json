@@ -25,6 +25,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.68.2",
+    "react-native-credit-card-input-plus": "^0.4.3",
     "react-native-datepicker": "^1.7.2",
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "~2.2.1",

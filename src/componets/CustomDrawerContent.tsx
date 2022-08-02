@@ -122,7 +122,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
                )}
 
             label="Digital Wallet"
-            onPress={() =>{props.navigation.navigate('Dashboard')}}
+            onPress={() =>{props.navigation.navigate('Wallet')}}
             />
             <DrawerItem
           icon={(

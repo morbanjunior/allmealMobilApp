@@ -36,6 +36,7 @@ import NewGift from '../screens/newGift/NewGift';
 import Donate from '../screens/donate/Donate';
 import Password from '../screens/password/Password';
 import PostDetails from '../screens/wellness/PostDetails';
+import Wallet from '../screens/wallet/Wallet';
 
 
 export type RootStackParamList = {
@@ -69,6 +70,7 @@ export type RootStackParamList = {
   Donate:undefined;
   Password:undefined;
   PostDetails:undefined;
+  Wallet:undefined;
   
 };
 
@@ -335,12 +337,42 @@ export const MyOrderstackNavigator: FunctionComponent = () =>{
 export const WellnessstackNavigator: FunctionComponent = () =>{
     const navigation = useNavigation(); 
     return (
-    <Stack.Navigator
-    screenOptions={{
-        headerShown: true,
-        // gestureEnabled: false
-      }}>
-        <Stack.Screen name="Wellness" component={Wellness} />
+    <Stack.Navigator>
+        <Stack.Screen 
+          options ={{
+            headerLeft: () =>(
+              <Icon name='ios-menu' size={25} color="#3C3C3C" style={{marginLeft: 10}}
+              backgroundColor='white'
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
+            )
+            ,headerRight: () =>(
+                          <View style={{
+                            flexDirection: 'row', 
+                            justifyContent: 'center', 
+                            alignItems: 'center'}}>
+                              <View style={{position: 'relative'}} >
+                                  <View style={styles.bellContainer}>
+                                    <Text style={styles.textbel}>2</Text>
+                                  </View>
+
+                             <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
+                                // onPress={() => navigation.goBack()}
+                                />
+                              </View >
+                              <View style={{position: 'relative'}} >
+                                  <View style={styles.bellContainer}>
+                                    <Text style={styles.textbel}>12</Text>
+                                  </View>
+                                  <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
+                                  onPress={() => navigation.navigate('MyCart')}
+                                  />
+                              </View>
+                          </View>
+                         
+                        ),
+          }}
+        
+        name="Wellness" component={Wellness} />
         <Stack.Screen 
          options ={({ navigation, route }) => ({
             headerLeft: () =>(
@@ -1165,6 +1197,51 @@ export const PasswordstackNavigator: FunctionComponent = () =>{
         name="Password" component={Password} />
       </Stack.Navigator>
     )
+}
+
+export const WalletStackNavigator: FunctionComponent = () =>{
+  const navigation = useNavigation(); 
+  return (
+  <Stack.Navigator>
+      <Stack.Screen 
+      
+       options ={{
+        title: "Digital Wallet",
+          headerLeft: () =>(
+            <Icon name='ios-menu' size={25} color="#3C3C3C" style={{marginLeft: 10}}
+            backgroundColor='white'
+            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
+          )
+          ,headerRight: () =>(
+                        <View style={{
+                          flexDirection: 'row', 
+                          justifyContent: 'center', 
+                          alignItems: 'center'}}>
+                            <View style={{position: 'relative'}} >
+                                <View style={styles.bellContainer}>
+                                  <Text style={styles.textbel}>2</Text>
+                                </View>
+
+                           <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
+                              // onPress={() => navigation.goBack()}
+                              />
+                            </View >
+                            <View style={{position: 'relative'}} >
+                                <View style={styles.bellContainer}>
+                                  <Text style={styles.textbel}>12</Text>
+                                </View>
+                                <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
+                                onPress={() => navigation.navigate('MyCart')}
+                                />
+                            </View>
+                        </View>
+                       
+                      ),
+        }}
+      name="Wallet" component={Wallet} />
+     
+    </Stack.Navigator>
+  )
 }
 
 const styles = StyleSheet.create({
