@@ -1,7 +1,5 @@
 import { ImageBackground, SafeAreaView, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-import TopMenu from '../../../componets/topMenu/TopMenu'
-import TopMenuCategoryItem from '../../../componets/topMenu/TopMenuCategoryItem'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const itemsProps=[1,2,3,4,5,6]

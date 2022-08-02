@@ -35,6 +35,7 @@ import GiftCards from '../screens/giftCards/GiftCards';
 import NewGift from '../screens/newGift/NewGift';
 import Donate from '../screens/donate/Donate';
 import Password from '../screens/password/Password';
+import PostDetails from '../screens/wellness/PostDetails';
 
 
 export type RootStackParamList = {
@@ -67,6 +68,7 @@ export type RootStackParamList = {
   NewGift:undefined;
   Donate:undefined;
   Password:undefined;
+  PostDetails:undefined;
   
 };
 
@@ -339,6 +341,44 @@ export const WellnessstackNavigator: FunctionComponent = () =>{
         // gestureEnabled: false
       }}>
         <Stack.Screen name="Wellness" component={Wellness} />
+        <Stack.Screen 
+         options ={({ navigation, route }) => ({
+            headerLeft: () =>(
+              <AntDesign name='arrowleft' size={25} color="#fff" style={{marginLeft: 10}}
+              backgroundColor='white'
+              onPress={() => navigation.goBack()}
+              />
+            ),
+            headerRight: () =>(
+              <View style={{
+                flexDirection: 'row', 
+                justifyContent: 'center', 
+                alignItems: 'center'}}>
+                  <View style={{position: 'relative'}} >
+                      <View style={styles.bellContainer}>
+                        <Text style={styles.textbel}>2</Text>
+                      </View>
+
+                 <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#fff" style={{marginRight: 20}}
+                    // onPress={() => navigation.goBack()}
+                    />
+                  </View >
+                  <View style={{position: 'relative'}} >
+                      <View style={styles.bellContainer}>
+                        <Text style={styles.textbel}>12</Text>
+                      </View>
+                      <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#fff" style={{marginRight: 20}}
+                      onPress={() => navigation.navigate('MyCart')}
+                      />
+                  </View>
+              </View>
+             
+            ),
+            headerTransparent:true,
+            title: "",
+            
+          })}
+        name="PostDetails" component={PostDetails} />
       </Stack.Navigator>
     )
 }
