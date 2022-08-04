@@ -16,10 +16,10 @@ const Adresses = () => {
         <View style={styles.wrapper}>
             <View style={styles.headerContainer} >
                 <TouchableOpacity onPress={()=>Setselected('1')} activeOpacity={.7} style={[selected=== '1' ? styles.headerButtomActive : styles.headerButtom]}>
-                    <Text style={[selected=== '1' ? styles.headertextActive : styles.headertext]}>Order Details</Text>
+                    <Text style={[selected=== '1' ? styles.headertextActive : styles.headertext]}>Billing Adress</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={()=>Setselected('2')} activeOpacity={.7} style={[selected=== '2' ? styles.headerButtomActive : styles.headerButtom]}>
-                    <Text style={[selected=== '2' ? styles.headertextActive : styles.headertext]}>Renewal Orders</Text>
+                    <Text style={[selected=== '2' ? styles.headertextActive : styles.headertext]}>Delivery Address</Text>
                 </TouchableOpacity>
                 <TouchableOpacity  onPress={()=>navigation.navigate('NewAddress')} activeOpacity={.7} style={styles.addButtomActive }>
                    <AntDesign name="plus" color={secundaryColor} style={styles.iconAdres}/>

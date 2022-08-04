@@ -11,14 +11,20 @@ import {
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { Divider } from 'react-native-elements/dist/divider/Divider';
 import Material from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { DrawerActions } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector} from 'react-redux'
 
-import user from '../../assets/img/user.png'
+
+// import user from 'https://img.favpng.com/25/13/19/samsung-galaxy-a8-a8-user-login-telephone-avatar-png-favpng-dqKEPfX7hPbc6SMVUCteANKwj.jpg'
+import { selectimgAvatar } from '../redux/store';
 
 export function CustomDrawerContent(props: DrawerContentComponentProps) {
     const navigation = useNavigation(); 
+    const imgAvatar = useSelector(selectimgAvatar);
+    
 
     return (
      <View style={{flex:1, marginTop: -20}}>
@@ -34,7 +40,14 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
                        
                 </View>
           <View style={styles.userInfoSection}>
-               <Image source={user}/>
+               <Image source={{ uri: imgAvatar }}
+               style={{
+                width: 56,
+                height: 56,
+                borderRadius:30,
+               
+               }}
+               />
                <View style={styles.userInfoDetails}>
                     <Text style={styles.textName}>Marco Williams</Text>
                     <Text style={styles.textEmail}>marcowilliams@allmealprep.com</Text>
@@ -43,6 +56,19 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
           <Divider width={1} style={{marginTop:20}}/>
         
         <View style={styles.items}>
+            <DrawerItem
+          icon={(
+            {color, size}
+          ) => (
+            <AntDesign 
+                name="user" 
+                color={color}
+                size={size} />
+               )}
+
+            label="My Profile"
+            onPress={() =>{props.navigation.navigate('MyProfile')}}
+            />
 
         <DrawerItem
           icon={(
@@ -57,98 +83,31 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
             label="My Orders"
             onPress={() =>{props.navigation.navigate('MyOrders')}}
             />
-
-          <DrawerItem
-          icon={(
-            {color, size}
-          ) => (
-            <Material 
-                name="badge-account-horizontal-outline" 
-                color={color}
-                size={size} />
-               )}
-
-            label="Adresses"
-            onPress={() =>{props.navigation.navigate('Adresses')}}
-            />
-          <DrawerItem
-          icon={(
-            {color, size}
-          ) => (
-            <Material 
-                name="food-takeout-box-outline" 
-                color={color}
-                size={size} />
-               )}
-
-            label="Book Catering"
-            onPress={() =>{props.navigation.navigate('BookCatering')}}
-            />
-
-          <DrawerItem
-          icon={(
-            {color, size}
-          ) => (
-            <AntDesign 
-                name="CodeSandbox" 
-                color={color}
-                size={size} />
-               )}
-
-            label="Containers"
-            onPress={() =>{props.navigation.navigate('Containers')}}
-            />
             <DrawerItem
+              icon={(
+                {color, size}
+              ) => (
+                <AntDesign 
+                    name="wallet" 
+                    color={color}
+                    size={size} />
+                  )}
+
+                label="Digital Wallet"
+                onPress={() =>{props.navigation.navigate('Wallet')}}
+            />
+             <DrawerItem
           icon={(
             {color, size}
           ) => (
             <Material 
-                name="hand-heart-outline" 
+                name="truck-outline" 
                 color={color}
                 size={size} />
                )}
 
-            label="Donate"
-            onPress={() =>{props.navigation.navigate('Donate')}}
-            />
-            <DrawerItem
-          icon={(
-            {color, size}
-          ) => (
-            <AntDesign 
-                name="wallet" 
-                color={color}
-                size={size} />
-               )}
-
-            label="Digital Wallet"
-            onPress={() =>{props.navigation.navigate('Wallet')}}
-            />
-            <DrawerItem
-          icon={(
-            {color, size}
-          ) => (
-            <Material 
-                name="help-circle-outline" 
-                color={color}
-                size={size} />
-               )}
-
-            label="FAQ"
-            onPress={() =>{props.navigation.navigate('Faq')}}
-            />
-            <DrawerItem
-          icon={(
-            {color, size}
-          ) => (
-            <Material 
-                name="wallet-giftcard" 
-                color={color}
-                size={size} />
-               )}
-
-            label="Gift Card"
-            onPress={() =>{props.navigation.navigate('GiftCards')}}
+            label="Pick-up Bag/Glass"
+            onPress={() =>{props.navigation.navigate('Pickup')}}
             />
             <DrawerItem
           icon={(
@@ -163,20 +122,8 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
             label="Nutrition Packages"
             onPress={() =>{props.navigation.navigate('NutritionPackages')}}
             />
-            <DrawerItem
-          icon={(
-            {color, size}
-          ) => (
-            <Material 
-                name="truck-outline" 
-                color={color}
-                size={size} />
-               )}
 
-            label="Pickup Glasssware"
-            onPress={() =>{props.navigation.navigate('Pickup')}}
-            />
-            <DrawerItem
+          <DrawerItem
           icon={(
             {color, size}
           ) => (
@@ -189,7 +136,89 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
             label="Refer & Earn"
             onPress={() =>{props.navigation.navigate('Refer')}}
             />
-        <DrawerItem
+              <DrawerItem
+          icon={(
+            {color, size}
+          ) => (
+            <MaterialIcons 
+                name="storefront" 
+                color={color}
+                size={size} />
+               )}
+
+            label="AMP Store"
+            onPress={() =>{props.navigation.navigate('AmpStore')}}
+            />
+            <DrawerItem
+          icon={(
+            {color, size}
+          ) => (
+            <Material 
+                name="wallet-giftcard" 
+                color={color}
+                size={size} />
+               )}
+
+            label="Gift Card"
+            onPress={() =>{props.navigation.navigate('GiftCards')}}
+            />
+          {/* <DrawerItem
+          icon={(
+            {color, size}
+          ) => (
+            <Material 
+                name="badge-account-horizontal-outline" 
+                color={color}
+                size={size} />
+               )}
+
+            label="Adresses"
+            onPress={() =>{props.navigation.navigate('Adresses')}}
+            /> */}
+          {/* <DrawerItem
+          icon={(
+            {color, size}
+          ) => (
+            <Material 
+                name="food-takeout-box-outline" 
+                color={color}
+                size={size} />
+               )}
+
+            label="Book Catering"
+            onPress={() =>{props.navigation.navigate('BookCatering')}}
+            /> */}
+
+          
+            {/* <DrawerItem
+          icon={(
+            {color, size}
+          ) => (
+            <Material 
+                name="hand-heart-outline" 
+                color={color}
+                size={size} />
+               )}
+
+            label="Donate"
+            onPress={() =>{props.navigation.navigate('Donate')}}
+            /> */}
+            
+            <DrawerItem
+          icon={(
+            {color, size}
+          ) => (
+            <Material 
+                name="help-circle-outline" 
+                color={color}
+                size={size} />
+               )}
+
+            label="FAQ"
+            onPress={() =>{props.navigation.navigate('Faq')}}
+            />
+          
+        {/* <DrawerItem
           icon={(
             {color, size}
           ) => (
@@ -201,7 +230,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
 
             label="Password"
             onPress={() =>{props.navigation.navigate('Password')}}
-            />
+            /> */}
 
         </View>
         <Divider width={1} />

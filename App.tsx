@@ -2,7 +2,8 @@
 import RootDrawer from './src/navigators/RootDrawer'
 import AppLoading from "expo-app-loading"
 import { useFonts } from 'expo-font';
-
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
 export default function App() {
 
   // let [fontsLoaded] = useFonts({
@@ -29,9 +30,10 @@ export default function App() {
   // }
 
   return (
-
-
-    <RootDrawer/>
+    <Provider store={store}>
+      <RootDrawer/>
+    </Provider>
+    
   );
 }
 

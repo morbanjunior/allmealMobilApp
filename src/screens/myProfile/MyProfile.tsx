@@ -3,30 +3,56 @@ import React,{useState} from 'react'
 import { mainColor, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared'
 import { RadioButton } from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
+import { useNavigation } from '@react-navigation/native';
+import ImagePickerExample from '../../componets/PickImage';
+
 
 const MyProfile = () => {
   const [selected, Setselected] = useState('1');
   const [gender, SetGender]= useState('Male');
-
+  const navigation = useNavigation(); 
+  
   return (
     <View style={styles.container}>
         <View style={styles.wrapper}>
+          <ScrollView showsHorizontalScrollIndicator={false} horizontal={true} style={{width:ScreenWidth, marginBottom:5,}}>
             <View style={styles.headerTop}>
-            <TouchableOpacity onPress={()=>Setselected('1')} style={styles.containerItem}>
-                <View style={[selected === '1' ? styles.wrapperActive :  styles.wrapperItem]}>
-                    <Text style={[selected === '1' ? styles.textActive :  styles.text]}>Basic Details</Text>
-                </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={()=>Setselected('2')} style={styles.containerItem}>
-                <View style={[selected === '2' ? styles.wrapperActive :  styles.wrapperItem]}>
-                    <Text style={[selected === '2' ? styles.textActive :  styles.text]}>How did you know about us?</Text>
-                </View>
-            </TouchableOpacity>
+            
+              <TouchableOpacity onPress={()=>Setselected('1')} style={styles.containerItem}>
+                  <View style={[selected === '1' ? styles.wrapperActive :  styles.wrapperItem]}>
+                      <Text style={[selected === '1' ? styles.textActive :  styles.text]}>Basic Details</Text>
+                  </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={()=>Setselected('2')} style={styles.containerItem}>
+                  <View style={[selected === '2' ? styles.wrapperActive :  styles.wrapperItem]}>
+                      <Text style={[selected === '2' ? styles.textActive :  styles.text]}>How did you know about us?</Text>
+                  </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={()=>Setselected('3')} style={styles.containerItem} onPress={() => navigation.navigate('Adresses')}>
+                  <View style={[selected === '3' ? styles.wrapperActive :  styles.wrapperItem]}>
+                      <Text style={[selected === '3' ? styles.textActive :  styles.text]}>Adresses</Text>
+                  </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={()=>Setselected('4')} style={styles.containerItem} onPress={() => navigation.navigate('Allergic')}>
+                  <View style={[selected === '4' ? styles.wrapperActive :  styles.wrapperItem]}>
+                      <Text style={[selected === '4' ? styles.textActive :  styles.text]}>Allergy Preferences</Text>
+                  </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={()=>Setselected('5')} style={styles.containerItem} onPress={() => navigation.navigate('Password')}>
+                  <View style={[selected === '5' ? styles.wrapperActive :  styles.wrapperItem]}>
+                      <Text style={[selected === '5' ? styles.textActive :  styles.text]}>Password</Text>
+                  </View>
+              </TouchableOpacity>
+            
             </View>
-            <ScrollView showsVerticalScrollIndicator={false} style={{width:ScreenWidth, marginBottom:5,}}>
+            </ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false} style={{width:ScreenWidth, marginBottom:'auto',}}>
             {
               selected ==='1' ? (
                 <View style={styles.viewScroll}>
+                  <View style={styles.inputContainer}>
+                    <ImagePickerExample/>
+                </View>
                 <View style={styles.inputContainer}>
                     <Text style={styles.headerTextInput}>First Name<Text style={{color:mainColor}}>*</Text></Text>
                     <TextInput placeholder='Type first Name...' style={styles.input}/>
@@ -121,8 +147,8 @@ export default MyProfile
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
+    // flexDirection: 'row',
+    // justifyContent: 'center',
     backgroundColor: secundaryColor,
     
   },
@@ -137,6 +163,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     padding: 10,
+    // width: ScreenWidth,
   },
   containerItem: {
     display:'flex',
