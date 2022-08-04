@@ -13,65 +13,63 @@ const Signin: FunctionComponent<props>= ({navigation}) => {
   const [email, SetUserEmail] = useState<string>('');
   const [password, SetPassword] = useState<string>('');
   return (
+    <View style={styles.container}>
+    <ImageBackground source={
+        require('../../../assets/img/Welcome.png')} 
+        resizeMode="cover"
+        style={styles.img}
+        >
+    <SafeAreaView>
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-       <KeyboardAvoidingView behavior="padding" style={styles.containerKey}>
-          <View style={styles.container}>
-          <ImageBackground source={
-              require('../../../assets/img/Welcome.png')} 
-              resizeMode="cover"
-              style={styles.img}
-              >
-          <SafeAreaView>
-        
-              <View style={styles.wrapper}>
-                  <View style={styles.header}>
-                      <Image 
-                      source={require('../../../assets/img/logoAMP.png')}
-                      />
-                      <View style={styles.containerTitle}>
-                          <Text style={styles.title}>Meal Prep</Text>
-                          <Text style={styles.title}>Chicago</Text>
-                      </View>
-                  </View>
-                  <View style={styles.containerBottom}>
-                      <View style={styles.wrapperButton}>
-                          <Text style={styles.textLogin}>Log In</Text>
-                      </View>
-                      <View style={styles.containerInput}>
-                          <TextInput 
-                            style={styles.input}
-                            placeholder="Username or Email"
-                            
-                          />
-                          <TextInput 
-                            style={styles.input}
-                            placeholder="Password"
-                            secureTextEntry={true} 
-                          />
-                      </View>
-                      <TouchableOpacity activeOpacity={.7} 
-                      style={styles.buttomSignin}
-                      onPress={()=>navigation.navigate('Home')}
-                      >
-                              <Icon name="user-check" type="ionicon" color="#fff" style={styles.iconLogin}/>
-                              <Text style={styles.textButtomLogin}>Log In</Text>
-                      </TouchableOpacity>
-                      <View style={styles.containertextBottom}>
-                          <Text style={styles.textAccount}>Don’t have an account?</Text>
-                          <TouchableOpacity  onPress={()=>navigation.navigate('SignUp')}>
-                              <Text style={styles.textRegister}>Register here</Text>
-                          </TouchableOpacity>
-                        
-                              </View>
-                        </View>
-                      </View>
-                    
-                  </SafeAreaView>
-                      
-            </ImageBackground>
+      <KeyboardAvoidingView behavior="padding" style={styles.containerKey}>
+        <View style={styles.wrapper}>
+            <View style={styles.header}>
+                <Image 
+                source={require('../../../assets/img/logoAMP.png')}
+                />
+                <View style={styles.containerTitle}>
+                    <Text style={styles.title}>Meal Prep</Text>
+                    <Text style={styles.title}>Chicago</Text>
+                </View>
+            </View>
+            <View style={styles.containerBottom}>
+                <View style={styles.wrapperButton}>
+                    <Text style={styles.textLogin}>Log In</Text>
+                </View>
+                <View style={styles.containerInput}>
+                    <TextInput 
+                       style={styles.input}
+                       placeholder="Username or Email"
+                       
+                    />
+                    <TextInput 
+                       style={styles.input}
+                       placeholder="Password"
+                       secureTextEntry={true} 
+                    />
+                </View>
+                <TouchableOpacity activeOpacity={.7} 
+                style={styles.buttomSignin}
+                onPress={()=>navigation.navigate('Home')}
+                >
+                        <Icon name="user-check" type="ionicon" color="#fff" style={styles.iconLogin}/>
+                        <Text style={styles.textButtomLogin}>Log In</Text>
+                </TouchableOpacity>
+                <View style={styles.containertextBottom}>
+                    <Text style={styles.textAccount}>Don’t have an account?</Text>
+                    <TouchableOpacity  onPress={()=>navigation.navigate('SignUp')}>
+                        <Text style={styles.textRegister}>Register here</Text>
+                    </TouchableOpacity>
+                   
+                </View>
+          </View>
         </View>
-            </KeyboardAvoidingView> 
-       </TouchableWithoutFeedback>
+        </KeyboardAvoidingView> 
+        </TouchableWithoutFeedback>
+    </SafeAreaView>
+        
+    </ImageBackground>
+</View>
   )
 }
 

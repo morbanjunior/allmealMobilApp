@@ -1,17 +1,23 @@
-import { SafeAreaView, StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, Image, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView } from 'react-native'
 import React from 'react'
-import { mainColor, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared'
+import { mainColor, Screenheight, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 
 const SignUp = () => {
     const navigation = useNavigation(); 
 
   return (
-        <View style={styles.container}>
-            <SafeAreaView>
-                <View style={styles.wrapper}>
+    <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <KeyboardAvoidingView behavior="padding" style={styles.containerKey}>
+           
+                  {/* <View style={styles.container}> */}
+                      <SafeAreaView>
+                      
+                      <View style={styles.wrapper}>
                     <Image 
                      source={require('../../../assets/img/logoAMP.png')}
                      style={styles.img}
@@ -43,9 +49,12 @@ const SignUp = () => {
                          <Text style={styles.saveButtomText}>Create Account</Text>
                     </TouchableOpacity>
                 </View>
-                
-            </SafeAreaView>
-        </View>
+                        
+                      </SafeAreaView>
+                  {/* </View> */}
+          </KeyboardAvoidingView>
+        </TouchableWithoutFeedback>
+    </KeyboardAwareScrollView>
     
   )
 }
@@ -57,14 +66,23 @@ const styles = StyleSheet.create({
         flex: 1,
         // backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         backgroundColor: secundaryColor,
+    },
+    containerKey:{
+      // flex:1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: secundaryColor,
+      height: Screenheight
     },
     wrapper:{
         // backgroundColor: '#000',
         // width: ScreenWidth-20,
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center',
+        
       },
       img:{
         width: 69,
