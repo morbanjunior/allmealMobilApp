@@ -15,7 +15,6 @@ const Signin: FunctionComponent<props>= ({navigation}) => {
   const [loginUser,{data, isError, error, isLoading}] = useLoginUserMutation();
   const [email, SetUserEmail] = useState<string>('');
   const [password, SetPassword] = useState<string>('');
-  const [errorLoing, SetErrorLoing] = useState<string>('');
   const toast = useToast();
   const dispatch = useDispatch();
 
@@ -84,12 +83,10 @@ const Signin: FunctionComponent<props>= ({navigation}) => {
 const onChangeEmail = (e: NativeSyntheticEvent<TextInputChangeEventData>): void => {
   const value = e.nativeEvent.text;
   SetUserEmail(value);
-  SetErrorLoing('');
 }
 const onChangePassword = (e: NativeSyntheticEvent<TextInputChangeEventData>): void => {
   const value = e.nativeEvent.text;
   SetPassword(value);
-  SetErrorLoing('')
 }
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

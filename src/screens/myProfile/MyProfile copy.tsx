@@ -1,6 +1,6 @@
-import { Keyboard, KeyboardAvoidingView, NativeSyntheticEvent, ScrollView, StyleSheet, Text, TextInput, TextInputChangeEventData, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native'
+import { KeyboardAvoidingView, NativeSyntheticEvent, ScrollView, StyleSheet, Text, TextInput, TextInputChangeEventData, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native'
 import React,{useState} from 'react'
-import { mainColor, Screenheight, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared'
+import { mainColor, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared'
 import { RadioButton } from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
@@ -58,11 +58,11 @@ const onChanDateofBirth = (e: NativeSyntheticEvent<TextInputChangeEventData>): v
 
 
   return (
-    <KeyboardAwareScrollView showsVerticalScrollIndicator={false} style={styles.scrollContainer} >
+    <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <KeyboardAvoidingView behavior="padding" style={styles.containerKey}>
 
-              {/* <View style={styles.container}> */}
+              <View style={styles.container}>
                   <View style={styles.wrapper}>
                     <ScrollView showsHorizontalScrollIndicator={false} horizontal={true} style={{width:ScreenWidth, marginBottom:5,}}>
                       <View style={styles.headerTop}>
@@ -96,7 +96,7 @@ const onChanDateofBirth = (e: NativeSyntheticEvent<TextInputChangeEventData>): v
                       </View>
                       </ScrollView>
                       
-                      {/* <ScrollView showsVerticalScrollIndicator={false} style={{width:ScreenWidth, marginBottom:'auto',}}> */}
+                      <ScrollView showsVerticalScrollIndicator={false} style={{width:ScreenWidth, marginBottom:'auto',}}>
                       {
                         selected ==='1' ? (
                           <View style={styles.viewScroll}>
@@ -218,10 +218,10 @@ const onChanDateofBirth = (e: NativeSyntheticEvent<TextInputChangeEventData>): v
                         </>)
                       }
                       
-                      {/* </ScrollView> */}
+                      </ScrollView>
                       
                   </View>
-              {/* </View> */}
+              </View>
               </KeyboardAvoidingView>
         </TouchableWithoutFeedback>
     </KeyboardAwareScrollView>
@@ -231,16 +231,9 @@ const onChanDateofBirth = (e: NativeSyntheticEvent<TextInputChangeEventData>): v
 export default MyProfile
 
 const styles = StyleSheet.create({
-  scrollContainer:{
+  container:{
     flex: 1,
     backgroundColor: secundaryColor,
-    
-    
-  },
-  containerKey:{
-    // flex:1,
-    alignItems: 'center',
-    justifyContent: 'center',
     
   },
   wrapper:{
