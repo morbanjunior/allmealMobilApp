@@ -19,12 +19,14 @@ import { useSelector} from 'react-redux'
 
 
 // import user from 'https://img.favpng.com/25/13/19/samsung-galaxy-a8-a8-user-login-telephone-avatar-png-favpng-dqKEPfX7hPbc6SMVUCteANKwj.jpg'
-import { selectimgAvatar } from '../redux/store';
+import { selectimgAvatar, selectUserData } from '../redux/store';
 
 export function CustomDrawerContent(props: DrawerContentComponentProps) {
     const navigation = useNavigation(); 
     const imgAvatar = useSelector(selectimgAvatar);
+    const userData = useSelector(selectUserData);
     
+    const {email, first_name,last_name }=userData
 
     return (
      <View style={{flex:1, marginTop: -20}}>
@@ -49,8 +51,8 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
                }}
                />
                <View style={styles.userInfoDetails}>
-                    <Text style={styles.textName}>Marco Williams</Text>
-                    <Text style={styles.textEmail}>marcowilliams@allmealprep.com</Text>
+                    <Text style={styles.textName}>{first_name + " " + last_name }</Text>
+                    <Text style={styles.textEmail}>{email}</Text>
                </View>
           </View>
           <Divider width={1} style={{marginTop:20}}/>

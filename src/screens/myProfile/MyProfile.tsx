@@ -5,6 +5,8 @@ import { RadioButton } from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import ImagePickerExample from '../../componets/PickImage';
+import { useSelector } from 'react-redux';
+import { selectUserData } from '../../redux/store';
 
 
 const MyProfile = () => {
@@ -12,6 +14,12 @@ const MyProfile = () => {
   const [gender, SetGender]= useState('Male');
   const navigation = useNavigation(); 
   
+const handleLogout = ()=>{
+
+  const userData = useSelector(selectUserData);
+  navigation.navigate('Welcome')
+}
+
   return (
     <View style={styles.container}>
         <View style={styles.wrapper}>
@@ -114,7 +122,7 @@ const MyProfile = () => {
                     </View>
                 </View>
                 <View style={styles.buttomContainer}>
-                  <TouchableOpacity activeOpacity={.7} style={styles.saveButtom}>
+                  <TouchableOpacity activeOpacity={.7} style={styles.saveButtom} onPress={handleLogout}>
                       <Feather name="log-out" color={secundaryColor} style={styles.icon}/>
                       <Text style={styles.saveButtomText}>Logout</Text>
                   </TouchableOpacity>

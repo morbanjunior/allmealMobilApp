@@ -4,6 +4,9 @@ import AppLoading from "expo-app-loading"
 import { useFonts } from 'expo-font';
 import { Provider } from 'react-redux';
 import store from './src/redux/store';
+import { ToastProvider } from 'react-native-toast-notifications'
+
+
 export default function App() {
 
   // let [fontsLoaded] = useFonts({
@@ -30,10 +33,11 @@ export default function App() {
   // }
 
   return (
-    <Provider store={store}>
-      <RootDrawer/>
-    </Provider>
-    
+    <ToastProvider>
+      <Provider store={store}>
+        <RootDrawer/>
+      </Provider>
+    </ToastProvider>
   );
 }
 

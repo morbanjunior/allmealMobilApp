@@ -10,14 +10,14 @@ export interface User {
     email: string,
     first_name: string,
     last_name: string,        
-    date_of_birth: Date | null,
+    date_of_birth: Date | null | string,
     username: string,
     phone_number: string | null,
-    verification_code: string | null,
+    verification_code: string | null ,
     verification_code_expiry:string | null,
     is_verified: boolean,
-    created_at: Date,
-    updated_at: Date,
+    created_at: Date | string | null,
+    updated_at: Date | string | null,
 }
 
 export interface SignIResnModel {

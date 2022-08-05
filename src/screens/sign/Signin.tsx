@@ -1,10 +1,13 @@
-import { StyleSheet, Text, View, Image, ImageBackground, SafeAreaView, TouchableOpacity, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native'
-import React, { FunctionComponent, useState } from 'react'
+import { StyleSheet, Text, View, Image, ImageBackground, SafeAreaView, TouchableOpacity, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, NativeSyntheticEvent, TextInputChangeEventData } from 'react-native'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { RootStackParamList } from '../../navigators/RootDrawer';
 import { StackScreenProps } from '@react-navigation/stack';
 import { Screenheight, ScreenWidth } from '../../componets/shared';
 import { useLoginUserMutation } from '../../redux/api/authApi';
+import { useToast } from "react-native-toast-notifications";
+import { useDispatch } from 'react-redux';
+import { loginData } from '../../redux/loginSlice';
 
 type props = StackScreenProps<RootStackParamList, 'Signin'>
 
@@ -12,6 +15,82 @@ const Signin: FunctionComponent<props>= ({navigation}) => {
   const [loginUser,{data, isError, error, isLoading}] = useLoginUserMutation();
   const [email, SetUserEmail] = useState<string>('');
   const [password, SetPassword] = useState<string>('');
+  const [errorLoing, SetErrorLoing] = useState<string>('');
+  const toast = useToast();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+
+    if(data && data.data.access_token){
+     
+      SetUserEmail('');
+      SetPassword('');
+      navigation.navigate('Home')
+      // SetIsLogin(true)
+      // console.log(data)
+      dispatch(loginData({
+        userLogin: true,
+        token: data.data.access_token,
+        userData: data.data.user
+      }))
+      
+    }
+   if(isError){
+   
+        if (error) {
+          if ('status' in error) {
+            // you can access all properties of `FetchBaseQueryError` here
+            
+            toast.show(JSON.stringify(error.data.error.message), {
+              type: "danger",
+              placement: "bottom",
+              duration: 4000,
+              animationType: "slide-in",
+              
+            });
+            SetUserEmail('');
+            SetPassword('');
+          }
+      }
+  
+   }
+  
+   
+},[data, isError])
+
+  const sign_in= {
+    "login": email,
+  "password": password
+  }
+  const HandlerLogin = async () =>{
+  
+   if(email=='' || password==''){
+    toast.show('Email or password are required', {
+      type: "danger",
+      placement: "bottom",
+      duration: 4000,
+      animationType: "slide-in",
+      
+    });
+   }
+   else{
+    await loginUser({sign_in})
+   
+   }
+   
+   }
+
+
+const onChangeEmail = (e: NativeSyntheticEvent<TextInputChangeEventData>): void => {
+  const value = e.nativeEvent.text;
+  SetUserEmail(value);
+  SetErrorLoing('');
+}
+const onChangePassword = (e: NativeSyntheticEvent<TextInputChangeEventData>): void => {
+  const value = e.nativeEvent.text;
+  SetPassword(value);
+  SetErrorLoing('')
+}
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
        <KeyboardAvoidingView behavior="padding" style={styles.containerKey}>
@@ -41,17 +120,21 @@ const Signin: FunctionComponent<props>= ({navigation}) => {
                           <TextInput 
                             style={styles.input}
                             placeholder="Username or Email"
-                            
+                            value={email}
+                            onChange={onChangeEmail}
                           />
                           <TextInput 
                             style={styles.input}
                             placeholder="Password"
                             secureTextEntry={true} 
+                            value={password} 
+                            onChange={onChangePassword}
                           />
                       </View>
                       <TouchableOpacity activeOpacity={.7} 
                       style={styles.buttomSignin}
-                      onPress={()=>navigation.navigate('Home')}
+                      // onPress={()=>navigation.navigate('Home')}
+                      onPress={HandlerLogin}
                       >
                               <Icon name="user-check" type="ionicon" color="#fff" style={styles.iconLogin}/>
                               <Text style={styles.textButtomLogin}>Log In</Text>
