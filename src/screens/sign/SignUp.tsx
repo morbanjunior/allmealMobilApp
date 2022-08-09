@@ -10,7 +10,7 @@ const SignUp = () => {
     const navigation = useNavigation(); 
 
   return (
-    <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
+    <KeyboardAwareScrollView showsVerticalScrollIndicator={false} >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <KeyboardAvoidingView behavior="padding" style={styles.containerKey}>
            

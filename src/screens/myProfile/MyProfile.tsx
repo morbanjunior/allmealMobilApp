@@ -58,51 +58,57 @@ const onChanDateofBirth = (e: NativeSyntheticEvent<TextInputChangeEventData>): v
 
 
   return (
-    <KeyboardAwareScrollView showsVerticalScrollIndicator={false} style={styles.scrollContainer} >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <KeyboardAvoidingView behavior="padding" style={styles.containerKey}>
-
-              {/* <View style={styles.container}> */}
-                  <View style={styles.wrapper}>
-                    <ScrollView showsHorizontalScrollIndicator={false} horizontal={true} style={{width:ScreenWidth, marginBottom:5,}}>
-                      <View style={styles.headerTop}>
+    <KeyboardAwareScrollView contentContainerStyle={{flex: 1}}>
+      <View style={{flex: 1}}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{width:ScreenWidth, marginBottom: -10}}>
+            <View style={{flexDirection: 'column', justifyContent: 'flex-start'}}>
+                <ScrollView showsHorizontalScrollIndicator={false} horizontal={true} style={{width:ScreenWidth, marginBottom:5,}}>
+                    <View style={styles.headerTop}>
+                          
+                            <TouchableOpacity onPress={()=>Setselected('1')} style={styles.containerItem}>
+                                <View style={[selected === '1' ? styles.wrapperActive :  styles.wrapperItem]}>
+                                    <Text style={[selected === '1' ? styles.textActive :  styles.text]}>Basic Details</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={()=>Setselected('2')} style={styles.containerItem}>
+                                <View style={[selected === '2' ? styles.wrapperActive :  styles.wrapperItem]}>
+                                    <Text style={[selected === '2' ? styles.textActive :  styles.text]}>How did you know about us?</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={()=>Setselected('3')} style={styles.containerItem} onPress={() => navigation.navigate('Adresses')}>
+                                <View style={[selected === '3' ? styles.wrapperActive :  styles.wrapperItem]}>
+                                    <Text style={[selected === '3' ? styles.textActive :  styles.text]}>Adresses</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={()=>Setselected('4')} style={styles.containerItem} onPress={() => navigation.navigate('Allergic')}>
+                                <View style={[selected === '4' ? styles.wrapperActive :  styles.wrapperItem]}>
+                                    <Text style={[selected === '4' ? styles.textActive :  styles.text]}>Allergy Preferences</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={()=>Setselected('5')} style={styles.containerItem} onPress={() => navigation.navigate('Password')}>
+                                <View style={[selected === '5' ? styles.wrapperActive :  styles.wrapperItem]}>
+                                    <Text style={[selected === '5' ? styles.textActive :  styles.text]}>Password</Text>
+                                </View>
+                            </TouchableOpacity>
+                          
+                    </View>
+                    <View>
                       
-                        <TouchableOpacity onPress={()=>Setselected('1')} style={styles.containerItem}>
-                            <View style={[selected === '1' ? styles.wrapperActive :  styles.wrapperItem]}>
-                                <Text style={[selected === '1' ? styles.textActive :  styles.text]}>Basic Details</Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>Setselected('2')} style={styles.containerItem}>
-                            <View style={[selected === '2' ? styles.wrapperActive :  styles.wrapperItem]}>
-                                <Text style={[selected === '2' ? styles.textActive :  styles.text]}>How did you know about us?</Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>Setselected('3')} style={styles.containerItem} onPress={() => navigation.navigate('Adresses')}>
-                            <View style={[selected === '3' ? styles.wrapperActive :  styles.wrapperItem]}>
-                                <Text style={[selected === '3' ? styles.textActive :  styles.text]}>Adresses</Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>Setselected('4')} style={styles.containerItem} onPress={() => navigation.navigate('Allergic')}>
-                            <View style={[selected === '4' ? styles.wrapperActive :  styles.wrapperItem]}>
-                                <Text style={[selected === '4' ? styles.textActive :  styles.text]}>Allergy Preferences</Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>Setselected('5')} style={styles.containerItem} onPress={() => navigation.navigate('Password')}>
-                            <View style={[selected === '5' ? styles.wrapperActive :  styles.wrapperItem]}>
-                                <Text style={[selected === '5' ? styles.textActive :  styles.text]}>Password</Text>
-                            </View>
-                        </TouchableOpacity>
-                      
-                      </View>
-                      </ScrollView>
-                      
-                      {/* <ScrollView showsVerticalScrollIndicator={false} style={{width:ScreenWidth, marginBottom:'auto',}}> */}
-                      {
+                    </View>
+                </ScrollView>
+                
+                    <View style={styles.viewScroll}>
+                     {
                         selected ==='1' ? (
-                          <View style={styles.viewScroll}>
-                            <View style={styles.inputContainer}>
+                          <View>
+                            <View style={styles.image}>
                               <ImagePickerExample/>
-                          </View>
+                            </View>
+                            <View style={{
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            marginBottom: 'auto'
+                          }}>
                           <View style={styles.inputContainer}>
                               <Text style={styles.headerTextInput}>First Name<Text style={{color:mainColor}}>*</Text></Text>
                               <TextInput
@@ -202,10 +208,14 @@ const onChanDateofBirth = (e: NativeSyntheticEvent<TextInputChangeEventData>): v
                                 <Text style={styles.saveButtomText}>Logout</Text>
                             </TouchableOpacity>
                           </View>
-                          
+                            </View>
                       </View>
                         ):(<>
-                        <View style={styles.viewScroll}>
+                        <View style={{
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            marginBottom: 'auto'
+                          }}>
                           <View style={styles.inputContainer}>
                               <Text style={styles.headerTextInput}>Referrer<Text style={{color:mainColor}}>*</Text></Text>
                               <TextInput placeholder='Type Referrer...' style={styles.input}/>
@@ -217,13 +227,12 @@ const onChanDateofBirth = (e: NativeSyntheticEvent<TextInputChangeEventData>): v
                           </View>
                         </>)
                       }
-                      
-                      {/* </ScrollView> */}
-                      
-                  </View>
-              {/* </View> */}
-              </KeyboardAvoidingView>
-        </TouchableWithoutFeedback>
+                   </View>
+                
+            </View>
+            </ScrollView>
+      </View>
+        
     </KeyboardAwareScrollView>
   )
 }
@@ -231,37 +240,20 @@ const onChanDateofBirth = (e: NativeSyntheticEvent<TextInputChangeEventData>): v
 export default MyProfile
 
 const styles = StyleSheet.create({
-  scrollContainer:{
-    flex: 1,
-    backgroundColor: secundaryColor,
-    
-    
-  },
-  containerKey:{
-    // flex:1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    
-  },
-  wrapper:{
-    // backgroundColor: '#000',
-    // width: ScreenWidth-20,
-    flexDirection: 'column',
-    alignItems: 'center'
-  },
-  headerTop:{
-    marginTop:20,
-    display: 'flex',
-    flexDirection: 'row',
-    padding: 10,
-    // width: ScreenWidth,
-  },
+ 
   containerItem: {
     display:'flex',
     flexDirection: 'row', 
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: -10,
+},
+headerTop:{
+  marginTop:20,
+  display: 'flex',
+  flexDirection: 'row',
+  padding: 10,
+  // width: ScreenWidth,
 },
 wrapperItem: {
     display:'flex',
@@ -300,6 +292,7 @@ wrapperActive: {
     padding:15,
     
 },
+
 text:{
     // fontFamily: 'Poppins',
     // fontStyle: 'normal',
@@ -317,125 +310,121 @@ textActive:{
     lineHeight: 16,
     letterSpacing: 0.15,
     color: '#fff',
-}
-,
-      viewScroll:{
-        // width: ScreenWidth-20,
-        flexDirection: 'column',
-        alignItems: 'center',
-        // padding:1,
-        // marginBottom:320,
-        marginBottom: 'auto',
-        marginTop:30,
-      },
-      inputContainer:{
-        flexDirection: 'column',
-        justifyContent: 'center',
-        width: ScreenWidth-20,
-        marginBottom:20,
-      },
-      headerTextInput:{
-        fontWeight: '600',
-        fontSize: 12,
-        lineHeight: 21,
-        letterSpacing: 0.15,
-        color: thirdColor,
-      },
-      input:{
-        padding:20,
-        marginTop:10,
-        borderWidth: 0.5,
-        borderRadius:5,
-        borderColor:'rgba(0, 0, 0, 0.12)'
-      },
-      textDivide:{
-        flexDirection:'row',
-        // width: ScreenWidth-20,
-        marginBottom:20,
-        alignItems: 'center',
+},
+viewScroll:{
+  marginTop:20,
+},
+image:{
+  // marginBottom:10,
+},
+inputContainer:{
+  flexDirection: 'column',
+  justifyContent: 'center',
+  width: ScreenWidth-20,
+  marginBottom:20,
+},
+  headerTextInput:{
+  fontWeight: '600',
+  fontSize: 12,
+  lineHeight: 21,
+  letterSpacing: 0.15,
+  color: thirdColor,
+},
+input:{
+  padding:20,
+  marginTop:10,
+  borderWidth: 0.5,
+  borderRadius:5,
+  borderColor:'rgba(0, 0, 0, 0.12)'
+},
+textDivide:{
+  flexDirection:'row',
+  // width: ScreenWidth-20,
+  marginBottom:20,
+  alignItems: 'center',
 
-      },
-      icon:{
-        fontSize:24,
-        marginRight: 10,
-      },
-      saveButtom:{
-        flexDirection: 'row',
-        justifyContent: 'center',
-        width: 134,
-        height:40,
-        marginBottom:20,
-        backgroundColor: mainColor,
-        // padding:20,
-        borderRadius:8,
-        alignItems: 'center',
-      },
-      saveButtomText:{
-        color:secundaryColor,
-        fontWeight: '600',
-        fontSize: 16,
-        letterSpacing: 1.25,
-        lineHeight: 16,
-      },
-      headerContainer:{
-        flexDirection:'row',
-        width: ScreenWidth-20,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom:20,
-    },
-    headerContainerRadio:{
-        flexDirection:'row',
-        // width: ScreenWidth-20,
-        // justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom:20,
-        marginRight:20,
-    },
-    radiobutom:{
-        // backgroundColor: 'rgba(242, 110, 33, 0.15)',
-        borderRadius: 30,
-        width: 'auto',
-        height: 'auto',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: 10,
-        borderColor:'rgba(0, 0, 0, 0.54)',
-        borderWidth: 0.3,
-    },
-    radiobutomActive:{
-        backgroundColor: 'rgba(242, 110, 33, 0.15)',
-        borderRadius: 30,
-        width: 'auto',
-        height: 'auto',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: 10,
-        borderColor:'rgba(242, 110, 33, 0.15)',
-        borderWidth: 0.3,
-    },
-    radioText:{
-        fontWeight: '300',
-        fontSize: 14,
-        lineHeight: 15,
-        letterSpacing: 0.15,
-        color: thirdColor,
-      },
-      radioPriceText:{
-        // fontFamily: 'Poppins',
-        // fontStyle: 'normal',
-        fontWeight: '700',
-        fontSize: 16,
-        lineHeight: 20,
-        letterSpacing: 0.15,
-        // color: '#FF6F00',
-        
-    },
-    buttomContainer:{
-      flexDirection: 'row',
-      width: ScreenWidth -20,
-    }
+},
+icon:{
+  fontSize:24,
+  marginRight: 10,
+},
+saveButtom:{
+  flexDirection: 'row',
+  justifyContent: 'center',
+  width: 134,
+  height:40,
+  marginBottom:20,
+  backgroundColor: mainColor,
+  // padding:20,
+  borderRadius:8,
+  alignItems: 'center',
+},
+saveButtomText:{
+  color:secundaryColor,
+  fontWeight: '600',
+  fontSize: 16,
+  letterSpacing: 1.25,
+  lineHeight: 16,
+},
+headerContainer:{
+  flexDirection:'row',
+  width: ScreenWidth-20,
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  marginBottom:20,
+},
+headerContainerRadio:{
+  flexDirection:'row',
+  // width: ScreenWidth-20,
+  // justifyContent: 'space-between',
+  alignItems: 'center',
+  marginBottom:20,
+  marginRight:20,
+},
+radiobutom:{
+  // backgroundColor: 'rgba(242, 110, 33, 0.15)',
+  borderRadius: 30,
+  width: 'auto',
+  height: 'auto',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginRight: 10,
+  borderColor:'rgba(0, 0, 0, 0.54)',
+  borderWidth: 0.3,
+},
+radiobutomActive:{
+  backgroundColor: 'rgba(242, 110, 33, 0.15)',
+  borderRadius: 30,
+  width: 'auto',
+  height: 'auto',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginRight: 10,
+  borderColor:'rgba(242, 110, 33, 0.15)',
+  borderWidth: 0.3,
+},
+radioText:{
+  fontWeight: '300',
+  fontSize: 14,
+  lineHeight: 15,
+  letterSpacing: 0.15,
+  color: thirdColor,
+},
+radioPriceText:{
+  // fontFamily: 'Poppins',
+  // fontStyle: 'normal',
+  fontWeight: '700',
+  fontSize: 16,
+  lineHeight: 20,
+  letterSpacing: 0.15,
+  // color: '#FF6F00',
+  
+},
+buttomContainer:{
+flexDirection: 'row',
+width: ScreenWidth -20,
+}
 
 })

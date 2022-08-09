@@ -74,7 +74,7 @@ const CategoryPage: FunctionComponent<props>= ({navigation}) => {
       {/* <TopMenuCategory /> */}
         <View style={styles.container}>
             <View style={styles.wrapper}>
-                    <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
+                    <ScrollView showsHorizontalScrollIndicator={false} horizontal={true} >
                       <View style={styles.categoryItems}>
                           
                           {

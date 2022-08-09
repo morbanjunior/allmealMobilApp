@@ -2,76 +2,81 @@ import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 
 import React from 'react'
 import { mainColor, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 
 const NewAddress = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.wrapper}>
-      <ScrollView showsVerticalScrollIndicator={false} style={{width:ScreenWidth, marginBottom:5,}}>
-          <View style={styles.viewScroll}>
-            <View style={styles.inputContainer}>
-              <Text style={styles.headerTextInput}>First Name<Text style={{color:mainColor}}>*</Text></Text>
-              <TextInput placeholder='Type...' style={styles.input}/>
-            </View>
-            <View style={styles.inputContainer}>
-              <Text style={styles.headerTextInput}>First Name<Text style={{color:mainColor}}>*</Text></Text>
-              <TextInput placeholder='Type First...' style={styles.input}/>
-            </View>
-            <View style={styles.inputContainer}>
-              <Text style={styles.headerTextInput}>Last Name<Text style={{color:mainColor}}>*</Text></Text>
-              <TextInput placeholder='Type Last...' style={styles.input}/>
-            </View>
-            <View style={styles.inputContainer}>
-              <Text style={styles.headerTextInput}>Address<Text style={{color:mainColor}}>*</Text></Text>
-              <TextInput placeholder='Type Address...' style={styles.input}/>
-            </View>
-            <View style={styles.inputContainer}>
-              <Text style={styles.headerTextInput}>Apartment, suite etc. (optional)</Text>
-              <TextInput placeholder='Type Apartment, suite etc. (optional)...' style={styles.input}/>
-            </View>
-            <View style={styles.inputContainer}>
-              <Text style={styles.headerTextInput}>Street Address<Text style={{color:mainColor}}>*</Text></Text>
-              <TextInput placeholder='Type Street...' style={styles.input}/>
-            </View>
-            <View style={styles.inputContainer}>
-              <Text style={styles.headerTextInput}>City<Text style={{color:mainColor}}>*</Text></Text>
-              <TextInput placeholder='Type City...' style={styles.input}/>
-            </View>
-            <View style={styles.inputContainer}>
-              <Text style={styles.headerTextInput}>State<Text style={{color:mainColor}}>*</Text></Text>
-              <TextInput placeholder='Type State...' style={styles.input}/>
-            </View>
-            <View style={styles.inputContainer}>
-              <Text style={styles.headerTextInput}>Zip Code<Text style={{color:mainColor}}>*</Text></Text>
-              <TextInput placeholder='Type Code...' keyboardType='number-pad' style={styles.input}/>
-            </View>
-            <View style={styles.inputContainer}>
-              <Text style={styles.headerTextInput}>Mobile Number<Text style={{color:mainColor}}>*</Text></Text>
-              <TextInput placeholder='Type Number...'  keyboardType='number-pad'  style={styles.input}/>
-            </View>
-            <View style={styles.textDivide}>
-                <MaterialIcons name="delivery-dining" color={mainColor} style={styles.icon}/>
-                <Text style={styles.textDivideFont}>Add Delivery Instructions</Text>
-            </View>
-            <View style={styles.inputContainer}>
-              <Text style={styles.instructionsText}>Do we need additional instructions to find this
-                address?<Text style={styles.instructionsTextsub}>(building description, a nearby landmark,
-                or other navigation instructions.)</Text></Text>
-              <TextInput placeholder='Additional instructions' style={styles.input}/>
-            </View>
-            <View style={styles.inputContainer}>
-              <Text style={styles.instructionsText}>Do we need a security code or a call box number to
-                enter this building?<Text style={{color:mainColor}}>*</Text></Text>
-              <TextInput placeholder='Security code' style={styles.input}/>
-            </View>
-            <TouchableOpacity activeOpacity={.7} style={styles.saveButtom}>
-                <Text style={styles.saveButtomText}>Save</Text>
-            </TouchableOpacity>
+    <View style={{backgroundColor: secundaryColor,  flex: 1,}}>
+       <KeyboardAwareScrollView contentContainerStyle={{flex: 1}}>
+          <View style={styles.container}>
+          <View style={styles.wrapper}>
+          <ScrollView showsVerticalScrollIndicator={false} style={{width:ScreenWidth, marginBottom:5,}}>
+              <View style={styles.viewScroll}>
+                <View style={styles.inputContainer}>
+                  <Text style={styles.headerTextInput}>First Name<Text style={{color:mainColor}}>*</Text></Text>
+                  <TextInput placeholder='Type...' style={styles.input}/>
+                </View>
+                <View style={styles.inputContainer}>
+                  <Text style={styles.headerTextInput}>First Name<Text style={{color:mainColor}}>*</Text></Text>
+                  <TextInput placeholder='Type First...' style={styles.input}/>
+                </View>
+                <View style={styles.inputContainer}>
+                  <Text style={styles.headerTextInput}>Last Name<Text style={{color:mainColor}}>*</Text></Text>
+                  <TextInput placeholder='Type Last...' style={styles.input}/>
+                </View>
+                <View style={styles.inputContainer}>
+                  <Text style={styles.headerTextInput}>Address<Text style={{color:mainColor}}>*</Text></Text>
+                  <TextInput placeholder='Type Address...' style={styles.input}/>
+                </View>
+                <View style={styles.inputContainer}>
+                  <Text style={styles.headerTextInput}>Apartment, suite etc. (optional)</Text>
+                  <TextInput placeholder='Type Apartment, suite etc. (optional)...' style={styles.input}/>
+                </View>
+                <View style={styles.inputContainer}>
+                  <Text style={styles.headerTextInput}>Street Address<Text style={{color:mainColor}}>*</Text></Text>
+                  <TextInput placeholder='Type Street...' style={styles.input}/>
+                </View>
+                <View style={styles.inputContainer}>
+                  <Text style={styles.headerTextInput}>City<Text style={{color:mainColor}}>*</Text></Text>
+                  <TextInput placeholder='Type City...' style={styles.input}/>
+                </View>
+                <View style={styles.inputContainer}>
+                  <Text style={styles.headerTextInput}>State<Text style={{color:mainColor}}>*</Text></Text>
+                  <TextInput placeholder='Type State...' style={styles.input}/>
+                </View>
+                <View style={styles.inputContainer}>
+                  <Text style={styles.headerTextInput}>Zip Code<Text style={{color:mainColor}}>*</Text></Text>
+                  <TextInput placeholder='Type Code...' keyboardType='number-pad' style={styles.input}/>
+                </View>
+                <View style={styles.inputContainer}>
+                  <Text style={styles.headerTextInput}>Mobile Number<Text style={{color:mainColor}}>*</Text></Text>
+                  <TextInput placeholder='Type Number...'  keyboardType='number-pad'  style={styles.input}/>
+                </View>
+                <View style={styles.textDivide}>
+                    <MaterialIcons name="delivery-dining" color={mainColor} style={styles.icon}/>
+                    <Text style={styles.textDivideFont}>Add Delivery Instructions</Text>
+                </View>
+                <View style={styles.inputContainer}>
+                  <Text style={styles.instructionsText}>Do we need additional instructions to find this
+                    address?<Text style={styles.instructionsTextsub}>(building description, a nearby landmark,
+                    or other navigation instructions.)</Text></Text>
+                  <TextInput placeholder='Additional instructions' style={styles.input}/>
+                </View>
+                <View style={styles.inputContainer}>
+                  <Text style={styles.instructionsText}>Do we need a security code or a call box number to
+                    enter this building?<Text style={{color:mainColor}}>*</Text></Text>
+                  <TextInput placeholder='Security code' style={styles.input}/>
+                </View>
+                <TouchableOpacity activeOpacity={.7} style={styles.saveButtom}>
+                    <Text style={styles.saveButtomText}>Save</Text>
+                </TouchableOpacity>
+              </View>
+          </ScrollView>
+            
           </View>
-      </ScrollView>
-        
-      </View>
+          </View>
+       </KeyboardAwareScrollView>
     </View>
   )
 }

@@ -58,7 +58,7 @@ const onChanDateofBirth = (e: NativeSyntheticEvent<TextInputChangeEventData>): v
 
 
   return (
-    <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
+    <KeyboardAwareScrollView showsVerticalScrollIndicator={false} >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <KeyboardAvoidingView behavior="padding" style={styles.containerKey}>
 
@@ -94,7 +94,7 @@ const onChanDateofBirth = (e: NativeSyntheticEvent<TextInputChangeEventData>): v
                         </TouchableOpacity>
                       
                       </View>
-                      </ScrollView>
+                    </ScrollView>
                       
                       <ScrollView showsVerticalScrollIndicator={false} style={{width:ScreenWidth, marginBottom:'auto',}}>
                       {

@@ -11,20 +11,22 @@ import Categories from '../../componets/categories/Categories';
 import FeaturedMeals from '../../componets/featuredMeals/FeaturedMeals';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../../navigators/RootDrawer';
+import { secundaryColor } from '../../componets/shared';
 
 type props = StackScreenProps<RootStackParamList, 'Home'>
 
 const Dashboard : FunctionComponent<props>= ({navigation}) => {
   return (
     <>
-    
-     {/* <TopMenu /> */}
+    <View style={{
+      backgroundColor: secundaryColor,
+      flex: 1,
+    }}>
       <DashInfo/>
       <Search/>
       <Categories navigation={navigation}/>
       <FeaturedMeals/>
-      
-     {/* <BottomMenu/> */}
+      </View>
     </>
    
   )

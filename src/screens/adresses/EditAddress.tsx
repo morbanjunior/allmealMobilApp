@@ -2,10 +2,12 @@ import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 
 import React from 'react'
 import { mainColor, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const EditAddress = () => {
   return (
+    <View style={{backgroundColor: secundaryColor,  flex: 1,}}>
+    <KeyboardAwareScrollView contentContainerStyle={{flex: 1}}>
     <View style={styles.container}>
       <View style={styles.wrapper}>
       <ScrollView showsVerticalScrollIndicator={false} style={{width:ScreenWidth, marginBottom:5,}}>
@@ -72,6 +74,8 @@ const EditAddress = () => {
       </ScrollView>
         
       </View>
+    </View>
+    </KeyboardAwareScrollView>
     </View>
   )
 }
