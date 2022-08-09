@@ -29,7 +29,7 @@ const DashInfo = () => {
             <TouchableOpacity onPress={()=>Setselected('3')} activeOpacity={.7} style={[selected==='3' ? styles.ItemInfoActive : styles.ItemInfo ]}>
                 <View style={styles.infoItem}>
                   <Ionicons name="wallet-outline" type="ionicon" style={[selected==='3' ? styles.infoIcon2Active2 : styles.infoIcon22]}/>
-                  <Text  style={[selected==='3' ? styles.infoText2Active : styles.infoText2]}>Total Balance</Text>
+                  <Text  style={[selected==='3' ? styles.infoText2Active : styles.infoText2]}>Wallet Balance</Text>
                 </View>
                 <Text style={[ selected==='3' ? styles.infoTextActive : styles.infoText]}>$135.5</Text>
             </TouchableOpacity>
@@ -109,12 +109,12 @@ const styles = StyleSheet.create({
     },
     infoIcon22:{
         fontSize:17,
-        marginRight: 10,
+        marginRight: 5,
         
     },
     infoIcon2Active2:{
         fontSize:17,
-        marginRight: 10,
+        marginRight: 5,
         color: '#fff',
     },
     infoText:{

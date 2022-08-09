@@ -5,10 +5,19 @@ import { useFonts } from 'expo-font';
 import { Provider } from 'react-redux';
 import store from './src/redux/store';
 import { ToastProvider } from 'react-native-toast-notifications'
+import React, { useState } from 'react';
+import { ActivityIndicator, View, StyleSheet } from 'react-native';
 
 
 export default function App() {
-
+  const [isLoading, SetisLoading] =useState(false);
+  if(isLoading){
+    return(
+       <View style={[styles.container, styles.horizontal]}>
+          <ActivityIndicator size='large'/>
+       </View>
+    );
+   }
   // let [fontsLoaded] = useFonts({
   //   "Poppins-Black": require("./assets/fonts/Poppins-Black.ttf"),
   //   "Poppins-BlackItalic": require("./assets/fonts/Poppins-BlackItalic.ttf"),
@@ -41,3 +50,14 @@ export default function App() {
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center"
+  },
+  horizontal: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    padding: 10
+  }
+});

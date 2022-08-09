@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ImageBackground, SafeAreaView, TouchableOpacity, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, NativeSyntheticEvent, TextInputChangeEventData } from 'react-native'
+import { StyleSheet, Text, View, Image, ImageBackground, SafeAreaView, TouchableOpacity, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, NativeSyntheticEvent, TextInputChangeEventData, ActivityIndicator } from 'react-native'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { RootStackParamList } from '../../navigators/RootDrawer';
@@ -17,6 +17,17 @@ const Signin: FunctionComponent<props>= ({navigation}) => {
   const [password, SetPassword] = useState<string>('');
   const toast = useToast();
   const dispatch = useDispatch();
+
+  // if(isLoading){
+  //   return (
+  //     <View style={{
+  //       flex:1, justifyContent: 'center', alignItems: 'center'
+  //     }}>
+  //        <ActivityIndicator size='large'/>
+  //     </View>
+  //   );
+    
+  // }
 
   useEffect(() => {
 
@@ -91,6 +102,7 @@ const onChangePassword = (e: NativeSyntheticEvent<TextInputChangeEventData>): vo
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
        <KeyboardAvoidingView behavior="padding" style={styles.containerKey}>
+        
           <View style={styles.container}>
           <ImageBackground source={
               require('../../../assets/img/Welcome.png')} 

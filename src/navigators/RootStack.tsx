@@ -26,7 +26,7 @@ import Allergic from '../screens/allergic/Allergic';
 import Refer from '../screens/refer/Refer';
 import Pickup from '../screens/pickup/Pickup';
 import MyCart from '../screens/myCart/MyCart';
-import { mainColor, secundaryColor } from '../componets/shared';
+import { mainColor, secundaryColor, thirdColor } from '../componets/shared';
 import Checkout from '../screens/checkout/Checkout';
 import CheckoutInfo from '../screens/checkout/CheckoutInfo';
 import SignUp from '../screens/sign/SignUp';
@@ -38,6 +38,8 @@ import Password from '../screens/password/Password';
 import PostDetails from '../screens/wellness/PostDetails';
 import Wallet from '../screens/wallet/Wallet';
 import AmpStore from '../screens/ampStore/AmpStore';
+import { useSelector} from 'react-redux'
+import { selectUserData } from '../redux/store';
 
 
 export type RootStackParamList = {
@@ -134,14 +136,24 @@ export const WelcomeStackNavigator: FunctionComponent = () =>{
 
 export const DashboardStackNavigator: FunctionComponent = () =>{
     const navigation = useNavigation(); 
+    const userData = useSelector(selectUserData);
+
+    const {first_name}=userData
     return (
     <Stack.Navigator>
         <Stack.Screen 
             options ={{
+              title:"",
                         headerLeft: () =>(
+                          <View style={{flexDirection: 'row', alignItems: 'center'}}>
                           <Icon name='ios-menu' size={25} color="#3C3C3C" style={{marginLeft: 10}}
                           backgroundColor='white'
                           onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
+                          <View style={{flexDirection: 'row', alignItems: 'center', marginLeft:20}}>
+                              <Text style={styles.textWelcom}>Welcome, </Text>
+                              <Text style={styles.textName}>{first_name}</Text>
+                          </View>
+                          </View>
                         ),
                         headerRight: () =>(
                           <View style={{
@@ -1526,5 +1538,23 @@ const styles = StyleSheet.create({
     LineHeight: 16,
     Letter:1.25,
     textAlign: 'center',
-  }
+  },
+  textWelcom:{
+    color: thirdColor,
+    fontStyle: 'normal',
+    fontWeight: '300',
+    fontSize: 16,
+    LineHeight: 16,
+    Letter:1.25,
+    textAlign: 'center',
+  },
+  textName:{
+    color: thirdColor,
+    fontStyle: 'normal',
+    fontWeight: '700',
+    fontSize: 16,
+    LineHeight: 16,
+    Letter:1.30,
+    textAlign: 'center',
+  },
 })
