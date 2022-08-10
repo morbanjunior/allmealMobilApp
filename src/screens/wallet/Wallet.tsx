@@ -16,6 +16,7 @@ const Wallet = () => {
 
 
   return (
+    <KeyboardAwareScrollView contentContainerStyle={{flex: 1}}>
     <View style={styles.container}>
         <View style={styles.wrapper}>
         <ScrollView showsVerticalScrollIndicator={false} style={{width:ScreenWidth, marginBottom:5,}}>
@@ -77,6 +78,7 @@ const Wallet = () => {
            
         </View>
     </View>
+    </KeyboardAwareScrollView>
   )
 }
 

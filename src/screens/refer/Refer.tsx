@@ -1,9 +1,11 @@
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View , KeyboardAvoidingView} from 'react-native'
 import React from 'react'
 import { mainColor, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const Refer = () => {
   return (
+    <KeyboardAvoidingView behavior="padding" style={{flex:1}}>
     <View style={styles.container}>
         <View style={styles.wrapper}>
            <View style={styles.inputContainer}>
@@ -30,6 +32,8 @@ const Refer = () => {
             </TouchableOpacity>
         </View>
     </View>
+    </KeyboardAvoidingView >
+
   )
 }
 
