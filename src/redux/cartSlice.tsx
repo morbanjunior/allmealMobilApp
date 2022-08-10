@@ -1,6 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-// import { toast } from "react-toastify";
+import { useToast } from "react-native-toast-notifications";
 import { CartModel } from "../model/CartModel";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const toast = useToast();
 
 export type cartType={
   cartItems: CartModel[],
@@ -8,9 +11,10 @@ export type cartType={
   cartTotalAmount: number
 }
 
-// localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
+
 const initialState:cartType = {
-  cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems") || '') : [],
+  // cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems") || '') : [],
+  cartItems: [],
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
 };
@@ -32,13 +36,29 @@ const cartSlice = createSlice({
         // toast.info("Increased product quantity", {
         //   position: "bottom-left",
         // });
+        toast.show('Increased product quantity', {
+          type: "normal",
+          placement: "bottom",
+          duration: 4000,
+          animationType: "slide-in",
+          
+        });
       } else {
         let tempProductItem = { ...action.payload, cartQuantity: action.payload.quantity };
         state.cartItems.push(tempProductItem);
         // toast.success("Product added to cart", {
         //   position: "bottom-left",
         // });
+
+        toast.show("Product added to cart", {
+          type: "success",
+          placement: "bottom",
+          duration: 4000,
+          animationType: "slide-in",
+          
+        });
       }
+      
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
     decreaseCart(state, action:PayloadAction<CartModel>) {
@@ -52,6 +72,15 @@ const cartSlice = createSlice({
         // toast.info("Decreased product quantity", {
         //   position: "bottom-left",
         // });
+
+        toast.show("Decreased product quantity", {
+          type: "normal",
+          placement: "bottom",
+          duration: 4000,
+          animationType: "slide-in",
+          
+        });
+
       } else if (state.cartItems[itemIndex].cartQuantity === 1) {
         const nextCartItems = state.cartItems.filter(
           (item:CartModel) => item.id !== action.payload.id
@@ -62,9 +91,17 @@ const cartSlice = createSlice({
         // toast.error("Product removed from cart", {
         //   position: "bottom-left",
         // });
+
+        toast.show("Product removed from cart", {
+          type: "danger",
+          placement: "bottom",
+          duration: 4000,
+          animationType: "slide-in",
+          
+        });
       }
 
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      // localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
     removeFromCart(state, action:PayloadAction<CartModel>) {
       state.cartItems.map((cartItem) => {
@@ -78,8 +115,16 @@ const cartSlice = createSlice({
           // toast.error("Product removed from cart", {
           //   position: "bottom-left",
           // });
+
+          toast.show("Product removed from cart", {
+            type: "danger",
+            placement: "bottom",
+            duration: 4000,
+            animationType: "slide-in",
+            
+          });
         }
-        localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+        // localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
         return state;
       });
     },
@@ -105,8 +150,15 @@ const cartSlice = createSlice({
     },
     clearCart(state, action) {
       state.cartItems = [];
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      // localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
       // toast.error("Cart cleared", { position: "bottom-left" });
+      toast.show("Cart cleared", {
+        type: "danger",
+        placement: "bottom",
+        duration: 4000,
+        animationType: "slide-in",
+        
+      });
     },
     increaseCart(state, action:PayloadAction<CartModel>){
         const existingIndex = state.cartItems.findIndex(
@@ -121,14 +173,30 @@ const cartSlice = createSlice({
           // toast.info("Increased product quantity", {
           //   position: "bottom-left",
           // });
+
+          toast.show("Increased product quantity", {
+            type: "normal",
+            placement: "bottom",
+            duration: 4000,
+            animationType: "slide-in",
+            
+          });
+
         } else {
           let tempProductItem = { ...action.payload, cartQuantity: 1 };
           state.cartItems.push(tempProductItem);
           // toast.success("Product added to cart", {
           //   position: "bottom-left",
           // });
+          toast.show("Product added to cart", {
+            type: "success",
+            placement: "bottom",
+            duration: 4000,
+            animationType: "slide-in",
+            
+          });
         }
-        localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+        // localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
       
     }
   },

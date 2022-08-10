@@ -39,7 +39,7 @@ import PostDetails from '../screens/wellness/PostDetails';
 import Wallet from '../screens/wallet/Wallet';
 import AmpStore from '../screens/ampStore/AmpStore';
 import { useSelector} from 'react-redux'
-import { selectUserData } from '../redux/store';
+import { selectcartTotalQuantity, selectUserData } from '../redux/store';
 
 
 export type RootStackParamList = {
@@ -77,6 +77,7 @@ export type RootStackParamList = {
   AmpStore:undefined;
   
 };
+
 
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -137,7 +138,7 @@ export const WelcomeStackNavigator: FunctionComponent = () =>{
 export const DashboardStackNavigator: FunctionComponent = () =>{
     const navigation = useNavigation(); 
     const userData = useSelector(selectUserData);
-
+    const totalQuantity = useSelector(selectcartTotalQuantity);
     const {first_name}=userData
     return (
     <Stack.Navigator>
@@ -171,7 +172,7 @@ export const DashboardStackNavigator: FunctionComponent = () =>{
                               </View >
                               <View style={{position: 'relative'}} >
                                   <View style={styles.bellContainer}>
-                                    <Text style={styles.textbel}>12</Text>
+                                    <Text style={styles.textbel}>{totalQuantity}</Text>
                                   </View>
                                   <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
                                   onPress={() => navigation.navigate('MyCart')}

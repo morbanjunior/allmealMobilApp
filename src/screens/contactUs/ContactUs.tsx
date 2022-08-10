@@ -1,9 +1,12 @@
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { mainColor, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
 
 const ContactUs = () => {
   return (
+    <KeyboardAwareScrollView style={{flex:1, backgroundColor: secundaryColor}}>
     <View style={styles.container}>
         <View style={styles.wrapper}>
             <View style={styles.containerheaderText}>
@@ -24,6 +27,7 @@ const ContactUs = () => {
             </TouchableOpacity>
         </View>
     </View>
+    </KeyboardAwareScrollView>
   )
 }
 

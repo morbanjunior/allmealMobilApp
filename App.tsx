@@ -5,15 +5,22 @@ import { useFonts } from 'expo-font';
 import { Provider } from 'react-redux';
 import store from './src/redux/store';
 import { ToastProvider } from 'react-native-toast-notifications'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
-
+import Toast from 'react-native-toast-message';
+import { getTotals } from './src/redux/cartSlice';
 
 export default function App() {
-  
+  useEffect(() => {
+    store.dispatch(getTotals())
+
+  },[])
+ 
   return (
+    
     <ToastProvider>
       <Provider store={store}>
+        {/* <Toast /> */}
         <RootDrawer/>
       </Provider>
     </ToastProvider>

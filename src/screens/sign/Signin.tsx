@@ -8,6 +8,7 @@ import { useLoginUserMutation } from '../../redux/api/authApi';
 import { useToast } from "react-native-toast-notifications";
 import { useDispatch } from 'react-redux';
 import { loginData } from '../../redux/loginSlice';
+import Toast from 'react-native-toast-message';
 
 type props = StackScreenProps<RootStackParamList, 'Signin'>
 
@@ -58,6 +59,8 @@ const Signin: FunctionComponent<props>= ({navigation}) => {
               animationType: "slide-in",
               
             });
+
+              
             SetUserEmail('');
             SetPassword('');
           }
@@ -82,6 +85,8 @@ const Signin: FunctionComponent<props>= ({navigation}) => {
       animationType: "slide-in",
       
     });
+
+    
    }
    else{
     await loginUser({sign_in})
