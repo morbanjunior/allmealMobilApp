@@ -11,11 +11,7 @@ import Toast from 'react-native-toast-message';
 import { getTotals } from './src/redux/cartSlice';
 
 export default function App() {
-  useEffect(() => {
-    store.dispatch(getTotals())
 
-  },[])
- 
   return (
     
     <ToastProvider>
