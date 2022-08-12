@@ -1,16 +1,66 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import mailPhote from '../../../../assets/img/mealPhote.png'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { StackScreenProps } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
+import { CartModel } from '../../../model/CartModel';
+import { addToCart, getTotals } from '../../../redux/cartSlice';
 
 
 const MealItem: FunctionComponent = () => {
     const navigation = useNavigation(); 
+    const [quantity, SetQuantity] = useState<number>(1);
+    const id = Math.floor(Math.random() * 10);
+
+    const handleControl = (direction: string) =>{
+
+        if(direction === 'increase'){
+            if(quantity <= 99){
+                SetQuantity((currentQuantity) => currentQuantity + 1);
+                
+            }
+            
+        }
+        else if(direction === 'decrease'){
+            if(quantity >= 2){
+                SetQuantity((currentQuantity) => currentQuantity - 1);
+            }
+        }
+    }
+
+    const selectedItems = () => {
+  
+        if(quantity){
+            dispatch(addToCart({...singleFood} ))
+            dispatch(getTotals())
+        //   SetQuantity(1);
+        } else{
+        //   toast.error(`Please add quantity on ${singleFood.name}`, {
+        //     position: "bottom-left",
+        //   });
+        }
+        
+      }
+
+
+    const singleFood:CartModel =
+  {
+    id: 1,
+    cartQuantity:quantity,
+    quantity:quantity,
+    name: 'Asian Chicken Fried Rice Combo',
+    price: 10.20,
+    desc: 'A delicious twist on a classical favorite packed with lean protein and delicious carrots and celery. A smart low fat and high protein meal option.',
+    nutricion: ['Calories 656', 'Carbs 656','Protein 656', 'Fat 656', 'Fiber 653', 'Sodium 656'],
+    ingredients: 'A delicious twist on a classical favorite packed with lean protein'
+
+  };
+
 
   return (
     <TouchableOpacity  style={styles.container}
+    
 
      onPress={()=>navigation.navigate('MealItemPage')}
     >
@@ -23,11 +73,27 @@ const MealItem: FunctionComponent = () => {
                     </View>
                     <View style={styles.buttom}>
                         <TouchableOpacity>
-                            <AntDesign name="minuscircle" type="ionicon" style={styles.headerButtomIcon}/>
+                            <AntDesign 
+                            name="minuscircle" 
+                            type="ionicon" 
+                            style={styles.headerButtomIcon}
+                            onPress={()=>handleControl('decrease')}
+                           
+                            />
                         </TouchableOpacity>
-                        <Text style={styles.number}>1</Text>
+                        <Text style={styles.number}>{quantity}</Text>
                         <TouchableOpacity>
-                            <AntDesign name="pluscircle" type="ionicon" style={styles.headerButtomIcon}/>
+                            <AntDesign 
+                            name="pluscircle" 
+                            type="ionicon" 
+                            style={styles.headerButtomIcon}
+                            onPress={()=>
+                            //    { 
+                                // handleControl('increase')
+                                selectedItems()
+                            // }
+                            }
+                            />
                         </TouchableOpacity>
                     
                     </View>
@@ -140,3 +206,7 @@ const styles = StyleSheet.create({
         width: 220,
     }
 })
+
+function dispatch(arg0: any) {
+    throw new Error('Function not implemented.');
+}
