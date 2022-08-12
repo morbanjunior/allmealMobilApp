@@ -39,7 +39,9 @@ import PostDetails from '../screens/wellness/PostDetails';
 import Wallet from '../screens/wallet/Wallet';
 import AmpStore from '../screens/ampStore/AmpStore';
 import { useSelector} from 'react-redux'
-import {  selectUserData } from '../redux/store';
+import {  selectUserData, selectcartTotalQuantity } from '../redux/store';
+import CartNotification from '../componets/CartNotification';
+
 
 
 export type RootStackParamList = {
@@ -139,6 +141,7 @@ export const DashboardStackNavigator: FunctionComponent = () =>{
     const navigation = useNavigation(); 
     const userData = useSelector(selectUserData);
     const {first_name}=userData
+    const totalQuantity = useSelector(selectcartTotalQuantity);
     return (
     <Stack.Navigator>
         <Stack.Screen 
@@ -156,29 +159,7 @@ export const DashboardStackNavigator: FunctionComponent = () =>{
                           </View>
                         ),
                         headerRight: () =>(
-                          <View style={{
-                            flexDirection: 'row', 
-                            justifyContent: 'center', 
-                            alignItems: 'center'}}>
-                              <View style={{position: 'relative'}} >
-                                  <View style={styles.bellContainer}>
-                                    <Text style={styles.textbel}>2</Text>
-                                  </View>
-
-                             <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                // onPress={() => navigation.goBack()}
-                                />
-                              </View >
-                              <View style={{position: 'relative'}} >
-                                  <View style={styles.bellContainer}>
-                                    <Text style={styles.textbel}>5</Text>
-                                  </View>
-                                  <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                  onPress={() => navigation.navigate('MyCart')}
-                                  />
-                              </View>
-                          </View>
-                         
+                         <CartNotification/>
                         ),
                       }}
         name="Home" component={Dashboard} />
@@ -199,29 +180,7 @@ export const CategoryStackNavigator: FunctionComponent = () =>{
               onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
             )
             ,headerRight: () =>(
-                          <View style={{
-                            flexDirection: 'row', 
-                            justifyContent: 'center', 
-                            alignItems: 'center'}}>
-                              <View style={{position: 'relative'}} >
-                                  <View style={styles.bellContainer}>
-                                    <Text style={styles.textbel}>2</Text>
-                                  </View>
-
-                             <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                // onPress={() => navigation.goBack()}
-                                />
-                              </View >
-                              <View style={{position: 'relative'}} >
-                                  <View style={styles.bellContainer}>
-                                    <Text style={styles.textbel}>12</Text>
-                                  </View>
-                                  <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                  onPress={() => navigation.navigate('MyCart')}
-                                  />
-                              </View>
-                          </View>
-                         
+              <CartNotification/>
                         ),
           }}
         name="Category" component={CategoryPage} />
@@ -234,29 +193,7 @@ export const CategoryStackNavigator: FunctionComponent = () =>{
               />
             ),
             headerRight: () =>(
-              <View style={{
-                flexDirection: 'row', 
-                justifyContent: 'center', 
-                alignItems: 'center'}}>
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>2</Text>
-                      </View>
-
-                 <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#fff" style={{marginRight: 20}}
-                    // onPress={() => navigation.goBack()}
-                    />
-                  </View >
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>12</Text>
-                      </View>
-                      <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#fff" style={{marginRight: 20}}
-                      onPress={() => navigation.navigate('MyCart')}
-                      />
-                  </View>
-              </View>
-             
+              <CartNotification/>
             ),
             headerTransparent:true,
             title: "",
@@ -279,29 +216,7 @@ export const MyOrderstackNavigator: FunctionComponent = () =>{
               onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
             ),
             headerRight: () =>(
-              <View style={{
-                flexDirection: 'row', 
-                justifyContent: 'center', 
-                alignItems: 'center'}}>
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>2</Text>
-                      </View>
-
-                 <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
-                    // onPress={() => navigation.goBack()}
-                    />
-                  </View >
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>12</Text>
-                      </View>
-                      <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
-                      onPress={() => navigation.navigate('MyCart')}
-                      />
-                  </View>
-              </View>
-             
+              <CartNotification/>
             ),
             title: "My Orders",
           }}
@@ -315,29 +230,7 @@ export const MyOrderstackNavigator: FunctionComponent = () =>{
               />
             ),
             headerRight: () =>(
-              <View style={{
-                flexDirection: 'row', 
-                justifyContent: 'center', 
-                alignItems: 'center'}}>
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>2</Text>
-                      </View>
-
-                 <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#000" style={{marginRight: 20}}
-                    // onPress={() => navigation.goBack()}
-                    />
-                  </View >
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>12</Text>
-                      </View>
-                      <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#000" style={{marginRight: 20}}
-                      onPress={() => navigation.navigate('MyCart')}
-                      />
-                  </View>
-              </View>
-             
+              <CartNotification/>
             ),
             // headerTransparent:true,
             title: "Order 4100F5",
@@ -360,29 +253,7 @@ export const WellnessstackNavigator: FunctionComponent = () =>{
               onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
             )
             ,headerRight: () =>(
-                          <View style={{
-                            flexDirection: 'row', 
-                            justifyContent: 'center', 
-                            alignItems: 'center'}}>
-                              <View style={{position: 'relative'}} >
-                                  <View style={styles.bellContainer}>
-                                    <Text style={styles.textbel}>2</Text>
-                                  </View>
-
-                             <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                // onPress={() => navigation.goBack()}
-                                />
-                              </View >
-                              <View style={{position: 'relative'}} >
-                                  <View style={styles.bellContainer}>
-                                    <Text style={styles.textbel}>12</Text>
-                                  </View>
-                                  <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                  onPress={() => navigation.navigate('MyCart')}
-                                  />
-                              </View>
-                          </View>
-                         
+              <CartNotification/>
                         ),
           }}
         
@@ -396,29 +267,7 @@ export const WellnessstackNavigator: FunctionComponent = () =>{
               />
             ),
             headerRight: () =>(
-              <View style={{
-                flexDirection: 'row', 
-                justifyContent: 'center', 
-                alignItems: 'center'}}>
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>2</Text>
-                      </View>
-
-                 <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#fff" style={{marginRight: 20}}
-                    // onPress={() => navigation.goBack()}
-                    />
-                  </View >
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>12</Text>
-                      </View>
-                      <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#fff" style={{marginRight: 20}}
-                      onPress={() => navigation.navigate('MyCart')}
-                      />
-                  </View>
-              </View>
-             
+              <CartNotification/>
             ),
             headerTransparent:true,
             title: "",
@@ -464,29 +313,7 @@ export const MyProfilestackNavigator: FunctionComponent = () =>{
             />
           ),
           headerRight: () =>(
-            <View style={{
-              flexDirection: 'row', 
-              justifyContent: 'center', 
-              alignItems: 'center'}}>
-                <View style={{position: 'relative'}} >
-                    <View style={styles.bellContainer}>
-                      <Text style={styles.textbel}>2</Text>
-                    </View>
-
-               <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#000" style={{marginRight: 20}}
-                  // onPress={() => navigation.goBack()}
-                  />
-                </View >
-                <View style={{position: 'relative'}} >
-                    <View style={styles.bellContainer}>
-                      <Text style={styles.textbel}>12</Text>
-                    </View>
-                    <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#000" style={{marginRight: 20}}
-                    onPress={() => navigation.navigate('MyCart')}
-                    />
-                </View>
-            </View>
-           
+            <CartNotification/>
           ),
           // headerTransparent:true,
           title: "Adresses",
@@ -502,28 +329,7 @@ export const MyProfilestackNavigator: FunctionComponent = () =>{
               />
             ),
             headerRight: () =>(
-              <View style={{
-                flexDirection: 'row', 
-                justifyContent: 'center', 
-                alignItems: 'center'}}>
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>2</Text>
-                      </View>
-
-                 <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#000" style={{marginRight: 20}}
-                    // onPress={() => navigation.goBack()}
-                    />
-                  </View >
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>12</Text>
-                      </View>
-                      <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#000" style={{marginRight: 20}}
-                      onPress={() => navigation.navigate('MyCart')}
-                      />
-                  </View>
-              </View>
+              <CartNotification/>
              
             ),
             // headerTransparent:true,
@@ -541,29 +347,7 @@ export const MyProfilestackNavigator: FunctionComponent = () =>{
               />
             ),
             headerRight: () =>(
-              <View style={{
-                flexDirection: 'row', 
-                justifyContent: 'center', 
-                alignItems: 'center'}}>
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>2</Text>
-                      </View>
-
-                 <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#000" style={{marginRight: 20}}
-                    // onPress={() => navigation.goBack()}
-                    />
-                  </View >
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>12</Text>
-                      </View>
-                      <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#000" style={{marginRight: 20}}
-                      onPress={() => navigation.navigate('MyCart')}
-                      />
-                  </View>
-              </View>
-             
+              <CartNotification/>
             ),
             // headerTransparent:true,
             title: "New adress",
@@ -579,29 +363,7 @@ export const MyProfilestackNavigator: FunctionComponent = () =>{
               />
             ),
             headerRight: () =>(
-              <View style={{
-                flexDirection: 'row', 
-                justifyContent: 'center', 
-                alignItems: 'center'}}>
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>2</Text>
-                      </View>
-
-                 <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#000" style={{marginRight: 20}}
-                    // onPress={() => navigation.goBack()}
-                    />
-                  </View >
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>12</Text>
-                      </View>
-                      <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#000" style={{marginRight: 20}}
-                      onPress={() => navigation.navigate('MyCart')}
-                      />
-                  </View>
-              </View>
-             
+              <CartNotification/>
             ),
             // headerTransparent:true,
             title: "Password",
@@ -618,29 +380,7 @@ export const MyProfilestackNavigator: FunctionComponent = () =>{
               />
             ),
             headerRight: () =>(
-              <View style={{
-                flexDirection: 'row', 
-                justifyContent: 'center', 
-                alignItems: 'center'}}>
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>2</Text>
-                      </View>
-
-                 <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#000" style={{marginRight: 20}}
-                    // onPress={() => navigation.goBack()}
-                    />
-                  </View >
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>12</Text>
-                      </View>
-                      <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#000" style={{marginRight: 20}}
-                      onPress={() => navigation.navigate('MyCart')}
-                      />
-                  </View>
-              </View>
-             
+              <CartNotification/>
             ),
             // headerTransparent:true,
             title: "New adress",
@@ -786,29 +526,7 @@ export const BookCateringStackNavigator: FunctionComponent = () =>{
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
           )
           ,headerRight: () =>(
-                        <View style={{
-                          flexDirection: 'row', 
-                          justifyContent: 'center', 
-                          alignItems: 'center'}}>
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>2</Text>
-                                </View>
-
-                           <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
-                              // onPress={() => navigation.goBack()}
-                              />
-                            </View >
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>12</Text>
-                                </View>
-                                <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                onPress={() => navigation.navigate('MyCart')}
-                                />
-                            </View>
-                        </View>
-                       
+            <CartNotification/>
                       ),
         }}
       name="BookCatering" component={BookCatering} />
@@ -831,30 +549,8 @@ export const ContainersStackNavigator: FunctionComponent = () =>{
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
           )
           ,headerRight: () =>(
-                        <View style={{
-                          flexDirection: 'row', 
-                          justifyContent: 'center', 
-                          alignItems: 'center'}}>
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>2</Text>
-                                </View>
-
-                           <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
-                              // onPress={() => navigation.goBack()}
-                              />
-                            </View >
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>12</Text>
-                                </View>
-                                <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                onPress={() => navigation.navigate('MyCart')}
-                                />
-                            </View>
-                        </View>
-                       
-                      ),
+            <CartNotification/>
+             ),
         }}
       name="Containers" component={Containers} />
      
@@ -876,29 +572,7 @@ export const AmpStoreStackNavigator: FunctionComponent = () =>{
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
           )
           ,headerRight: () =>(
-                        <View style={{
-                          flexDirection: 'row', 
-                          justifyContent: 'center', 
-                          alignItems: 'center'}}>
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>2</Text>
-                                </View>
-
-                           <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
-                              // onPress={() => navigation.goBack()}
-                              />
-                            </View >
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>12</Text>
-                                </View>
-                                <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                onPress={() => navigation.navigate('MyCart')}
-                                />
-                            </View>
-                        </View>
-                       
+            <CartNotification/>
                       ),
         }}
       name="AmpStore" component={AmpStore} />
@@ -921,29 +595,7 @@ export const ContactUsStackNavigator: FunctionComponent = () =>{
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
           )
           ,headerRight: () =>(
-                        <View style={{
-                          flexDirection: 'row', 
-                          justifyContent: 'center', 
-                          alignItems: 'center'}}>
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>2</Text>
-                                </View>
-
-                           <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
-                              // onPress={() => navigation.goBack()}
-                              />
-                            </View >
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>12</Text>
-                                </View>
-                                <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                onPress={() => navigation.navigate('MyCart')}
-                                />
-                            </View>
-                        </View>
-                       
+            <CartNotification/>
                       ),
         }}
       name="ContactUs" component={ContactUs} />
@@ -966,29 +618,7 @@ export const FaqStackNavigator: FunctionComponent = () =>{
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
           )
           ,headerRight: () =>(
-                        <View style={{
-                          flexDirection: 'row', 
-                          justifyContent: 'center', 
-                          alignItems: 'center'}}>
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>2</Text>
-                                </View>
-
-                           <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
-                              // onPress={() => navigation.goBack()}
-                              />
-                            </View >
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>12</Text>
-                                </View>
-                                <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                onPress={() => navigation.navigate('MyCart')}
-                                />
-                            </View>
-                        </View>
-                       
+            <CartNotification/>
                       ),
         }}
       name="Faq" component={Faq} />
@@ -1055,29 +685,7 @@ export const ReferStackNavigator: FunctionComponent = () =>{
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
           )
           ,headerRight: () =>(
-                        <View style={{
-                          flexDirection: 'row', 
-                          justifyContent: 'center', 
-                          alignItems: 'center'}}>
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>2</Text>
-                                </View>
-
-                           <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
-                              // onPress={() => navigation.goBack()}
-                              />
-                            </View >
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>12</Text>
-                                </View>
-                                <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                onPress={() => navigation.navigate('MyCart')}
-                                />
-                            </View>
-                        </View>
-                       
+            <CartNotification/>
                       ),
         }}
       name="Refer" component={Refer} />
@@ -1100,29 +708,7 @@ export const PickupStackNavigator: FunctionComponent = () =>{
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
           )
           ,headerRight: () =>(
-                        <View style={{
-                          flexDirection: 'row', 
-                          justifyContent: 'center', 
-                          alignItems: 'center'}}>
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>2</Text>
-                                </View>
-
-                           <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
-                              // onPress={() => navigation.goBack()}
-                              />
-                            </View >
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>12</Text>
-                                </View>
-                                <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                onPress={() => navigation.navigate('MyCart')}
-                                />
-                            </View>
-                        </View>
-                       
+            <CartNotification/>
                       ),
         }}
       name="Pickup" component={Pickup} />
@@ -1215,29 +801,7 @@ export const NutritionPackagesStackNavigator: FunctionComponent = () =>{
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
           )
           ,headerRight: () =>(
-                        <View style={{
-                          flexDirection: 'row', 
-                          justifyContent: 'center', 
-                          alignItems: 'center'}}>
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>2</Text>
-                                </View>
-
-                           <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
-                              // onPress={() => navigation.goBack()}
-                              />
-                            </View >
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>12</Text>
-                                </View>
-                                <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                onPress={() => navigation.navigate('MyCart')}
-                                />
-                            </View>
-                        </View>
-                       
+            <CartNotification/>
                       ),
         }}
       name="NutritionPackages" component={NutritionPackages} />
@@ -1306,29 +870,7 @@ export const GiftCardsStackNavigator: FunctionComponent = () =>{
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
           )
           ,headerRight: () =>(
-                        <View style={{
-                          flexDirection: 'row', 
-                          justifyContent: 'center', 
-                          alignItems: 'center'}}>
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>2</Text>
-                                </View>
-
-                           <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
-                              // onPress={() => navigation.goBack()}
-                              />
-                            </View >
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>12</Text>
-                                </View>
-                                <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                onPress={() => navigation.navigate('MyCart')}
-                                />
-                            </View>
-                        </View>
-                       
+            <CartNotification/>
                       ),
         }}
       name="GiftCards" component={GiftCards} />
@@ -1342,29 +884,7 @@ export const GiftCardsStackNavigator: FunctionComponent = () =>{
               />
             ),
             headerRight: () =>(
-              <View style={{
-                flexDirection: 'row', 
-                justifyContent: 'center', 
-                alignItems: 'center'}}>
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>2</Text>
-                      </View>
-
-                 <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C"  style={{marginRight: 20}}
-                    // onPress={() => navigation.goBack()}
-                    />
-                  </View >
-                  <View style={{position: 'relative'}} >
-                      <View style={styles.bellContainer}>
-                        <Text style={styles.textbel}>12</Text>
-                      </View>
-                      <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C"  style={{marginRight: 20}}
-                      onPress={() => navigation.navigate('MyCart')}
-                      />
-                  </View>
-              </View>
-             
+              <CartNotification/>
             ),
             // headerTransparent:true,
             title: "New Gift card",
@@ -1390,29 +910,7 @@ export const DonateStackNavigator: FunctionComponent = () =>{
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
           )
           ,headerRight: () =>(
-                        <View style={{
-                          flexDirection: 'row', 
-                          justifyContent: 'center', 
-                          alignItems: 'center'}}>
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>2</Text>
-                                </View>
-
-                           <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
-                              // onPress={() => navigation.goBack()}
-                              />
-                            </View >
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>12</Text>
-                                </View>
-                                <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                onPress={() => navigation.navigate('MyCart')}
-                                />
-                            </View>
-                        </View>
-                       
+            <CartNotification/>
                       ),
         }}
       name="Donate" component={Donate} />
@@ -1464,29 +962,7 @@ export const WalletStackNavigator: FunctionComponent = () =>{
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}></Icon>
           )
           ,headerRight: () =>(
-                        <View style={{
-                          flexDirection: 'row', 
-                          justifyContent: 'center', 
-                          alignItems: 'center'}}>
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>2</Text>
-                                </View>
-
-                           <MaterialCommunityIcons name="bell-outline" type="ionicon"  size={25} color="#3C3C3C" style={{marginRight: 20}}
-                              // onPress={() => navigation.goBack()}
-                              />
-                            </View >
-                            <View style={{position: 'relative'}} >
-                                <View style={styles.bellContainer}>
-                                  <Text style={styles.textbel}>12</Text>
-                                </View>
-                                <AntDesign name="shoppingcart"  type="ionicon" size={25} color="#3C3C3C" style={{marginRight: 20}}
-                                onPress={() => navigation.navigate('MyCart')}
-                                />
-                            </View>
-                        </View>
-                       
+            <CartNotification/>
                       ),
         }}
       name="Wallet" component={Wallet} />

@@ -7,11 +7,11 @@ import loginReducer from './loginSlice'
 
  const store = configureStore({
     reducer: { 
-      cart: cartReducer,
       [authApi.reducerPath]: authApi.reducer,
       [categoriesApi.reducerPath]: categoriesApi.reducer,
       avatar: imageReducer,
       login: loginReducer,
+      cart: cartReducer,
     },
     middleware: (getDefaultMiddleware) =>{
       return  getDefaultMiddleware().concat(authApi.middleware, categoriesApi.middleware);
