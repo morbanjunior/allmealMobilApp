@@ -7,6 +7,8 @@ export interface CartModel {
     ingredients:  string,
     quantity: number,
     cartQuantity:number,
+    imgLink?: string,
+    category?: string
    
 }
 

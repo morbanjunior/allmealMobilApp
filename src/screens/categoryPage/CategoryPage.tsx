@@ -3,6 +3,7 @@ import React, { FunctionComponent, useState } from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
 import CategoryPageItem from './CategoryPageItem';
 import MealItem from './mealItem/MealItem';
+import { mealsList } from '../../data/meals';
 
 
 const itemsCategories = [
@@ -102,12 +103,12 @@ const CategoryPage: FunctionComponent<props>= ({navigation}) => {
                       <View style={styles.mealItems}>
                           
                           {
-                                  itemsCategories.map((item, index)=>(
+                                  mealsList.map((item, index)=>(
                                     <TouchableOpacity 
                                     onPress={()=>navigation.navigate('Category')}>
                                           <MealItem 
-                                          // item={item} 
-                                          // key={index} 
+                                          item={item} 
+                                          key={index} 
                                           // selected={selected} 
                                           // Setselected={Setselected}
                                           // index={index}

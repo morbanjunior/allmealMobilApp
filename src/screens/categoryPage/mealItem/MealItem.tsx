@@ -10,8 +10,12 @@ import { addToMeal } from '../../../redux/mealSlice';
 import { ContentCutOutlined } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 
+type Props={
+ item: CartModel
+}
 
-const MealItem: FunctionComponent = () => {
+const MealItem: FunctionComponent<Props> = ({item}) => {
+    
     const navigation = useNavigation(); 
     const [quantity, SetQuantity] = useState<number>(0);
     const id = Math.floor(Math.random() * 10);
@@ -36,19 +40,6 @@ const MealItem: FunctionComponent = () => {
         }
     }
 
-    const selectedItems = () => {
-  
-        if(quantity){
-            dispatch(increaseCart({...singleFood} ))
-            dispatch(getTotals())
-        //   SetQuantity(1);
-        } else{
-        //   toast.error(`Please add quantity on ${singleFood.name}`, {
-        //     position: "bottom-left",
-        //   });
-        }
-        
-      }
 
 
     const singleFood:CartModel =
@@ -76,7 +67,7 @@ const MealItem: FunctionComponent = () => {
            <View style={styles.ButtomContainer}>
                  <View style={styles.headerButtomContainer}>
                     <View style={styles.headerButtomTextContainer}>
-                    <Text style={styles.headerButtomText}>$10.99 / Meal</Text>
+                    <Text style={styles.headerButtomText}>${item.price} / Meal</Text>
                     </View>
                     <View style={styles.buttom}>
                         <TouchableOpacity
