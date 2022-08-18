@@ -1,10 +1,72 @@
 import { ImageBackground, SafeAreaView, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { useNavigation } from '@react-navigation/native';
+import { RouteProp } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { addToCart, decreaseCart, getTotals, increaseCart } from '../../../redux/cartSlice';
+import { CartModel } from '../../../model/CartModel';
+import { mainColor, secundaryColor, thirdColor } from '../../../componets/shared';
 
 const itemsProps=[1,2,3,4,5,6]
 
-const MealItemPage = () => {
+
+const MealItemPage = ({route}) => {
+    const { meal} = route.params;
+    const {name, price, desc, id, nutricion, ingredients}=meal;
+   
+    const navigation = useNavigation(); 
+    const [quantity, SetQuantity] = useState<number>(0);
+    const dispatch = useDispatch();
+
+    const total = price * quantity;
+
+    const handleControl = (direction: string) =>{
+
+        if(direction === 'increase'){
+            if(quantity <= 99){
+                SetQuantity((currentQuantity) => currentQuantity + 1);
+                
+            }
+            
+        }
+        else if(direction === 'decrease'){
+            if(quantity >= 1){
+                SetQuantity((currentQuantity) => currentQuantity - 1);
+               
+            }
+        }
+    }
+
+
+    const selectedItems = () => {
+  
+        if(quantity){
+          dispatch(addToCart({...singleFood} ))
+          dispatch(getTotals())
+          SetQuantity(0);
+        } else{
+        //   toast.error(`Please add quantity on ${singleFood.name}`, {
+        //     position: "bottom-left",
+        //   });
+        }
+        
+      }
+
+
+    const singleFood:CartModel =
+  {
+    id: id,
+    cartQuantity:quantity,
+    quantity:quantity,
+    name: name,
+    price: price,
+    desc: desc,
+    nutricion: nutricion,
+    ingredients: ingredients
+
+  };
+
   return (
     
     <View style={{ flex: 1, backgroundColor: '#fff'}}>
@@ -20,22 +82,56 @@ const MealItemPage = () => {
                     <View style={styles.ButtomContainer}>
                         <View style={styles.headerButtomContainer}>
                             <View style={styles.headerButtomTextContainer}>
-                            <Text style={styles.headerButtomText}>$10.99 / Meal</Text>
+                            <Text style={styles.headerButtomText}>${price.toFixed(2)} / Meal</Text>
                             </View>
                             <View style={styles.buttom}>
-                                <TouchableOpacity>
+                                <TouchableOpacity
+                                onPress={()=>
+                                    handleControl('decrease')
+                                   
+                                }
+                                >
                                     <AntDesign name="minuscircle" type="ionicon" style={styles.headerButtomIcon}/>
                                 </TouchableOpacity>
-                                <Text style={styles.number}>1</Text>
-                                <TouchableOpacity>
+                                <Text style={styles.number}>{quantity}</Text>
+                                <TouchableOpacity
+                                onPress={()=>
+                                    handleControl('increase')
+                                }
+                                >
                                     <AntDesign name="pluscircle" type="ionicon" style={styles.headerButtomIcon}/>
                                 </TouchableOpacity>
                             
                             </View>
                         </View>
-                        <Text style={styles.headerText}>Blackened Grilled Chicken</Text>
-                        <Text style={styles.headerTextp}>Makes for the perfect protein-loaded energizing breakfast to get the day started!</Text>
-                        <Image style={{marginTop: 20}} source={require('../../../../assets/img/minilogo.png')} />
+                        <Text style={styles.headerText}>{name}</Text>
+                        <Text style={styles.headerTextp}>{desc}</Text>
+                        <View style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            // backgroundColor: 'black',
+                            justifyContent: 'space-between'
+            
+                        }}>
+                            <Image style={{marginTop: 10}} source={require('../../../../assets/img/minilogo.png')} />
+                            {
+                                quantity ? (
+                                    <TouchableOpacity style={{
+                                        backgroundColor: mainColor,
+                                        padding:10,
+                                        borderRadius: 8,
+                                    }}
+                                    onPress={()=>
+                                        selectedItems()
+                                    }
+                                    >
+                                      <Text style={styles.addButtomText}>Add {quantity} to order - $ {total.toFixed(2)}</Text>
+                                   </TouchableOpacity>
+                                ):(<></>)
+                            }
+                           
+                        </View>
+                       
                     </View>
                     <View style={styles.containerDetails}>
                         <View style={styles.headerDetails}>
@@ -45,7 +141,7 @@ const MealItemPage = () => {
 
                         <View style={styles.containersubItems}>
                                 {
-                                    itemsProps.map((item, index)=>(
+                                    nutricion.map((item, index)=>(
                                         <View style={styles.subItems}>
                                             <Text style={styles.subItemsText}>377.0 g</Text>
                                             <Text style={styles.subItemsTextSecond}>Calories</Text>
@@ -62,9 +158,9 @@ const MealItemPage = () => {
 
                         <View style={styles.containersubItems}>
                                 {
-                                    itemsProps.map((item, index)=>(
-                                        <View style={styles.subItems}>
-                                            <Text style={styles.subItemsTextSecond}>Potatoes (oz)</Text>
+                                    ingredients.map((item, index)=>(
+                                        <View style={styles.subItems} key={index}>
+                                            <Text style={styles.subItemsTextSecond}>{item} (oz)</Text>
                                         </View>
                                     ))
                                 }
@@ -129,6 +225,7 @@ const styles = StyleSheet.create({
         width: 128,
         alignItems: 'center'
     },
+    
     headerButtomText:{
         // fontFamily: 'Poppins',
         // fontStyle: 'normal',
@@ -137,6 +234,16 @@ const styles = StyleSheet.create({
         lineHeight: 15,
         letterSpacing: 0.15,
         color: '#FF6F00',
+        
+    },
+    addButtomText:{
+        // fontFamily: 'Poppins',
+        // fontStyle: 'normal',
+        fontWeight: '600',
+        fontSize: 16,
+        lineHeight: 15,
+        letterSpacing: 0.15,
+        color: secundaryColor,
         
     },
     bottomText:{

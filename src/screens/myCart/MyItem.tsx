@@ -5,10 +5,38 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 import { ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared';
+import { CartModel } from '../../model/CartModel';
+import { useDispatch } from 'react-redux';
+import { decreaseCart, getTotals, increaseCart, removeFromCart } from '../../redux/cartSlice';
 
+interface Props {
+    item: CartModel,
+  }
 
-const MyItem: FunctionComponent = () => {
+const MyItem: FunctionComponent<Props> = ({item}) => {
     const navigation = useNavigation(); 
+
+    const subtotal = item.price * item.cartQuantity;
+
+    const dispatch = useDispatch();
+
+
+    const HandlerRemove = (item:CartModel) =>{
+      dispatch(removeFromCart(item));
+      dispatch(getTotals());
+    }
+    const HandlerDecrease = (item:CartModel) =>{
+      dispatch(decreaseCart(item));
+      dispatch(getTotals());
+    }
+  
+     const HandlerIncrease = (item:CartModel) => {
+      
+      dispatch(increaseCart(item));
+      dispatch(getTotals());
+      
+    }
+
 
   return (
     <View  style={styles.container}
@@ -18,23 +46,29 @@ const MyItem: FunctionComponent = () => {
            <View style={styles.ButtomContainer}>
                  <View style={styles.headerButtomContainer}>
                     <View style={styles.headerButtomTextContainer}>
-                    <Text style={styles.headerButtomText}>$10.99</Text>
+                    <Text style={styles.headerButtomText}>${item.price.toFixed(2)}</Text>
                     </View>
                     <View style={styles.buttom}>
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                        onPress={() =>HandlerDecrease(item)}
+                        >
                             <AntDesign name="minuscircle" type="ionicon" style={styles.headerButtomIcon}/>
                         </TouchableOpacity>
-                        <Text style={styles.number}>1</Text>
-                        <TouchableOpacity>
+                        <Text style={styles.number}>{item.cartQuantity}</Text>
+                        <TouchableOpacity
+                        onPress={() =>HandlerIncrease(item)}
+                        >
                             <AntDesign name="pluscircle" type="ionicon" style={styles.headerButtomIcon}/>
                         </TouchableOpacity>
                     
                     </View>
                 </View>
-                <Text style={styles.headerText}>Blackened Grilled Chicken</Text>
+                <Text style={styles.headerText}>{item.name}</Text>
                 <View style={styles.bottomDelete}>
-                  <Text style={styles.headerButtomText}>Sub Total: $10.99</Text>
-                  <TouchableOpacity >
+                  <Text style={styles.headerButtomText}>Sub Total: ${subtotal.toFixed(2)}</Text>
+                  <TouchableOpacity
+                     onPress={() =>HandlerRemove(item)}
+                  >
                      <MaterialCommunityIcons name="delete" type="ionicon" style={styles.deletButtomIcon}/>
                   </TouchableOpacity>
                  

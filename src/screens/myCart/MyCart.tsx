@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
-import { mainColor, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared'
+import { mainColor, Screenheight, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared'
 import MyItem from './MyItem'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -12,6 +12,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import MyAdresses from './MyAdresses';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+import { selectcartItems, selectcartTotalQuantity, selectTotalAmount } from '../../redux/store';
+
 
 const item=[1,2,3,4,5]
 
@@ -24,20 +27,31 @@ const MyCart = () => {
     // date side
     const [selectedData, setSelectedData] = useState(new Date());
     const [modalData, setModalData] = useState(false);
-    
+    const itemMeals = useSelector(selectcartItems);
+    const totalQuantity = useSelector(selectcartTotalQuantity);
+    const totalAmount = useSelector(selectTotalAmount);
+
+  
+
   return (
     <View style={styles.container}>
         <View style={styles.wrapper}>
         <ScrollView showsVerticalScrollIndicator={false} style={{width:ScreenWidth, marginBottom:5,}}>
             <View style={styles.viewScroll}>
+
+              
                 {/* scroll */}
 
                 {
-                    item.map((item, index)=>(
-                        <MyItem/>
+                     itemMeals.map((item, index) =>(
+                        <MyItem item={item} key={index}/>
                     ))
                 }
-                <View style={styles.headerContainer}>
+
+               {
+                totalQuantity ? (
+                  <>
+                      <View style={styles.headerContainer}>
                     <View style={styles.textDivide}>
                       <MaterialIcons name="takeout-dining" color={mainColor} style={styles.icon}/>
                       <Text style={styles.textDivideFont}>Use reusable glassware</Text>
@@ -327,6 +341,20 @@ const MyCart = () => {
                          <Text style={styles.saveButtomText}>Proceed to checkout</Text>
                     </TouchableOpacity>
                    </>  
+                  
+                  </>
+                ) : (
+                  <View style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    height: Screenheight,
+                  }}>
+                    <Text>No items</Text>
+                  </View>
+                )
+              }
+                
                 {/* End scroll */}
             </View>
         </ScrollView>

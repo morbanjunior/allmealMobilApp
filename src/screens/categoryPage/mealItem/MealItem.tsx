@@ -15,78 +15,27 @@ type Props={
 }
 
 const MealItem: FunctionComponent<Props> = ({item}) => {
-    
     const navigation = useNavigation(); 
-    const [quantity, SetQuantity] = useState<number>(0);
-    const id = Math.floor(Math.random() * 10);
-    const dispatch = useDispatch();
-
-    const handleControl = (direction: string) =>{
-
-        if(direction === 'increase'){
-            if(quantity <= 99){
-                SetQuantity((currentQuantity) => currentQuantity + 1);
-                dispatch(increaseCart({...singleFood} ))
-                dispatch(getTotals())
-            }
-            
-        }
-        else if(direction === 'decrease'){
-            if(quantity >= 1){
-                SetQuantity((currentQuantity) => currentQuantity - 1);
-                dispatch(decreaseCart({...singleFood} ))
-                dispatch(getTotals())
-            }
-        }
-    }
-
-
-
-    const singleFood:CartModel =
-  {
-    id: 1,
-    cartQuantity:quantity,
-    quantity:quantity,
-    name: 'Asian Chicken Fried Rice Combo',
-    price: 10.20,
-    desc: 'A delicious twist on a classical favorite packed with lean protein and delicious carrots and celery. A smart low fat and high protein meal option.',
-    nutricion: ['Calories 656', 'Carbs 656','Protein 656', 'Fat 656', 'Fiber 653', 'Sodium 656'],
-    ingredients: 'A delicious twist on a classical favorite packed with lean protein'
-
-  };
-
 
   return (
     <TouchableOpacity  style={styles.container}
     
 
-     onPress={()=>navigation.navigate('MealItemPage')}
+     onPress={()=>navigation.navigate('MealItemPage',{ meal: item})}
     >
         <View style={styles.wrapper}>
             <Image source={mailPhote} />
            <View style={styles.ButtomContainer}>
                  <View style={styles.headerButtomContainer}>
                     <View style={styles.headerButtomTextContainer}>
-                    <Text style={styles.headerButtomText}>${item.price} / Meal</Text>
+                    <Text style={styles.headerButtomText}>${item.price.toFixed(2)} / Meal</Text>
                     </View>
                     <View style={styles.buttom}>
-                        <TouchableOpacity
                         
-                        onPress={()=>
-                             handleControl('decrease')
-                            
-                         }>
-                            <AntDesign 
-                            name="minuscircle" 
-                            type="ionicon" 
-                            style={styles.headerButtomIcon}
-                            />
-                        </TouchableOpacity>
-                        <Text style={styles.number}>{quantity}</Text>
                         <TouchableOpacity
                           onPress={()=>
-                                handleControl('increase')
-                                
+                            navigation.navigate('MealItemPage',{ meal: item})
+                            
                             }
                         >
                             <AntDesign 
@@ -100,8 +49,8 @@ const MealItem: FunctionComponent<Props> = ({item}) => {
                     
                     </View>
                 </View>
-                <Text style={styles.headerText}>Blackened Grilled Chicken</Text>
-                <Text style={styles.headerTextp}>Makes for the perfect protein-loaded energizing breakfast to get the day started!</Text>
+                <Text style={styles.headerText}>{item.name}</Text>
+                <Text style={styles.headerTextp}>{item.desc}</Text>
                
             </View>
         </View>
@@ -122,7 +71,7 @@ const styles = StyleSheet.create({
     wrapper: {
         display:'flex',
         flexDirection: 'row', 
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'flex-start',
         marginLeft:5,
         marginRight:5,
@@ -133,7 +82,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         // backgroundColor: 'rgba(255, 255, 255, 0.7)',
         width: 343,
-        height: 126,
+        height: 'auto',
         padding:15,
         marginBottom:25,
         
@@ -173,7 +122,7 @@ const styles = StyleSheet.create({
     },
     headerButtomIcon:{
         color: '#FF6F00',
-        fontSize: 20,
+        fontSize: 30,
 
     },
     number:{
