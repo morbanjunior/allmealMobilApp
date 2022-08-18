@@ -188,7 +188,7 @@ export const CategoryStackNavigator: FunctionComponent = () =>{
          options ={({ navigation, route }) => ({
             headerLeft: () =>(
               <AntDesign name='arrowleft' size={25} color="#fff" style={{marginLeft: 10}}
-              backgroundColor='white'
+              // backgroundColor='white'
               onPress={() => navigation.goBack()}
               />
             ),

@@ -1,30 +1,37 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, Image, Button } from 'react-native'
 import React, { FunctionComponent, useState } from 'react'
 import mailPhote from '../../../../assets/img/mealPhote.png'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { StackScreenProps } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
 import { CartModel } from '../../../model/CartModel';
-import { addToCart, getTotals } from '../../../redux/cartSlice';
+import { addToCart, decreaseCart, getTotals, increaseCart } from '../../../redux/cartSlice';
+import { addToMeal } from '../../../redux/mealSlice';
+import { ContentCutOutlined } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
 
 
 const MealItem: FunctionComponent = () => {
     const navigation = useNavigation(); 
-    const [quantity, SetQuantity] = useState<number>(1);
+    const [quantity, SetQuantity] = useState<number>(0);
     const id = Math.floor(Math.random() * 10);
+    const dispatch = useDispatch();
 
     const handleControl = (direction: string) =>{
 
         if(direction === 'increase'){
             if(quantity <= 99){
                 SetQuantity((currentQuantity) => currentQuantity + 1);
-                
+                dispatch(increaseCart({...singleFood} ))
+                dispatch(getTotals())
             }
             
         }
         else if(direction === 'decrease'){
-            if(quantity >= 2){
+            if(quantity >= 1){
                 SetQuantity((currentQuantity) => currentQuantity - 1);
+                dispatch(decreaseCart({...singleFood} ))
+                dispatch(getTotals())
             }
         }
     }
@@ -32,7 +39,7 @@ const MealItem: FunctionComponent = () => {
     const selectedItems = () => {
   
         if(quantity){
-            dispatch(addToCart({...singleFood} ))
+            dispatch(increaseCart({...singleFood} ))
             dispatch(getTotals())
         //   SetQuantity(1);
         } else{
@@ -72,28 +79,32 @@ const MealItem: FunctionComponent = () => {
                     <Text style={styles.headerButtomText}>$10.99 / Meal</Text>
                     </View>
                     <View style={styles.buttom}>
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                        
+                        onPress={()=>
+                             handleControl('decrease')
+                            
+                         }>
                             <AntDesign 
                             name="minuscircle" 
                             type="ionicon" 
                             style={styles.headerButtomIcon}
-                            onPress={()=>handleControl('decrease')}
-                           
                             />
                         </TouchableOpacity>
                         <Text style={styles.number}>{quantity}</Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                          onPress={()=>
+                                handleControl('increase')
+                                
+                            }
+                        >
                             <AntDesign 
                             name="pluscircle" 
                             type="ionicon" 
                             style={styles.headerButtomIcon}
-                            onPress={()=>
-                            //    { 
-                                // handleControl('increase')
-                                selectedItems()
-                            // }
-                            }
+                           
                             />
+                            
                         </TouchableOpacity>
                     
                     </View>

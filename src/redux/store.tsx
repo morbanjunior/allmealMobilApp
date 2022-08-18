@@ -2,8 +2,10 @@ import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "./cartSlice";
 import { authApi } from "./api/authApi";
 import { categoriesApi } from "./api/categoriesApi";
-import imageReducer from './imageSlice'
-import loginReducer from './loginSlice'
+import imageReducer from './imageSlice';
+import loginReducer from './loginSlice';
+import mealReducer from './mealSlice';
+
 
  const store = configureStore({
     reducer: { 
@@ -12,6 +14,7 @@ import loginReducer from './loginSlice'
       avatar: imageReducer,
       login: loginReducer,
       cart: cartReducer,
+      meal: mealReducer,
     },
     middleware: (getDefaultMiddleware) =>{
       return  getDefaultMiddleware().concat(authApi.middleware, categoriesApi.middleware);
@@ -24,6 +27,7 @@ import loginReducer from './loginSlice'
   export const selectcartItems = (state:RootState) => state.cart.cartItems;
   export const selectTotalAmount = (state:RootState) => state.cart.cartTotalAmount;
   export const selectcartTotalQuantity = (state:RootState) => state.cart.cartTotalQuantity;
+  export const selectQuantity = (state:RootState) => state.meal.cartTotalQuantity;
   export const selectimgAvatar = (state:RootState) => state.avatar.image;
   export const selectloginToken = (state:RootState) => state.login.token;
   export const selectUserLogin = (state:RootState) => state.login.userLogin;

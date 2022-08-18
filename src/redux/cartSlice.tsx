@@ -1,9 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-// import { useToast } from "react-native-toast-notifications";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CartModel } from "../model/CartModel";
 
-// const toast = useToast();
 
 export type cartType={
   cartItems: CartModel[],
@@ -13,7 +10,7 @@ export type cartType={
 
 
 const initialState:cartType = {
-  // cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems") || '') : [],
+
   cartItems: [],
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
@@ -59,7 +56,6 @@ const cartSlice = createSlice({
         // });
       }
       
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
     decreaseCart(state, action:PayloadAction<CartModel>) {
       const itemIndex = state.cartItems.findIndex(
