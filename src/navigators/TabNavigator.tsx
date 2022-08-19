@@ -15,27 +15,7 @@ import CustomButtom from "../componets/customButtom/CustomButtom";
 
 const Tab = createBottomTabNavigator();
 
-// const CustomTabBarButton: FunctionComponent<props> = ({children, onPress}) =>(
-//   <TouchableOpacity
-//     style={{
-//       top:-10,
-//       justifyContent: 'center',
-//       alignItems: 'center', 
-     
-//     }}
-//     onPress={onPress}
-//   >
-//       <View 
-//         style={{ 
-//         width:67,
-//         height:67,
-        
-//       }}
-//       >
-//         {children}
-//       </View>
-//   </TouchableOpacity>
-// )
+
 
 const BottomTabNavigator = () => {
   return (
@@ -47,7 +27,7 @@ const BottomTabNavigator = () => {
         tabBarShowLabel:false,
         tabBarStyle:{
           backgroundColor: '#262626',
-          
+          // height: 50,
         }
       }}
     >
@@ -57,7 +37,7 @@ const BottomTabNavigator = () => {
             <View style={{
               justifyContent:'center',
               alignItems:'center',
-              top: 10,
+              // top: 10,
             }}>
               <Ionicons name="home-outline" type="ionicon"
               style={{
@@ -71,7 +51,7 @@ const BottomTabNavigator = () => {
                 color: focused ? '#FF6F00' : '#fff',
                 fontFamily: 'Poppins',
                 fontWeight: '600',
-                lineHeight: 20,
+                // lineHeight: 20,
                 letterSpacing: 0.15,
               }}
               >Home</Text>
@@ -85,7 +65,7 @@ const BottomTabNavigator = () => {
           <View style={{
             justifyContent:'center',
             alignItems:'center',
-            top: 10,
+            // top: 10,
           }}>
             <MaterialIcons name="list-alt" type="ionicon"
             style={{
@@ -99,7 +79,7 @@ const BottomTabNavigator = () => {
               color: focused ? '#FF6F00' : '#fff',
               fontFamily: 'Poppins',
               fontWeight: '600',
-              lineHeight: 20,
+              // lineHeight: 20,
               letterSpacing: 0.15,
             }}
             >My Orders</Text>
@@ -136,7 +116,7 @@ const BottomTabNavigator = () => {
           <View style={{
             justifyContent:'center',
             alignItems:'center',
-            top: 10,
+            // top: 10,
           }}>
             <MaterialIcons name="list-alt"  type="ionicon"
             style={{
@@ -150,7 +130,7 @@ const BottomTabNavigator = () => {
               color: focused ? '#FF6F00' : '#fff',
               fontFamily: 'Poppins',
               fontWeight: '600',
-              lineHeight: 20,
+              // lineHeight: 20,
               letterSpacing: 0.15,
             }}
             >Wellness</Text>
@@ -164,7 +144,7 @@ const BottomTabNavigator = () => {
           <View style={{
             justifyContent:'center',
             alignItems:'center',
-            top: 10,
+            // top: 10,
           }}>
             <FontAwesome5 name="user-circle" type="ionicon"
             style={{
@@ -178,7 +158,7 @@ const BottomTabNavigator = () => {
               color: focused ? '#FF6F00' : '#fff',
               fontFamily: 'Poppins',
               fontWeight: '600',
-              lineHeight: 20,
+              // lineHeight: 20,
               letterSpacing: 0.15,
             }}
             >My Profile</Text>

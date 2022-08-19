@@ -3,16 +3,20 @@ import React,{useState} from 'react'
 import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Material from 'react-native-vector-icons/MaterialCommunityIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import { useNavigation } from '@react-navigation/native';
 
 const DashInfo = () => {
 
     const [selected, Setselected] = useState('3');
-
+    const navigation = useNavigation(); 
 
   return (
     <View style={styles.container}>
         <View style={styles.wrapper}>
-            <TouchableOpacity onPress={()=>Setselected('1')} activeOpacity={.7} style={[selected==='1' ? styles.ItemInfoActive : styles.ItemInfo ]}>
+            <TouchableOpacity onPress={()=>{
+                Setselected('1')
+                navigation.navigate('MyOrders')
+                }} activeOpacity={.7} style={[selected==='1' ? styles.ItemInfoActive : styles.ItemInfo ]}>
                 <View style={styles.infoItem}>
                   <Material name="clipboard-list-outline" type="ionicon" style={[selected==='1' ? styles.infoIconActive : styles.infoIcon]}/>
                   <Text  style={[ selected==='1' ? styles.infoTextActive : styles.infoText]}>4</Text>
@@ -26,7 +30,10 @@ const DashInfo = () => {
                 </View>
                 <Text style={[selected==='2' ? styles.infoText2Active : styles.infoText2]}>Reward Points</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=>Setselected('3')} activeOpacity={.7} style={[selected==='3' ? styles.ItemInfoActive : styles.ItemInfo ]}>
+            <TouchableOpacity onPress={()=>{
+                Setselected('3')
+                navigation.navigate('Wallet')
+                }} activeOpacity={.7} style={[selected==='3' ? styles.ItemInfoActive : styles.ItemInfo ]}>
                 <View style={styles.infoItem}>
                   <Ionicons name="wallet-outline" type="ionicon" style={[selected==='3' ? styles.infoIcon2Active2 : styles.infoIcon22]}/>
                   <Text  style={[selected==='3' ? styles.infoText2Active : styles.infoText2]}>Wallet Balance</Text>
