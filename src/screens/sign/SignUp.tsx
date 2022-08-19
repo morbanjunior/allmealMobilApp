@@ -206,6 +206,8 @@ function isValiEmail(val: string) {
       }
   } 
   return (
+    
+    <SafeAreaView style={{backgroundColor: secundaryColor}}>
     <KeyboardAwareScrollView showsVerticalScrollIndicator={false} >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <KeyboardAvoidingView behavior="padding" style={styles.containerKey}>
@@ -295,6 +297,7 @@ function isValiEmail(val: string) {
           </KeyboardAvoidingView>
         </TouchableWithoutFeedback>
     </KeyboardAwareScrollView>
+    </SafeAreaView>
     
   )
 }

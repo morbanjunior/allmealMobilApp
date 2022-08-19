@@ -3,12 +3,13 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { RootStackParamList } from '../../navigators/RootDrawer';
 import { StackScreenProps } from '@react-navigation/stack';
-import { Screenheight, ScreenWidth } from '../../componets/shared';
+import { Screenheight, ScreenWidth, thirdColor } from '../../componets/shared';
 import { useLoginUserMutation } from '../../redux/api/authApi';
 import { useToast } from "react-native-toast-notifications";
 import { useDispatch } from 'react-redux';
 import { loginData } from '../../redux/loginSlice';
 import Toast from 'react-native-toast-message';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 type props = StackScreenProps<RootStackParamList, 'Signin'>
 
@@ -36,7 +37,6 @@ const Signin: FunctionComponent<props>= ({navigation}) => {
      
       SetUserEmail('');
       SetPassword('');
-      navigation.navigate('Home')
       // SetIsLogin(true)
       // console.log(data)
       dispatch(loginData({
@@ -45,6 +45,7 @@ const Signin: FunctionComponent<props>= ({navigation}) => {
         userData: data.data.user
       }))
       
+      navigation.navigate('Home')
     }
    if(isError){
    
@@ -105,16 +106,32 @@ const onChangePassword = (e: NativeSyntheticEvent<TextInputChangeEventData>): vo
   SetPassword(value);
 }
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-       <KeyboardAvoidingView behavior="padding" style={styles.containerKey}>
-        
-          <View style={styles.container}>
+    
+        <KeyboardAwareScrollView showsVerticalScrollIndicator={false} >
+          {isLoading && (
+          <View style={{ 
+            flex:1,
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            backgroundColor: 'rgba(3, 0, 2, 0.30)', 
+            height: Screenheight, 
+            width: ScreenWidth,
+            position: 'absolute',
+            zIndex: 99,
+
+          }}
+            >
+            <Text style={styles.headertext}>Loading....</Text>
+          </View>
+          )}
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+         
           <ImageBackground source={
               require('../../../assets/img/Welcome.png')} 
               resizeMode="cover"
               style={styles.img}
               >
-          <SafeAreaView>
+             <SafeAreaView>
         
               <View style={styles.wrapper}>
                   <View style={styles.header}>
@@ -162,13 +179,13 @@ const onChangePassword = (e: NativeSyntheticEvent<TextInputChangeEventData>): vo
                               </View>
                         </View>
                       </View>
-                    
                   </SafeAreaView>
-                      
             </ImageBackground>
-        </View>
-            </KeyboardAvoidingView> 
-       </TouchableWithoutFeedback>
+       
+        
+        </TouchableWithoutFeedback>
+        </KeyboardAwareScrollView>
+      
   )
 }
 
@@ -199,7 +216,14 @@ const styles = StyleSheet.create({
         height:Screenheight +50
         
     },
-
+    headertext:{
+      color: thirdColor,
+      fontStyle: 'normal',
+      fontWeight: '700',
+      fontSize: 22,
+      lineHeight: 24,
+      letterSpacing: 0.15,
+    },
     title:{
         color: '#FFFFFF',
         // fontFamily: 'Poppins',
@@ -222,6 +246,8 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       borderTopEndRadius:25,
       borderTopLeftRadius:25,
+      borderBottomRightRadius:25,
+      borderBottomLeftRadius:25,
       display: 'flex',
       flexDirection: 'column',
       justifyContent:'flex-start',
