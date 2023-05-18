@@ -4,7 +4,7 @@ import { CategoryModel } from "../../model/CategoryModel";
 // Define a service using a base URL and expected endpoints
 export const categoriesApi = createApi({
   reducerPath: "categoriesApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://onemealprep.com/api/v1/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://api.allmealprep.com/api/v1" }),
   endpoints: (builder) => ({
     getAllCategories: builder.query<CategoryModel , string>({
       query: () => `food-types`,

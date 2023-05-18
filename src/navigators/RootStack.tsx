@@ -40,7 +40,8 @@ import Wallet from '../screens/wallet/Wallet';
 import AmpStore from '../screens/ampStore/AmpStore';
 import { useSelector} from 'react-redux'
 import {  selectUserData, selectcartTotalQuantity } from '../redux/store';
-import CartNotification from '../componets/CartNotification';
+import CartNotification from '../componets/cartNotification';
+// import CartNotification from '../componets/CartNotification';
 
 
 
