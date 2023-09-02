@@ -21,6 +21,8 @@ const Welcome: FunctionComponent<props>= ({navigation}) => {
             <View style={styles.wrapper}>
                 <Image style={{
                     marginTop: 70,
+                    width: 100,
+                    height:100
                 }}
                 source={require('../../../assets/img/logoAMP.png')}
                 />

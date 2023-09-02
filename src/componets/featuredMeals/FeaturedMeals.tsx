@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React, {useState} from 'react'
 import FeaturedMealsItems from './FeaturedMealsItems';
+import { FeaturedMeal } from '../../model/DashboardModel';
 
 const featuredMealsItems = [
     {
@@ -30,7 +31,11 @@ const featuredMealsItems = [
     },
 ];
 
-const FeaturedMeals = () => {
+type Props={
+    featuredMeals: FeaturedMeal []
+}
+
+const FeaturedMeals = ({featuredMeals}:Props) => {
     const [selected, Setselected] = useState(0);
 
   return (
@@ -41,7 +46,7 @@ const FeaturedMeals = () => {
             <View style={styles.categoryItems}>
                 
                 {
-                        featuredMealsItems.map((item, index)=>(
+                        featuredMeals?.map((item, index)=>(
                            <View style={styles.categoryItemsContainer}>
                                 <FeaturedMealsItems 
                                 item={item} 

@@ -4,8 +4,14 @@ import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Material from 'react-native-vector-icons/MaterialCommunityIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { DashModel } from '../../model/DashModel';
 
-const DashInfo = () => {
+
+type Props={
+    dash:DashModel
+}
+const DashInfo = ({dash}:Props) => {
 
     const [selected, Setselected] = useState('3');
     const navigation = useNavigation(); 
@@ -19,14 +25,14 @@ const DashInfo = () => {
                 }} activeOpacity={.7} style={[selected==='1' ? styles.ItemInfoActive : styles.ItemInfo ]}>
                 <View style={styles.infoItem}>
                   <Material name="clipboard-list-outline" type="ionicon" style={[selected==='1' ? styles.infoIconActive : styles.infoIcon]}/>
-                  <Text  style={[ selected==='1' ? styles.infoTextActive : styles.infoText]}>4</Text>
+                  <Text  style={[ selected==='1' ? styles.infoTextActive : styles.infoText]}>{dash.existingOrders}</Text>
                 </View>
                 <Text style={[selected==='1' ? styles.infoText2Active : styles.infoText2]}>Existing Orders</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={()=>Setselected('2')} activeOpacity={.7} style={[selected==='2' ? styles.ItemInfoActive : styles.ItemInfo ]}>
                 <View style={styles.infoItem}>
                   <SimpleLineIcons name="badge" type="ionicon" style={[selected==='2' ? styles.infoIconActive : styles.infoIcon]}/>
-                  <Text  style={[ selected==='2' ? styles.infoTextActive : styles.infoText]}>340</Text>
+                  <Text  style={[ selected==='2' ? styles.infoTextActive : styles.infoText]}>{dash.rewardPoints}</Text>
                 </View>
                 <Text style={[selected==='2' ? styles.infoText2Active : styles.infoText2]}>Reward Points</Text>
             </TouchableOpacity>
@@ -38,7 +44,7 @@ const DashInfo = () => {
                   <Ionicons name="wallet-outline" type="ionicon" style={[selected==='3' ? styles.infoIcon2Active2 : styles.infoIcon22]}/>
                   <Text  style={[selected==='3' ? styles.infoText2Active : styles.infoText2]}>Wallet Balance</Text>
                 </View>
-                <Text style={[ selected==='3' ? styles.infoTextActive : styles.infoText]}>$135.5</Text>
+                <Text style={[ selected==='3' ? styles.infoTextActive : styles.infoText]}>${dash.digitalWalle}</Text>
             </TouchableOpacity>
         </View>
     </View>

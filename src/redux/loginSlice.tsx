@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { User } from "../model/UserModel";
+import { User } from "../model/SigninModel";
 
 
 export type loginType={
@@ -10,23 +10,14 @@ export type loginType={
 
 
   const initialState:loginType = {
-     userLogin: false,
      token: '',
      userData: {
-      id: 0,
-      email: '',
-      first_name: '',
-      last_name: '',        
-      date_of_birth: '',
-      username: '',
-      phone_number: '',
-      verification_code: '',
-      verification_code_expiry:'',
-      is_verified: false,
-      created_at: '',
-      updated_at: '',
+        id: 0,
+        email: '',
+        first_name: '',
+        last_name: '',
      },
-
+     userLogin: false
   };
 
   const loginSlice = createSlice({

@@ -8,7 +8,7 @@ import Welcome from '../screens/sign/Welcome';
 import Signin from '../screens/sign/Signin';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { CustomDrawerContent } from '../componets/CustomDrawerContent';
-import { AdressesStackNavigator, RootStackParamList, SigninStackNavigator, SignUpStackNavigator } from './RootStack';
+import { ForgoPasswordStackNavigator, ResetPasswordStackNavigator, RootStackParamList, SigninStackNavigator, SignUpStackNavigator } from './RootStack';
 import TabNavigator from './TabNavigator';
 import Adresses from '../screens/adresses/Adresses';
 import CheckoutInfo from '../screens/checkout/CheckoutInfo';
@@ -53,6 +53,16 @@ const RootDrawer: FunctionComponent = () =>{
                 <Drawer.Screen 
                     name='SignUp'
                     component={SignUpStackNavigator}
+                />
+
+                <Drawer.Screen 
+                    name='ForgotPassword'
+                    component={ForgoPasswordStackNavigator}
+                />
+
+                <Drawer.Screen 
+                    name='ResetPassword'
+                    component={ResetPasswordStackNavigator}
                 />
                  
                 <Drawer.Screen 

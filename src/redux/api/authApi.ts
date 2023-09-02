@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery, BaseQueryFn, FetchArgs } from "@reduxjs/toolkit/query/react";
 import {SignInModel, UserDataModel, SignupModel, NewUserDataModel } from '../../model/UserModel';
-import { API_URL } from "@env";
+import { URL_VAR } from "@env" 
 
 interface errorModel{
   data:{
@@ -9,18 +9,18 @@ interface errorModel{
         message: string,
       },
       success:boolean,
-  },
-  status: number,
+  }
 }
 
 export const authApi = createApi({
     reducerPath: "authApi",
-    baseQuery: fetchBaseQuery({ baseUrl: "https://api.allmealprep.com/api/v1/auth/" }) as BaseQueryFn<string | FetchArgs, unknown, errorModel, {}>,
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://api.allmealprep.com/api/v1/' }) as BaseQueryFn<string | FetchArgs, unknown, errorModel, {}>,
     endpoints: (builder) => ({
         loginUser: builder.mutation<UserDataModel, SignInModel>({
             query: (body) =>{
+             
                return{
-                url: 'sign_in.json',
+                url: 'auth/sign_in.json',
                 method: 'post',
               //   headers: {
               //     'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ export const authApi = createApi({
           registerUser: builder.mutation<NewUserDataModel, SignupModel>({
             query: (body) =>{
                return{
-                url: 'sign_up.json',
+                url: 'auth/sign_up.json',
                 method: 'post',
                 body,
                };

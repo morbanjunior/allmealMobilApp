@@ -41,6 +41,8 @@ import AmpStore from '../screens/ampStore/AmpStore';
 import { useSelector} from 'react-redux'
 import {  selectUserData, selectcartTotalQuantity } from '../redux/store';
 import CartNotification from '../componets/cartNotification';
+import ForgotPassword from '../screens/sign/ForgotPassword';
+import ResetPassword from '../screens/sign/ResetPassword';
 // import CartNotification from '../componets/CartNotification';
 
 
@@ -51,6 +53,8 @@ export type RootStackParamList = {
   Signin: undefined;
   Welcome: undefined;
   Signup: undefined;
+  ForgotPassword:undefined;
+  ResetPassword:undefined;
   MyOrders: undefined;
   SingleOrder:undefined;
   Wellness:undefined;
@@ -122,6 +126,40 @@ export const SignUpStackNavigator: FunctionComponent = () =>{
           title: "",
         })}
       name="SignUp" component={SignUp} />
+    </Stack.Navigator>
+  )
+}
+
+export const ForgoPasswordStackNavigator: FunctionComponent = () =>{
+    
+  return (
+  <Stack.Navigator 
+  screenOptions={{
+      // headerShown: false,
+      gestureEnabled: false
+    }}>
+      <Stack.Screen 
+      options = {{
+        headerShown: false,
+      }}
+      name="ForgotPassword" component={ForgotPassword} />
+    </Stack.Navigator>
+  )
+}
+
+export const ResetPasswordStackNavigator: FunctionComponent = () =>{
+    
+  return (
+  <Stack.Navigator 
+  screenOptions={{
+      // headerShown: false,
+      gestureEnabled: false
+    }}>
+      <Stack.Screen 
+      options = {{
+        headerShown: false,
+      }}
+      name="ResetPassword" component={ResetPassword} />
     </Stack.Navigator>
   )
 }

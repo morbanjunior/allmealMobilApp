@@ -2,11 +2,12 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React, {useState} from 'react'
 import Material from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Categories } from '../../model/categories';
+import { FeaturedMeal } from '../../model/DashboardModel';
 
 interface Props{
-    item:Categories;
+    item:FeaturedMeal;
     selected: number;
-    Setselected: React.Dispatch<React.SetStateAction<string>>;
+    Setselected: React.Dispatch<React.SetStateAction<number>>;
     index: number,
 }
 
@@ -18,7 +19,7 @@ const FeaturedMealsItems: React.FC<Props> = ({item, selected, index, Setselected
                 <View >
                    <Image source={require('../../../assets/img/MaskGroup.png')} style={styles.imgContainer}/>
                 </View> 
-                <Text style={styles.textCategory}>{item.text}</Text>
+                <Text style={styles.textCategory}>{item.name}</Text>
        </TouchableOpacity>
   )
 }

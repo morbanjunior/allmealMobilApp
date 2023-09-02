@@ -1,15 +1,25 @@
 import { StyleSheet, Text, View, Image, ImageBackground, SafeAreaView, TouchableOpacity, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, NativeSyntheticEvent, TextInputChangeEventData, ActivityIndicator } from 'react-native'
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icon from 'react-native-vector-icons/FontAwesome5'
 import { RootStackParamList } from '../../navigators/RootDrawer';
 import { StackScreenProps } from '@react-navigation/stack';
-import { Screenheight, ScreenWidth, thirdColor } from '../../componets/shared';
+import { Screenheight, ScreenWidth, secundaryColor, thirdColor } from '../../componets/shared';
 import { useLoginUserMutation } from '../../redux/api/authApi';
 import { useToast } from "react-native-toast-notifications";
 import { useDispatch } from 'react-redux';
 import { loginData } from '../../redux/loginSlice';
-import Toast from 'react-native-toast-message';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import Spinner from 'react-native-loading-spinner-overlay';
+
+interface errorModel{
+  data:{
+      code: number,
+      error:{
+        message: string,
+      },
+      success:boolean,
+  }
+} 
 
 type props = StackScreenProps<RootStackParamList, 'Signin'>
 
@@ -53,10 +63,10 @@ const Signin: FunctionComponent<props>= ({navigation}) => {
           if ('status' in error) {
             // you can access all properties of `FetchBaseQueryError` here
             
-            toast.show(JSON.stringify(error.data.error.message), {
+            toast.show(JSON.stringify('Email or password is incorrect' ), {
               type: "danger",
               placement: "bottom",
-              duration: 4000,
+              duration: 8000,
               animationType: "slide-in",
               
             });
@@ -76,17 +86,20 @@ const Signin: FunctionComponent<props>= ({navigation}) => {
     "login": email,
   "password": password
   }
+
+  // console.log(sign_in)
   const HandlerLogin = async () =>{
   
    if(email=='' || password==''){
     toast.show('Email or password are required', {
       type: "danger",
       placement: "bottom",
-      duration: 4000,
+      duration: 8000,
       animationType: "slide-in",
       
     });
 
+   
     
    }
    else{
@@ -121,7 +134,18 @@ const onChangePassword = (e: NativeSyntheticEvent<TextInputChangeEventData>): vo
 
           }}
             >
-            <Text style={styles.headertext}>Loading....</Text>
+              <View>
+                <Spinner
+                    //visibility of Overlay Loading Spinner
+                    visible={isLoading}
+                    //Text with the Spinner
+                    textContent={'Loading...'}
+                    //Text style of the Spinner Text
+                    textStyle={styles.spinnerTextStyle}
+                  />
+                   
+              </View>
+            
           </View>
           )}
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -137,6 +161,10 @@ const onChangePassword = (e: NativeSyntheticEvent<TextInputChangeEventData>): vo
                   <View style={styles.header}>
                       <Image 
                       source={require('../../../assets/img/logoAMP.png')}
+                      style={{
+                        width: 100,
+                        height:100
+                      }}
                       />
                       <View style={styles.containerTitle}>
                           <Text style={styles.title}>Meal Prep</Text>
@@ -170,6 +198,9 @@ const onChangePassword = (e: NativeSyntheticEvent<TextInputChangeEventData>): vo
                               <Icon name="user-check" type="ionicon" color="#fff" style={styles.iconLogin}/>
                               <Text style={styles.textButtomLogin}>Log In</Text>
                       </TouchableOpacity>
+                          <TouchableOpacity style={styles.forgotPassword} onPress={()=>navigation.navigate('ForgotPassword')}>
+                              <Text style={styles.textRegister}>Forgot Password</Text>
+                          </TouchableOpacity>
                       <View style={styles.containertextBottom}>
                           <Text style={styles.textAccount}>Don’t have an account?</Text>
                           <TouchableOpacity  onPress={()=>navigation.navigate('SignUp')}>
@@ -206,7 +237,7 @@ const styles = StyleSheet.create({
 
     img:{
         width: ScreenWidth,
-        height: 912,
+        height: 812,
     },
     wrapper:{
         display:'flex',
@@ -217,7 +248,7 @@ const styles = StyleSheet.create({
         
     },
     headertext:{
-      color: thirdColor,
+      color: secundaryColor,
       fontStyle: 'normal',
       fontWeight: '700',
       fontSize: 22,
@@ -242,7 +273,7 @@ const styles = StyleSheet.create({
     containerBottom:{
       
       width: ScreenWidth,
-      height:487,
+      height:520,
       backgroundColor: '#fff',
       borderTopEndRadius:25,
       borderTopLeftRadius:25,
@@ -255,7 +286,7 @@ const styles = StyleSheet.create({
 
     },
     wrapperButton:{
-      marginTop:30,
+      marginTop:20,
     },
     textLogin:{
       color: '#262626',
@@ -289,7 +320,7 @@ const styles = StyleSheet.create({
       borderRadius: 8,
       width:328,
       height:56,
-      marginBottom:30,
+      // marginBottom:30,
 
   },
   textButtomLogin:{
@@ -342,5 +373,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop:50, 
     marginBottom:80,
-  }
+  },
+  forgotPassword:{
+    marginBottom:20,
+  },
+  loading:{
+    backgroundColor: thirdColor,
+    height:70,
+    borderRadius:10,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  spinnerTextStyle: {
+    color: '#FFF',
+  },
 })

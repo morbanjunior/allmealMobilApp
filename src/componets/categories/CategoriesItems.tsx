@@ -6,7 +6,7 @@ import { categoryDataProps } from './types';
 interface Props{
     item:categoryDataProps;
     selected: number;
-    Setselected: React.Dispatch<React.SetStateAction<string>>;
+    Setselected: React.Dispatch<React.SetStateAction<number>>;
     index: number,
 }
 

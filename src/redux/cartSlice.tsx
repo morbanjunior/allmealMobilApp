@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CartModel } from "../model/CartModel";
-
+import { useGetmyCartQuery } from "./api/myCartApi";
 
 export type cartType={
   cartItems: CartModel[],
@@ -30,30 +30,11 @@ const cartSlice = createSlice({
           ...state.cartItems[existingIndex],
           cartQuantity: state.cartItems[existingIndex].cartQuantity + action.payload.quantity ,
         };
-        // toast.info("Increased product quantity", {
-        //   position: "bottom-left",
-        // });
-        // toast.show('Increased product quantity', {
-        //   type: "normal",
-        //   placement: "bottom",
-        //   duration: 4000,
-        //   animationType: "slide-in",
-          
-        // });
+       
       } else {
         let tempProductItem = { ...action.payload, cartQuantity: action.payload.quantity };
         state.cartItems.push(tempProductItem);
-        // toast.success("Product added to cart", {
-        //   position: "bottom-left",
-        // });
-
-        // toast.show("Product added to cart", {
-        //   type: "success",
-        //   placement: "bottom",
-        //   duration: 4000,
-        //   animationType: "slide-in",
-          
-        // });
+        
       }
       
     },
@@ -65,17 +46,6 @@ const cartSlice = createSlice({
       if (state.cartItems[itemIndex].cartQuantity > 1) {
         state.cartItems[itemIndex].cartQuantity -= 1;
 
-        // toast.info("Decreased product quantity", {
-        //   position: "bottom-left",
-        // });
-
-        // toast.show("Decreased product quantity", {
-        //   type: "normal",
-        //   placement: "bottom",
-        //   duration: 4000,
-        //   animationType: "slide-in",
-          
-        // });
 
       } else if (state.cartItems[itemIndex].cartQuantity === 1) {
         const nextCartItems = state.cartItems.filter(
@@ -84,17 +54,6 @@ const cartSlice = createSlice({
 
         state.cartItems = nextCartItems;
 
-        // toast.error("Product removed from cart", {
-        //   position: "bottom-left",
-        // });
-
-        // toast.show("Product removed from cart", {
-        //   type: "danger",
-        //   placement: "bottom",
-        //   duration: 4000,
-        //   animationType: "slide-in",
-          
-        // });
       }
 
       // localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
@@ -108,17 +67,6 @@ const cartSlice = createSlice({
 
           state.cartItems = nextCartItems;
 
-          // toast.error("Product removed from cart", {
-          //   position: "bottom-left",
-          // });
-
-          // toast.show("Product removed from cart", {
-          //   type: "danger",
-          //   placement: "bottom",
-          //   duration: 4000,
-          //   animationType: "slide-in",
-            
-          // });
         }
         // localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
         return state;
@@ -147,14 +95,7 @@ const cartSlice = createSlice({
     clearCart(state, action) {
       state.cartItems = [];
       // localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
-      // toast.error("Cart cleared", { position: "bottom-left" });
-      // toast.show("Cart cleared", {
-      //   type: "danger",
-      //   placement: "bottom",
-      //   duration: 4000,
-      //   animationType: "slide-in",
-        
-      // });
+    
     },
     increaseCart(state, action:PayloadAction<CartModel>){
         const existingIndex = state.cartItems.findIndex(
@@ -166,31 +107,12 @@ const cartSlice = createSlice({
             ...state.cartItems[existingIndex],
             cartQuantity: state.cartItems[existingIndex].cartQuantity + 1,
           };
-          // toast.info("Increased product quantity", {
-          //   position: "bottom-left",
-          // });
-
-          // toast.show("Increased product quantity", {
-          //   type: "normal",
-          //   placement: "bottom",
-          //   duration: 4000,
-          //   animationType: "slide-in",
-            
-          // });
+          
 
         } else {
           let tempProductItem = { ...action.payload, cartQuantity: 1 };
           state.cartItems.push(tempProductItem);
-          // toast.success("Product added to cart", {
-          //   position: "bottom-left",
-          // });
-          // toast.show("Product added to cart", {
-          //   type: "success",
-          //   placement: "bottom",
-          //   duration: 4000,
-          //   animationType: "slide-in",
-            
-          // });
+         
         }
         // localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
       

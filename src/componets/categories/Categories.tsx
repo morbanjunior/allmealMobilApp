@@ -5,36 +5,11 @@ import { StackScreenProps } from '@react-navigation/stack'
 import { RootStackParamList } from '../../navigators/RootDrawer'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { ScreenWidth } from '../shared'
+import { itemsCategories } from '../../data/categories'
 
 type props = StackScreenProps<RootStackParamList, 'Dashboard'>
 
-const itemsCategories = [
-    {
-        id: 1,
-        text: 'Meal Prep Menu',
-        img: '../../../assets/img/breakfast',
-    },
-    {
-        id: 2,
-        text: 'Bulk Meal Prep Menu',
-        img: '../../../assets/img/thanksgiving.png',
-    },
-    {
-        id: 3,
-        text: 'Preselected Meals',
-        img: '../../../assets/img/meal.png',
-    },
-    {
-        id: 4,
-        text: '$8 Meal Prep Menu',
-        img: '../../../assets/img/plate.png',
-    },
-    {
-        id: 5,
-        text: 'Keto Meals',
-        img: '../../../assets/img/breakfast.png',
-    },
-];
+
 
 const Categories: FunctionComponent<props>= ({navigation}) => {
     const [selected, Setselected] = useState(0);

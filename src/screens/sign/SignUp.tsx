@@ -35,44 +35,30 @@ const SignUp = () => {
             password: '',
             ConfirmPassword: ''
           })
+
+      navigation.navigate('VerifyUser', 
+      {
+        screen: 'VerifyUser',
+        params: {userId: data.data.user.id, message: data.message}
+      }
+      
     
-      toast.show(data.message, {
-        type: "success",
-        placement: "bottom",
-        duration: 4000,
-        animationType: "slide-in",
-        
-      });
+      )
     }
 
     if(isError){
-      // if(JSON.stringify(error.status) === '500'){
-      //   toast.error(JSON.stringify(error.data.error.message), {
-      //     position: "top-left",
-      //   });
-      // }
-      
       if (error) {
         if ('status' in error) {
           // you can access all properties of `FetchBaseQueryError` here
               toast.show(JSON.stringify(error.data.error.message), {
                 type: "error",
                 placement: "bottom",
-                duration: 4000,
+                duration: 8000,
                 animationType: "slide-in",
                 
               });
         }
       }
-     
-     
-      // if(JSON.stringify(error.status) === '422'){
-      //   toast.error(JSON.stringify(error.data.error.message), {
-      //     position: "top-left",
-      //   });
-      // }
-      // console.log(error)
-
      }
   
    
@@ -290,6 +276,16 @@ function isValiEmail(val: string) {
                         <FontAwesome5 name="user-check" color={secundaryColor} style={styles.icon}/>
                          <Text style={styles.saveButtomText}>Create Account</Text>
                     </TouchableOpacity>
+                    {/* <TouchableOpacity 
+                    onPress={()=>navigation.navigate('VerifyUser',
+                    {
+                      screen: 'VerifyUser',
+                      params: {userId: "2530", message: 'se te envio el mensaje'}
+                    }
+                    
+                    )
+                  }
+                    ><Text>VerifyUser</Text></TouchableOpacity> */}
                 </View>
                         
                       </SafeAreaView>
