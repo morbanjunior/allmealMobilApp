@@ -2,9 +2,22 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React, {useState} from 'react'
 import Material from 'react-native-vector-icons/MaterialCommunityIcons';
 import { categoryDataProps } from './types';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 interface Props{
-    item:categoryDataProps;
+    item: {
+        id: number;
+        text: string;
+        code: string;
+        img: string;
+        icon:{
+            iconType: 'ionicons' | 'material-community';
+            name: string;
+            size: number;
+        }
+       
+    };
     selected: number;
     Setselected: React.Dispatch<React.SetStateAction<number>>;
     index: number,
@@ -12,11 +25,19 @@ interface Props{
 
 const CategoriesItems: React.FC<Props> = ({item, selected, index, Setselected}) => {
     
-
+    const IconComponent =(iconType:string)=>{
+        if(iconType === "material-community"){
+            return <MaterialCommunityIcons name={item.icon.name} size={item.icon.size}/>
+        }else{
+            return <Ionicons name={item.icon.name} size={item.icon.size}/>
+        }
+        
+    }
   return (
         <TouchableOpacity onPress={()=>Setselected(index)} activeOpacity={.7} style={styles.buttom}>
                 <View style={[selected === index ? styles.iconItemActive :  styles.iconItem]}>
-                   <Image source={require('../../../assets/img/plate.png')} style={styles.imgContainer}/>
+                   {/* <Image source={require('../../../assets/img/plate.png')} style={styles.imgContainer}/> */}
+                   {IconComponent(item.icon.iconType)}
                 </View> 
                 <Text style={styles.textCategory}>{item.text}</Text>
        </TouchableOpacity>
